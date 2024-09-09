@@ -28,6 +28,10 @@ vim.keymap.set('n', '<A-J>', '<C-W>j', { desc = 'Move focus to the lower window'
 vim.keymap.set('n', '<A-K>', '<C-W>k', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<A-L>', '<C-W>l', { desc = 'Move focus to the right window' })
 
+-- Swap 0 and ^
+vim.keymap.set('n', '0', '^', { desc = 'Go to the first non-blank character' })
+vim.keymap.set('n', '^', '0', { desc = 'Go to the start of the line' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
