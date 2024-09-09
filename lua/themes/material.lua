@@ -89,9 +89,9 @@ return {
 
     custom_highlights = {
       -- Barbar gitsign highlights
-      -- BufferVisibleCHANGED = { bg = '#FF0000' },
-      -- BufferVisibleDELETED = { bg = '#FF0000' },
-      -- BufferVisibleADDED = { bg = '#FF0000' },
+      BufferCurrentCHANGED = { bg = '#FF0000' },
+      BufferCurrentDELETED = { bg = '#FF0000' },
+      BufferCurrentADDED = { bg = '#FF0000' },
     }, -- Overwrite highlights with your own
   },
   config = function(_, opts)
