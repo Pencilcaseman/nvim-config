@@ -2,8 +2,8 @@ return {
   'unblevable/quick-scope',
   event = 'VeryLazy',
   config = function()
-    vim.cmd [[highlight QuickScopePrimary guifg=#ff0000 guibg=none]]
-    vim.cmd [[highlight QuickScopeSecondary guifg=#00ff00 guibg=none]]
+    vim.cmd [[highlight QuickScopePrimary guifg=non guibg=none gui=underline,bold cterm=underline,bold]]
+    vim.cmd [[highlight QuickScopeSecondary guifg=none guibg=none gui=underline,bold cterm=underline,bold]]
 
     vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
 
