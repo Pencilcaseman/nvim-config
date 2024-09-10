@@ -1,11 +1,12 @@
 return {
   'unblevable/quick-scope',
-  event = 'VeryLazy',
   config = function()
-    vim.cmd [[highlight QuickScopePrimary guifg=non guibg=none gui=underline,bold cterm=underline,bold]]
-    vim.cmd [[highlight QuickScopeSecondary guifg=none guibg=none gui=underline,bold cterm=underline,bold]]
+    -- We have to delay the highlight until after the colorscheme is loaded
+    vim.defer_fn(function()
+      vim.cmd [[highlight QuickScopePrimary guifg=none guibg=none gui=underline,bold cterm=underline,bold]]
+      vim.cmd [[highlight QuickScopeSecondary guifg=none guibg=none gui=underline,bold cterm=underline,bold]]
 
-    vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
+      vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
 
     -- stylua: ignore
     vim.g.qs_accepted_chars = {
@@ -19,6 +20,7 @@ return {
       -- Numbers
       '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
     }
-    -- stylua: ignore
+      -- stylua: ignore
+    end, 500)
   end,
 }
