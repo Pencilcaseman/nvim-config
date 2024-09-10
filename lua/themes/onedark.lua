@@ -1,5 +1,6 @@
 return {
   'navarasu/onedark.nvim',
+  event = 'VeryLazy',
   opts = {
     style = 'deep',
   },
