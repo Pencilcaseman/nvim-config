@@ -46,4 +46,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Space d d to open diagnostic float
+vim.keymap.set('n', '<space>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = '[D]ocument [D]iagnostics' })
+
 -- vim: ts=2 sts=2 sw=2 et
