@@ -1,2 +1,4 @@
--- return require 'themes.material'
-return require 'themes.onedark'
+return {
+  -- require 'themes.material'
+  require 'themes.onedark',
+}
