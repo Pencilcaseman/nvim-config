@@ -1,3 +1,29 @@
+if vim.g.neovide then
+  -- -- Map Ó to ^[H
+  -- vim.api.nvim_set_keymap('n', 'Ó', '<Esc>H', { noremap = true, silent = true })
+  --
+  -- -- Map Ô to ^[J
+  -- vim.api.nvim_set_keymap('n', 'Ô', '<Esc>J', { noremap = true, silent = true })
+  --
+  -- -- Map  to ^[K
+  -- vim.api.nvim_set_keymap('n', '', '<Esc>K', { noremap = true, silent = true })
+  --
+  -- -- Map Ò to ^[L
+  -- vim.api.nvim_set_keymap('n', 'Ò', '<Esc>L', { noremap = true, silent = true })
+
+  -- Map Ó to ^[H
+  vim.api.nvim_set_keymap('n', 'Ó', '<C-w>h', { noremap = true, silent = true })
+
+  -- Map Ô to ^[J
+  vim.api.nvim_set_keymap('n', 'Ô', '<C-w>j', { noremap = true, silent = true })
+
+  -- Map  to ^[K
+  vim.api.nvim_set_keymap('n', '', '<C-w>k', { noremap = true, silent = true })
+
+  -- Map Ò to ^[L
+  vim.api.nvim_set_keymap('n', 'Ò', '<C-w>l', { noremap = true, silent = true })
+end
+
 -- [[ Basic Keymaps ]]
 
 -- Clear highlights on search when pressing <Esc> in normal mode
