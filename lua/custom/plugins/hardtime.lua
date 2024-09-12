@@ -4,7 +4,7 @@ return {
   opts = {
     max_time = 1000,
     max_count = 3,
-    disable_mouse = true,
+    disable_mouse = false,
     hint = true,
     notification = true,
     allow_different_key = true,
