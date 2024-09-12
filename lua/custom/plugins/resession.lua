@@ -7,9 +7,9 @@ return {
     local resession = require 'resession'
 
     return {
-      { '<leader>wS', resession.save, desc = 'Workspace: Save Session' },
-      { '<leader>wL', resession.load, desc = 'Workspace: Load Session' },
-      { '<leader>wD', resession.delete, desc = 'Workspace: Delete Session' },
+      { '<leader>ws', resession.save, desc = '[W]orkspace: [S]ave Session' },
+      { '<leader>wl', resession.load, desc = '[W]orkspace: [L]oad Session' },
+      { '<leader>wd', resession.delete, desc = '[W]orkspace: [D]elete Session' },
       unpack(keys),
     }
   end,

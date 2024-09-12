@@ -3,6 +3,7 @@ return {
   event = 'ColorScheme',
   opts = {
     style = 'deep',
+    toggle_style_key = '<leader>ts',
   },
   config = function(_, opts)
     require('onedark').setup(opts)

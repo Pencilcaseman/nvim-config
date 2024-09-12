@@ -76,6 +76,7 @@ return {
 
       { '<space>bp', '<CMD>BufferPin<CR>', desc = 'Pin the current buffer' },
       { '<space>bc', '<CMD>BufferClose<CR>', desc = 'Close the current buffer' },
+      { '<space>bC', '<CMD>BufferCloseAllButCurrent<CR>', desc = 'Close all but the current buffer' },
       { '<space>bg', '<CMD>BufferPick<CR>', desc = 'Magic pick buffers' },
 
       unpack(keys),

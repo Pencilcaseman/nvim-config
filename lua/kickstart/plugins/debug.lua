@@ -6,6 +6,7 @@ return {
     'nvim-neotest/nvim-nio',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
+    'mfussenegger/nvim-dap-python',
     'leoluz/nvim-dap-go',
   },
 
@@ -36,6 +37,9 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+
+    -- local dap_python = require 'dap-python'
+    require('dap-python').setup 'python3'
 
     -- WARNING: Assumes the visual studio codelldb plugin is installed
     local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
