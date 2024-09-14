@@ -1,17 +1,6 @@
--- return {
---   'Shatur/neovim-ayu',
---   opts = {
---     mirage = false,
---     terminal = false,
---   },
---   config = function(_, opts)
---     local ayu = require 'ayu'
---     ayu.setup(opts)
---   end,
--- }
-
 return {
   'marko-cerovac/material.nvim',
+  event = 'ColorScheme',
   opts = {
     contrast = {
       terminal = false, -- Enable contrast for the built-in terminal
@@ -50,7 +39,7 @@ return {
       -- "harpoon",
       -- "hop",
       -- "illuminate",
-      -- "indent-blankline",
+      'indent-blankline',
       -- "lspsaga",
       -- "mini",
       'neogit',
@@ -63,7 +52,7 @@ return {
       -- "nvim-tree",
       -- "nvim-web-devicons",
       -- "rainbow-delimiters",
-      -- "sneak",
+      'sneak',
       'telescope',
       -- "trouble",
       'which-key',
@@ -97,8 +86,6 @@ return {
   config = function(_, opts)
     require('material').setup(opts)
     vim.g.material_style = 'deep ocean'
-    vim.cmd 'colorscheme material'
-
-    vim.api.nvim_set_hl(0, 'LineNr', { fg = '#C1AE89' })
+    -- vim.cmd 'colorscheme material'
   end,
 }

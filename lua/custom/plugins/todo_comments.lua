@@ -23,10 +23,10 @@ return {
         color = 'perf',
         alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE', 'OPTIMIZATION', 'OPTIMISATION' },
       },
-      NOTE = { icon = ' ', color = 'hint', alt = { 'INFO' } },
+      NOTE = { icon = ' ', color = 'hint', alt = { 'INFO', 'NOT', 'HINT' } },
       TEST = { icon = '⏲ ', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
       DEBUG = { icon = ' ', color = 'debug_color', alt = { 'DEBUG', 'TRACE' } },
-      STAGE = { icon = ' ', color = 'stage', alt = { 'STAGE', 'STEP', 'TASK', 'PART', 'PHASE' } },
+      STAGE = { icon = ' ', color = 'stage', alt = { 'STAGE', 'STEP', 'TASK', 'PART', 'PHASE', 'FEAT', 'FEATURE' } },
     },
 
     gui_style = {

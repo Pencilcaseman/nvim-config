@@ -47,6 +47,7 @@ return {
         { '<leader>d', group = '[D]ocument' },
         { '<leader>D', group = '[D]ebug' },
         { '<leader>g', group = '[G]it' },
+        { '<leader>o', group = '[O]oversser' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },

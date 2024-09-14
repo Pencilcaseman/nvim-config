@@ -15,22 +15,23 @@ return {
     local dapui = require 'dapui'
 
     return {
-      { '<leader>dc', dap.continue, desc = 'Debug: Start/Continue' },
-      { '<leader>di', dap.step_into, desc = 'Debug: Step Into' },
-      { '<leader>do', dap.step_over, desc = 'Debug: Step Over' },
-      { '<leader>du', dap.step_out, desc = 'Debug: Step Out' },
-      { '<leader>db', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
-      { '<leader>dq', dap.terminate, desc = 'Debug: Terminate Session' },
+      { '<leader>dc', dap.continue, desc = '[D]ebug: Start/[C]ontinue' },
+      { '<leader>dC', dap.run_to_cursor, desc = '[D]ebug: Run to [C]ursor' },
+      { '<leader>di', dap.step_into, desc = '[D]ebug: Step [I]nto' },
+      { '<leader>do', dap.step_over, desc = '[D]ebug: Step [O]ver' },
+      { '<leader>du', dap.step_out, desc = '[D]ebug: Step O[u]t' },
+      { '<leader>db', dap.toggle_breakpoint, desc = '[D]ebug Toggle [B]reakpoint' },
+      { '<leader>dq', dap.terminate, desc = '[D]ebug: [Q]uit Session' },
       {
-        '<leader>B',
+        '<leader>dB',
         function()
           dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
         end,
-        desc = 'Debug: Set Breakpoint',
+        desc = '[D]ebug: Conditional [B]reakpoint',
       },
 
       -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-      { '<leader>ds', dapui.toggle, desc = 'Debug: See last session result.' },
+      { '<leader>ds', dapui.toggle, desc = '[D]ebug See last session result.' },
       unpack(keys),
     }
   end,

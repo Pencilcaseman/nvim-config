@@ -71,13 +71,13 @@ return {
       { 'H', '<CMD>BufferPrevious<CR>', desc = 'Move to the left buffer' },
       { 'L', '<CMD>BufferNext<CR>', desc = 'Move to the right buffer' },
 
-      { '<', '<CMD>BufferMovePrevious<CR>', desc = 'Move the buffer to the left' },
-      { '>', '<CMD>BufferMoveNext<CR>', desc = 'Move the buffer to the right' },
-
       { '<space>bp', '<CMD>BufferPin<CR>', desc = 'Pin the current buffer' },
       { '<space>bc', '<CMD>BufferClose<CR>', desc = 'Close the current buffer' },
       { '<space>bC', '<CMD>BufferCloseAllButCurrent<CR>', desc = 'Close all but the current buffer' },
       { '<space>bg', '<CMD>BufferPick<CR>', desc = 'Magic pick buffers' },
+
+      { '<S-left>', '<CMD>BufferMovePrevious<CR>', desc = 'Move the current buffer left' },
+      { '<S-right>', '<CMD>BufferMoveNext<CR>', desc = 'Move the current buffer right' },
 
       unpack(keys),
     }
