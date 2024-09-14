@@ -73,7 +73,7 @@ return {
 
       { '<space>bp', '<CMD>BufferPin<CR>', desc = 'Pin the current buffer' },
       { '<space>bc', '<CMD>BufferClose<CR>', desc = 'Close the current buffer' },
-      { '<space>bC', '<CMD>BufferCloseAllButCurrent<CR>', desc = 'Close all but the current buffer' },
+      { '<space>bC', '<CMD>BufferCloseAllButCurrentOrPinned<CR>', desc = 'Close all but the current buffer or pinned buffers' },
       { '<space>bg', '<CMD>BufferPick<CR>', desc = 'Magic pick buffers' },
 
       { '<S-left>', '<CMD>BufferMovePrevious<CR>', desc = 'Move the current buffer left' },
