@@ -5,6 +5,15 @@ return {
     require('yanky').setup(opts)
 
     local keymap = vim.keymap.set
+
+    keymap({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)')
+    keymap({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)')
+    keymap({ 'n', 'x' }, 'gp', '<Plug>(YankyGPutAfter)')
+    keymap({ 'n', 'x' }, 'gP', '<Plug>(YankyGPutBefore)')
+
+    keymap('n', '<c-p>', '<Plug>(YankyPreviousEntry)')
+    keymap('n', '<c-n>', '<Plug>(YankyNextEntry)')
+
     keymap('n', ']p', '<Plug>(YankyPutIndentAfterLinewise)')
     keymap('n', '[p', '<Plug>(YankyPutIndentBeforeLinewise)')
     keymap('n', ']P', '<Plug>(YankyPutIndentAfterLinewise)')
