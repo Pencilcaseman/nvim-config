@@ -69,5 +69,9 @@ return {
     vim.cmd [[highlight LineNrAbove guibg=#19212E guifg=#516C96]]
     vim.cmd [[highlight LineNrBelow guibg=#19212E guifg=#716CB6]]
     vim.cmd [[highlight CursorLineNr guibg=#19212E guifg=#469EDA gui=bold]]
+
+    -- Indent Blackline
+    vim.cmd [[highlight IblIndent guifg=#2B394F guibg=none]]
+    vim.cmd [[highlight IblScope guifg=#806DC6 guibg=none gui=bold]]
   end,
 }
