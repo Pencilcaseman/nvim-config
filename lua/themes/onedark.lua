@@ -50,8 +50,8 @@ return {
     vim.cmd [[highlight BufferAlternateHINT guibg=#19212E guifg=#6B71F2]]
 
     -- Yanky highlights
-    vim.cmd [[highlight YankyPut guibg=#3E594B guifg=none gui=bold]]
-    vim.cmd [[highlight YankyYanked guibg=#4A5A75 guifg=none gui=bold]]
+    vim.cmd [[highlight YankyPut guibg=#344D22 guifg=none gui=bold]]
+    vim.cmd [[highlight YankyYanked guibg=#1F5078 guifg=none gui=bold]]
 
     -- Filename
     vim.cmd [[highlight BufferCurrent guibg=#19212E guifg=#00A3CC gui=bold]]
