@@ -49,6 +49,10 @@ return {
     vim.cmd [[highlight BufferAlternateINFO guibg=#19212E guifg=#6B71F2]]
     vim.cmd [[highlight BufferAlternateHINT guibg=#19212E guifg=#6B71F2]]
 
+    -- Yanky highlights
+    vim.cmd [[highlight YankyPut guibg=#3E594B guifg=none gui=bold]]
+    vim.cmd [[highlight YankyYanked guibg=#4A5A75 guifg=none gui=bold]]
+
     -- Filename
     vim.cmd [[highlight BufferCurrent guibg=#19212E guifg=#00A3CC gui=bold]]
     vim.cmd [[highlight BufferVisible guibg=#19212E guifg=#33879C]]

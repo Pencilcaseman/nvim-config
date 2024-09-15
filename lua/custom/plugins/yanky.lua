@@ -1,10 +1,22 @@
 return {
   'gbprod/yanky.nvim',
-  opts = {},
+  opts = {
+    preserve_cursor_position = {
+      enabled = true,
+    },
+    highlight = {
+      on_put = true,
+      on_yank = true,
+      timer = 400,
+    },
+  },
   config = function(_, opts)
     require('yanky').setup(opts)
 
     local keymap = vim.keymap.set
+
+    keymap({ 'n', 'x' }, 'y', '<Plug>(YankyYank)')
+    keymap({ 'n', 'x' }, 'Y', '<Plug>(YankyYankLine)')
 
     keymap({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)')
     keymap({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)')
