@@ -53,6 +53,7 @@ return {
         { '<leader>t', group = '[T]oggle' },
         { '<leader>tt', group = '[T]oggle [T]erminal' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>u', group = '[U]I' },
       },
     },
   },
