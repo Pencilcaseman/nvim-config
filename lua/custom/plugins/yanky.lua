@@ -1,5 +1,6 @@
 return {
   'gbprod/yanky.nvim',
+  event = 'VeryLazy',
   opts = {
     preserve_cursor_position = {
       enabled = true,
@@ -16,7 +17,7 @@ return {
     local keymap = vim.keymap.set
 
     keymap({ 'n', 'x' }, 'y', '<Plug>(YankyYank)')
-    keymap({ 'n', 'x' }, 'Y', '<Plug>(YankyYankLine)')
+    keymap({ 'n', 'x' }, 'Y', 'y$')
 
     keymap({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)')
     keymap({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)')
