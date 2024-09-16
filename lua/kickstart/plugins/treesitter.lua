@@ -23,16 +23,22 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require('nvim-treesitter.configs').setup(opts)
+    end,
   },
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-    event = 'VeryLazy',
-    opts = {
-      enable = true,
-    },
-  },
+  -- {
+  --   'nvim-treesitter/nvim-treesitter-context',
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  --   event = 'VeryLazy',
+  --   opts = {
+  --     enable = true,
+  --   },
+  -- },
+
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
     event = 'VeryLazy',
     opts = {
       ensure_installed = 'all', -- or a list of languages you want to ensure are installed
@@ -71,7 +77,7 @@ return {
           -- extended to include preceding or succeeding whitespace. Succeeding
           -- whitespace has priority in order to act similarly to eg the built-in
           -- `ap`.
-          include_surrounding_whitespace = true,
+          include_surrounding_whitespace = false,
         },
       },
     },
