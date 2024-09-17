@@ -27,15 +27,14 @@ return {
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
-  -- {
-  --   'nvim-treesitter/nvim-treesitter-context',
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  --   event = 'VeryLazy',
-  --   opts = {
-  --     enable = true,
-  --   },
-  -- },
-
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = 'VeryLazy',
+    opts = {
+      enable = true,
+    },
+  },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -60,11 +59,11 @@ return {
             -- You can use the capture groups defined in textobjects.scm
             ['af'] = { query = '@function.outer', desc = '[A]round [F]unction' },
             ['if'] = { query = '@function.inner', desc = '[I]nner [F]unction' },
-            ['ac'] = { query = '@class.outer', desc = '[A]rrow [C]lass' },
+            ['ac'] = { query = '@class.outer', desc = '[A]round [C]lass' },
             ['ic'] = { query = '@class.inner', desc = '[I]nner [C]lass' },
-            ['al'] = { query = '@loop.outer', desc = '[A]rrow [L]oop' },
+            ['al'] = { query = '@loop.outer', desc = '[A]round [L]oop' },
             ['il'] = { query = '@loop.inner', desc = '[I]nner [L]oop' },
-            ['ab'] = { query = '@block.outer', desc = '[A]rrow [B]lock' },
+            ['ab'] = { query = '@block.outer', desc = '[A]round [B]lock' },
             ['ib'] = { query = '@block.inner', desc = '[I]nner [B]lock' },
           },
           -- You can choose the select mode (default is charwise 'v')
