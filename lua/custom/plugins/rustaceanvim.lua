@@ -1,7 +1,8 @@
 return {
   'mrcjkb/rustaceanvim',
   version = '^5', -- Recommended
-  lazy = false, -- This plugin is already lazy
+  -- lazy = false, -- This plugin is already lazy
+  event = 'VeryLazy',
   config = function()
     local dap = require 'dap'
 
@@ -45,4 +46,3 @@ return {
     end
   end,
 }
-

@@ -13,9 +13,9 @@ return {
       unpack(keys),
     }
   end,
-  config = function()
+  config = function(_, opts)
     local resession = require 'resession'
-    resession.setup()
+    resession.setup(opts)
 
     -- Create a new directory-specific session when Neovim exits.
     -- Reload the session when Neovim starts if no args were passed
