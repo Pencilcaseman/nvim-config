@@ -1,5 +1,6 @@
 return {
   'akinsho/toggleterm.nvim',
+  event = 'VeryLazy',
   version = '*',
   opts = {--[[ things you want to change go here]]
     -- Shell is $HOME/.nix-profile/bin/fish

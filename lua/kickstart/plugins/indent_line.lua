@@ -64,7 +64,12 @@ return {
           'IblScope',
         },
 
-        char = '¦',
+        -- char = '¦',
+        char = '╏',
+        -- char = '┇',
+        -- char = '┋',
+        -- char = '│',
+        -- char = '║',
       },
       exclude = {
         filetypes = {

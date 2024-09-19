@@ -1,5 +1,6 @@
 return {
   'gregorias/toggle.nvim',
+  event = 'VeryLazy',
   version = '2.0',
   config = function()
     require('toggle').setup {

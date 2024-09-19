@@ -1,5 +1,6 @@
 return {
   'MagicDuck/grug-far.nvim',
+  event = 'VeryLazy',
   opts = { headerMaxWidth = 80, transient = true },
   cmd = 'GrugFar',
   keys = function(_, keys)
