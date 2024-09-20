@@ -1,6 +1,8 @@
 return {
   'marko-cerovac/material.nvim',
-  event = 'ColorScheme',
+  -- event = 'ColorScheme',
+  enabled = false,
+  event = 'VimEnter',
   opts = {
     contrast = {
       terminal = false, -- Enable contrast for the built-in terminal

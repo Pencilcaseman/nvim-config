@@ -47,7 +47,10 @@ local function cmake_init()
       print 'CMake initialization successful'
 
       -- Symlink compile_commands.json to project root
-      local link_command = string.format('ln -sf %s/compile_commands.json %s/compile_commands.json', build_dir, project_root)
+      -- local link_command = string.format('ln -sf %s/compile_commands.json %s/compile_commands.json', build_dir, project_root)
+
+      local link_command = string.format('compdb -p %s list > %s/compile_commands.json', build_dir, project_root)
+
       run_command_with_env(link_command, project_root, function(link_exit_code, link_output)
         if link_exit_code ~= 0 then
           print('Error creating symlink. Exit code: ' .. link_exit_code)
