@@ -1,7 +1,23 @@
-return {
-  'saecki/crates.nvim',
-  event = 'VeryLazy',
-  config = function()
-    require('crates').setup()
-  end,
-}
+-- return {
+--   'saecki/crates.nvim',
+--   requires = { 'nvim-lua/plenary.nvim' },
+--   event = { 'BufRead Cargo.toml' },
+--   opts = {
+--     completion = {
+--       cmp = {
+--         enabled = true,
+--       },
+--     },
+--     lsp = {
+--       enabled = true,
+--       actions = true,
+--       completion = true,
+--       hover = true,
+--     },
+--   },
+--   config = function(_, opts)
+--     require('crates').setup(opts)
+--   end,
+-- }
+
+return {}
