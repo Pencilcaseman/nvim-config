@@ -6,7 +6,23 @@ return {
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'cpp', 'python', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'cpp',
+        'python',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'bibtex',
+      },
+
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -25,6 +41,16 @@ return {
       },
     },
     config = function(_, opts)
+      -- Tex support
+      if type(opts.ensure_installed) == 'table' then
+        vim.list_extend(opts.ensure_installed, { 'bibtex' })
+      end
+      if type(opts.highlight.disable) == 'table' then
+        vim.list_extend(opts.highlight.disable, { 'latex' })
+      else
+        opts.highlight.disable = { 'latex' }
+      end
+
       require('nvim-treesitter.configs').setup(opts)
     end,
   },

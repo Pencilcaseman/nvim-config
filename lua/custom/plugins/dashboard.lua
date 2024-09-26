@@ -35,6 +35,7 @@ return {
             key = 'm',
           },
         },
+        footer = 'Stupid Fucker.',
       },
     }
   end,

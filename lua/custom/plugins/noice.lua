@@ -51,7 +51,15 @@ return {
 
   dependencies = {
     'MunifTanjim/nui.nvim',
-    'rcarriga/nvim-notify',
+    {
+      'rcarriga/nvim-notify',
+      opts = {
+        timeout = 3000,
+        render = 'compact',
+        stages = 'slide',
+        top_down = false,
+      },
+    },
   },
 
   config = function(_, opts)
