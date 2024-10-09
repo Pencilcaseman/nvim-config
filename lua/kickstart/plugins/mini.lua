@@ -17,20 +17,20 @@ return {
       -- - maiw) - [M]odify [A]dd [I]nner [W]ord [)]Paren
       -- - md'   - [M]odify [D]elete [']quotes
       -- - mr)'  - [M]odify [R]eplace [)] [']
-      require('mini.surround').setup {
-        mappings = {
-          add = 'ma',
-          delete = 'md',
-          find = 'mf',
-          find_left = 'mF',
-          highlight = 'mh',
-          replace = 'mr',
-          update_n_lines = 'mn',
-
-          suffix_last = 'l',
-          suffix_next = 'n',
-        },
-      }
+      -- require('mini.surround').setup {
+      --   mappings = {
+      --     add = 'ma',
+      --     delete = 'md',
+      --     find = 'mf',
+      --     find_left = 'mF',
+      --     highlight = 'mh',
+      --     replace = 'mr',
+      --     update_n_lines = 'mn',
+      --
+      --     suffix_last = 'l',
+      --     suffix_next = 'n',
+      --   },
+      -- }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
