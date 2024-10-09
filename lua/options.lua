@@ -4,6 +4,9 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Conceal level 2
+vim.opt.conceallevel = 2
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 

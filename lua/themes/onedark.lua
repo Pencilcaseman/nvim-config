@@ -73,5 +73,8 @@ return {
     -- Indent Blackline
     vim.cmd [[highlight IblIndent guifg=#2B394F guibg=none]]
     vim.cmd [[highlight IblScope guifg=#806DC6 guibg=none gui=bold]]
+
+    -- Conceal highlight colours
+    vim.cmd [[highlight Conceal guibg=#19212E guifg=#48D1CC]]
   end,
 }

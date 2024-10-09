@@ -17,6 +17,11 @@ return {
     local resession = require 'resession'
     resession.setup(opts)
 
+    vim.opt.sessionoptions:append 'globals'
+    require('resession').add_hook('pre_save', function()
+      vim.api.nvim_exec_autocmds('User', { pattern = 'SessionSavePre' })
+    end)
+
     -- Create a new directory-specific session when Neovim exits.
     -- Reload the session when Neovim starts if no args were passed
     vim.api.nvim_create_autocmd('VimEnter', {
@@ -32,7 +37,9 @@ return {
 
     vim.api.nvim_create_autocmd('VimLeavePre', {
       callback = function()
-        resession.save(vim.fn.getcwd(), { dir = 'dirsession', notify = false })
+        if vim.fn.argc(-1) == 0 then
+          resession.save(vim.fn.getcwd(), { dir = 'dirsession', notify = false })
+        end
       end,
     })
   end,
