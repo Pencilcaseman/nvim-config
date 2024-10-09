@@ -7,6 +7,9 @@ vim.opt.relativenumber = true
 -- Conceal level 2
 vim.opt.conceallevel = 2
 
+-- Column limit at 80
+vim.opt.colorcolumn = '80'
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
