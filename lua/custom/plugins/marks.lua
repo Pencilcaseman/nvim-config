@@ -1,7 +1,6 @@
 return {
-  'Pencilcaseman/marks.nvim',
+  'chentoast/marks.nvim',
   event = 'VeryLazy',
-  enabled = false,
   opts = {
     default_mapping = true,
   },
