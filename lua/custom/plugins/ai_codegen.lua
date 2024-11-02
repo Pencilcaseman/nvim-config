@@ -1,6 +1,6 @@
 return {
   'supermaven-inc/supermaven-nvim',
-  commit = '074a83a74ad8a7b6f605df83e2583775aaeb4cfc',
+  -- commit = '074a83a74ad8a7b6f605df83e2583775aaeb4cfc',
   event = 'VeryLazy',
   opts = {
     keymaps = {
