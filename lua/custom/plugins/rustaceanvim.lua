@@ -43,6 +43,11 @@ local dap_setup = function()
   end
 end
 
+-- Just ignore Rusteacnvim if we are in a minimal environment?
+if utils.is_minimal() then
+  return {}
+end
+
 return {
   'mrcjkb/rustaceanvim',
   version = '^5', -- Recommended
