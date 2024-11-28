@@ -172,10 +172,23 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
+      local function get_llvm_path()
+        -- If the env variable LLVM_PATH is set, use that
+        if os.getenv 'LLVM_PATH' then
+          return os.getenv 'LLVM_PATH'
+        end
+
+        -- Otherwise we spack find
+        local path = vim.fn.system 'spack location -i llvm'
+        path = string.gsub(path, '\n$', '')
+        return path
+      end
+
       local servers = {
         clangd = {
           cmd = {
-            '/Users/tobydavis/.nix-profile/bin/clangd',
+            get_llvm_path() .. '/bin/clangd',
             '--background-index',
             '--pch-storage=memory',
           },

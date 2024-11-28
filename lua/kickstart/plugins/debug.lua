@@ -33,7 +33,8 @@ return {
       },
 
       -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-      { '<leader>ds', dapui.toggle, desc = '[D]ebug See last session result.' },
+      -- { '<leader>ds', dapui.toggle, desc = '[D]ebug See last session result.' },
+
       unpack(keys),
     }
   end,
