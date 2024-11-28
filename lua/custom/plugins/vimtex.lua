@@ -1,3 +1,10 @@
+local utils = require 'utils'
+
+-- Not a required plugin
+if utils.is_minimal() then
+  return {}
+end
+
 return {
   'lervag/vimtex',
   lazy = false, -- we don't want to lazy load VimTeX

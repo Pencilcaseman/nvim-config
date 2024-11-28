@@ -1,3 +1,10 @@
+local utils = require 'utils'
+
+-- Not a required plugin
+if utils.is_minimal() then
+  return {}
+end
+
 return {
   'chomosuke/typst-preview.nvim',
   event = 'VeryLazy',
