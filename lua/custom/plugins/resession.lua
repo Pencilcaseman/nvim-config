@@ -1,3 +1,10 @@
+local utils = require 'utils'
+
+-- Do not use sessions if using a minimal config
+if utils.is_minimal() then
+  return {}
+end
+
 return {
   'stevearc/resession.nvim',
   lazy = false,

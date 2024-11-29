@@ -1,5 +1,10 @@
 local utils = require 'utils'
 
+-- Just ignore Rusteacnvim if we are in a minimal environment?
+if utils.is_minimal() then
+  return {}
+end
+
 local dap_setup = function()
   local dap = require 'dap'
 
@@ -41,11 +46,6 @@ local dap_setup = function()
       },
     }
   end
-end
-
--- Just ignore Rusteacnvim if we are in a minimal environment?
-if utils.is_minimal() then
-  return {}
 end
 
 return {
