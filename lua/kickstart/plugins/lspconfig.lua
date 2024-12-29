@@ -25,6 +25,32 @@ return {
       lspconfig[server].setup(config)
     end
 
+    -- local lspconfig = require 'lspconfig'
+    --
+    -- -- Default capabilities (from nvim-cmp or custom capabilities)
+    --
+    -- for server, config in pairs(opts.servers) do
+    --   -- Merge server-specific capabilities with the default ones
+    --   -- config.capabilities = vim.tbl_deep_extend('force', default_capabilities, config.capabilities or {})
+    --
+    --   -- config.capabilities = vim.tbl_deep_extend('force', config.capabilities or {}, default_capabilities)
+    --   -- lspconfig[server].setup(config)
+    --
+    --   local default_capabilities = require('blink.cmp').get_lsp_capabilities()
+    --   default_capabilities = vim.tbl_deep_extend('force', default_capabilities, config.capabilities or {})
+    --
+    --   -- Add the fix for offsetEncoding
+    --   default_capabilities = vim.tbl_deep_extend('force', default_capabilities, {
+    --     offsetEncoding = { 'utf-16' }, -- Set encoding to 'utf-16'
+    --     general = {
+    --       positionEncodings = { 'utf-16' }, -- Ensure compatibility
+    --     },
+    --   })
+    --
+    --   config.capabilities = default_capabilities
+    --   lspconfig[server].setup(config)
+    -- end
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
