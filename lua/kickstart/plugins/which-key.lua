@@ -47,6 +47,7 @@ return {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>D', group = '[D]ebug' },
+        { '<leader>f', group = '[F]ile Explorer' },
         { '<leader>g', group = '[G]it' },
         { '<leader>o', group = '[O]oversser' },
         { '<leader>s', group = '[S]earch' },
