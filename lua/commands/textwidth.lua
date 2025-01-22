@@ -3,7 +3,7 @@
 vim.api.nvim_create_augroup('SetTextWidth', { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
   group = 'SetTextWidth',
-  pattern = { 'tex', 'markdown', 'text' },
+  pattern = { 'tex', 'markdown', 'text', 'typst' },
   command = 'set textwidth=80',
 })
 

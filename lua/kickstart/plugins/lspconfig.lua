@@ -12,6 +12,11 @@ return {
   opts = {
     servers = {
       lua_ls = {},
+      tinymist = {
+        settings = {
+          formatterMode = 'typstyle',
+        },
+      },
     },
   },
 
