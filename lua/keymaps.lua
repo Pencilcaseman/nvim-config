@@ -58,9 +58,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Space d d to open diagnostic float
 vim.keymap.set('n', '<space>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = '[D]ocument [D]iagnostics' })
 
-local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('', '<S-Tab>', '<Esc>', opts)
-vim.api.nvim_set_keymap('i', '<S-Tab>', '<Esc>', opts)
-vim.api.nvim_set_keymap('c', '<S-Tab>', '<C-c>', opts)
-
 -- vim: ts=2 sts=2 sw=2 et
