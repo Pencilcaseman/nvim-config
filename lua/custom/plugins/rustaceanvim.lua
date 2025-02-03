@@ -44,6 +44,18 @@ local dap_setup = function()
       dap = {
         adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
       },
+      -- server = {
+      --   on_attach = function(client, bufnr)
+      --     -- Set keybindings, etc. here.
+      --   end,
+      --   default_settings = {
+      --     ['rust-analyzer'] = {
+      --       procMacro = {
+      --         enable = false,
+      --       },
+      --     },
+      --   },
+      -- },
     }
   end
 end
