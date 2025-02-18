@@ -22,5 +22,3 @@ return {
   --   }
   -- end,
 }
-
--- Sample Line
