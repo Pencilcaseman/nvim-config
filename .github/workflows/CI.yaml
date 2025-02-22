@@ -26,20 +26,34 @@ jobs:
       - name: Setup Neovim config
         run: |
           mkdir -p ~/.config/nvim
-          cp -r . ~/.config/nvim
+          cp -r . ~/.config/nvim  # Copy repo files to ~/.config/nvim
 
       - name: Install plugins with Lazy.nvim
         run: |
           nvim --headless "+Lazy! sync" +qall
 
-      - name: Run :checkhealth
+      - name: Install Mason dependencies
         run: |
-          nvim --headless -c "checkhealth" -c "q"
+          nvim --headless -c "MasonInstall delve" -c "MasonUpdate" -c "q"
 
-      - name: Run Lua tests (if any)
+      - name: Wait for Mason to finish installing
         run: |
-          nvim --headless -c "PlenaryBustedDirectory tests/" -c "q" || echo "No tests found"
+          while nvim --headless -c "lua print(require('mason-core.installer').is_running() and 'installing' or 'done')" -c "q" | grep -q 'installing'; do
+            echo "Waiting for Mason to finish..."
+            sleep 2
+          done
+          echo "Mason finished installing."
 
-      - name: Ensure Neovim starts without errors
+      - name: Install Treesitter parsers
         run: |
-          nvim --headless -c "q" || exit 1
+          nvim --headless -c "TSUpdateSync" -c "q"
+
+      - name: Run :checkhealth and save output
+        run: |
+          nvim --headless -c "redir! > checkhealth.log" -c "silent checkhealth" -c "redir END" -c "q"
+
+      - name: Upload checkhealth.log
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkhealth-log
+          path: checkhealth.log
