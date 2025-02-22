@@ -1,18 +1,19 @@
 local utils = require 'utils'
 
--- Not a required plugin
-if utils.is_minimal() then
-  return {}
-end
+return {}
 
-return {
-  'utilyre/barbecue.nvim',
-  name = 'barbecue',
-  version = '*',
-  -- event = 'VeryLazy',
-  dependencies = {
-    'SmiteshP/nvim-navic',
-    'nvim-tree/nvim-web-devicons',
-  },
-  opts = {},
-}
+-- Not a required plugin
+-- if utils.is_minimal() then
+--   return {}
+-- end
+--
+-- return {
+--   'utilyre/barbecue.nvim',
+--   name = 'barbecue',
+--   version = '*',
+--   dependencies = {
+--     'SmiteshP/nvim-navic',
+--     'nvim-tree/nvim-web-devicons',
+--   },
+--   opts = {},
+-- }

@@ -63,8 +63,8 @@ end
 return {
   'mrcjkb/rustaceanvim',
   version = '^5', -- Recommended
-  -- lazy = false, -- This plugin is already lazy
-  event = 'VeryLazy',
+  lazy = false, -- This plugin is already lazy
+  -- event = 'VeryLazy',
   config = function()
     if not utils.is_minimal() then
       dap_setup()
