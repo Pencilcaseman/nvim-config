@@ -1,6 +1,7 @@
 return {
   'romgrk/barbar.nvim',
-  lazy = false,
+  -- lazy = false,
+  event = 'VeryLazy',
   dependencies = {
     'lewis6991/gitsigns.nvim',
     'nvim-tree/nvim-web-devicons',

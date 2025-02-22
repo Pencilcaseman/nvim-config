@@ -33,30 +33,4 @@ return {
       },
     },
   },
-
-  -- {
-  --   'nvim-neo-tree/neo-tree.nvim',
-  --   event = 'VeryLazy',
-  --   version = '*',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-tree/nvim-web-devicons',
-  --     'MunifTanjim/nui.nvim',
-  --     '3rd/image.nvim',
-  --   },
-  --   cmd = 'Neotree',
-  --   keys = {
-  --     { '<leader>e', ':Neotree toggle<CR>', desc = 'NeoTree toggle', silent = true },
-  --     { '<leader>E', ':Neotree reveal<CR>', desc = 'NeoTree toggle', silent = true },
-  --   },
-  --   opts = {
-  --     filesystem = {
-  --       window = {
-  --         mappings = {
-  --           ['\\'] = 'close_window',
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
 }

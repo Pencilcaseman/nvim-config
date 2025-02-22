@@ -12,6 +12,8 @@ if vim.env.PROF then
   }
 end
 
+vim.opt.showtabline = 2 -- Always reserve space for tabline
+
 -- Set <space> as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
