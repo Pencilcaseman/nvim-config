@@ -154,11 +154,56 @@ return {
     require('mason').setup()
 
     local ensure_installed = vim.tbl_keys(opts.servers or {})
+    ensure_installed = vim.list_extend(ensure_installed, {
+      'ansible-language-server',
+      'ansible-lint',
+      'ast-grep',
+      'checkmake',
+      'clang-format',
+      'clangd',
+      'cmakelang',
+      'cmakelint',
+      'codelldb',
+      'debugpy',
+      'delve',
+      'docker-compose-language-service',
+      'dockerfile-language-server',
+      'eslint-lsp',
+      'flake8',
+      'hadolint',
+      'java-debug-adapter',
+      'java-test',
+      'jdtls',
+      'js-debug-adapter',
+      'json-lsp',
+      'latexindent',
+      'lua-language-server',
+      'markdownlint',
+      'marksman',
+      'neocmakelsp',
+      'nil',
+      'omnisharp',
+      'python-lsp-server',
+      'ruff-lsp',
+      'shellcheck',
+      'shfmt',
+      'stylua',
+      'tectonic',
+      'texlab',
+      'tinymist',
+      'vtsls',
+      'zls',
+    })
+
     if opts.ensure_installed then
       ensure_installed = vim.list_extend(ensure_installed, opts.ensure_installed)
     end
+
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
     require('mason-lspconfig').setup {
+      automatic_installation = true,
+
       handlers = {
         function(server_name)
           local server = opts.servers[server_name] or {}
