@@ -3,8 +3,6 @@ return {
   event = 'VeryLazy',
   opts = {
     keymaps = {
-      -- insert = '<C-g>s',
-      -- insert_line = '<C-g>S',
       normal = 'gs',
       normal_cur = 'gSs',
       normal_line = 'gS',
@@ -16,9 +14,4 @@ return {
       change_line = 'gsC',
     },
   },
-  -- config = function(_, opts)
-  --   require('nvim-surround').setup {
-  --     -- Configuration here, or leave empty to use defaults
-  --   }
-  -- end,
 }

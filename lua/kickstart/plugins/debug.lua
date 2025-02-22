@@ -14,14 +14,13 @@ return {
 
   keys = function(_, keys)
     local dap = require 'dap'
-    local dapui = require 'dapui'
 
     return {
       { '<leader>dc', dap.continue, desc = '[D]ebug: Start/[C]ontinue' },
       { '<leader>dC', dap.run_to_cursor, desc = '[D]ebug: Run to [C]ursor' },
       { '<leader>di', dap.step_into, desc = '[D]ebug: Step [I]nto' },
       { '<leader>do', dap.step_over, desc = '[D]ebug: Step [O]ver' },
-      { '<leader>du', dap.step_out, desc = '[D]ebug: Step O[u]t' },
+      { '<leader>dO', dap.step_out, desc = '[D]ebug: Step [O]ut' },
       { '<leader>db', dap.toggle_breakpoint, desc = '[D]ebug Toggle [B]reakpoint' },
       { '<leader>dq', dap.terminate, desc = '[D]ebug: [Q]uit Session' },
       {
@@ -32,12 +31,10 @@ return {
         desc = '[D]ebug: Conditional [B]reakpoint',
       },
 
-      -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-      -- { '<leader>ds', dapui.toggle, desc = '[D]ebug See last session result.' },
-
       unpack(keys),
     }
   end,
+
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'

@@ -70,7 +70,7 @@ return {
     vim.cmd [[highlight LineNrBelow guibg=#19212E guifg=#716CB6]]
     vim.cmd [[highlight CursorLineNr guibg=#19212E guifg=#469EDA gui=bold]]
 
-    -- Indent Blackline
+    -- Indent Blackline and Snacks Indent
     vim.cmd [[highlight IblIndent guifg=#2B394F guibg=none]]
     vim.cmd [[highlight IblScope guifg=#806DC6 guibg=none gui=bold]]
 

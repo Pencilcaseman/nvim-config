@@ -1,21 +1,19 @@
 return {
   'romgrk/barbar.nvim',
   lazy = false,
-  -- event = 'VeryLazy',
   dependencies = {
-    'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-    'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    'lewis6991/gitsigns.nvim',
+    'nvim-tree/nvim-web-devicons',
   },
   init = function()
     vim.g.barbar_auto_setup = false
   end,
   opts = {
-    -- Configure barbar here
     animation = true,
     auto_hide = false,
     tabpages = true,
     clickable = true,
-    --
+
     -- Disable highlighting alternate buffers
     highlight_alternate = false,
 

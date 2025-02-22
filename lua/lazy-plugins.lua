@@ -11,7 +11,6 @@ local plugins = {
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',
 
-  require 'kickstart/plugins/indent_line',
   require 'kickstart/plugins/lint',
   require 'kickstart/plugins/autopairs',
   -- require 'kickstart/plugins/neo-tree',

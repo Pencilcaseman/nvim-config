@@ -27,35 +27,36 @@ return {
     ---@type YaziConfig
     opts = {
       -- if you want to open yazi instead of netrw, see below for more info
-      open_for_directories = false,
+      open_for_directories = true,
       keymaps = {
         show_help = '<f1>',
       },
     },
   },
 
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    event = 'VeryLazy',
-    version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-      'MunifTanjim/nui.nvim',
-    },
-    cmd = 'Neotree',
-    keys = {
-      -- { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-      { '<leader>e', ':Neotree toggle<CR>', desc = 'NeoTree toggle', silent = true },
-    },
-    opts = {
-      filesystem = {
-        window = {
-          mappings = {
-            ['\\'] = 'close_window',
-          },
-        },
-      },
-    },
-  },
+  -- {
+  --   'nvim-neo-tree/neo-tree.nvim',
+  --   event = 'VeryLazy',
+  --   version = '*',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-tree/nvim-web-devicons',
+  --     'MunifTanjim/nui.nvim',
+  --     '3rd/image.nvim',
+  --   },
+  --   cmd = 'Neotree',
+  --   keys = {
+  --     { '<leader>e', ':Neotree toggle<CR>', desc = 'NeoTree toggle', silent = true },
+  --     { '<leader>E', ':Neotree reveal<CR>', desc = 'NeoTree toggle', silent = true },
+  --   },
+  --   opts = {
+  --     filesystem = {
+  --       window = {
+  --         mappings = {
+  --           ['\\'] = 'close_window',
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 }

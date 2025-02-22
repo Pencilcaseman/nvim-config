@@ -40,34 +40,19 @@ return {
         opts = { skip = true },
       },
     },
-
-    -- routes = {
-    --   {
-    --     filter = {
-    --       event = 'msg_show',
-    --       any = {
-    --         { find = '%d+L, %d+B' },
-    --         { find = '; after #%d+' },
-    --         { find = '; before #%d+' },
-    --       },
-    --     },
-    --     view = 'mini',
-    --   },
-    -- },
   },
 
-  dependencies = {
-    'MunifTanjim/nui.nvim',
-    {
-      'rcarriga/nvim-notify',
-      opts = {
-        timeout = 1000,
-        -- render = 'compact',
-        stages = 'slide',
-        top_down = false,
-      },
-    },
-  },
+  -- dependencies = {
+  --   'MunifTanjim/nui.nvim',
+  --   {
+  --     'rcarriga/nvim-notify',
+  --     opts = {
+  --       timeout = 1000,
+  --       stages = 'slide',
+  --       top_down = false,
+  --     },
+  --   },
+  -- },
 
   config = function(_, opts)
     require('noice').setup(opts)

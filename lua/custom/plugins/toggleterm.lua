@@ -10,8 +10,6 @@ return {
   event = 'VeryLazy',
   version = '*',
   opts = {--[[ things you want to change go here]]
-    -- Shell is $HOME/.nix-profile/bin/fish
-    -- shell = vim.env.HOME .. '/.nix-profile/bin/fish',
     shell = vim.env.SHELL,
     size = function(term)
       if term.direction == 'horizontal' then
@@ -32,13 +30,13 @@ return {
         end,
         desc = '[T]oggle [T]erminal [F]loat',
       },
-      -- {
-      --   '<leader>ttb',
-      --   function()
-      --     toggleterm.toggle(nil, nil, nil, 'tab')
-      --   end,
-      --   desc = '[T]oggle [T]erminal [T]ab',
-      -- },
+      {
+        '<leader>ttt',
+        function()
+          toggleterm.toggle(nil, nil, nil, 'tab')
+        end,
+        desc = '[T]oggle [T]erminal [T]ab',
+      },
       {
         '<leader>ttv',
         function()

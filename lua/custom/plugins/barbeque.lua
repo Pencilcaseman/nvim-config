@@ -9,12 +9,10 @@ return {
   'utilyre/barbecue.nvim',
   name = 'barbecue',
   version = '*',
-  event = 'VeryLazy',
+  -- event = 'VeryLazy',
   dependencies = {
     'SmiteshP/nvim-navic',
-    'nvim-tree/nvim-web-devicons', -- optional dependency
+    'nvim-tree/nvim-web-devicons',
   },
-  opts = {
-    -- configurations go here
-  },
+  opts = {},
 }
