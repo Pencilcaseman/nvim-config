@@ -12,7 +12,10 @@ if vim.env.PROF then
   }
 end
 
-vim.opt.showtabline = 2 -- Always reserve space for tabline
+-- vim.opt.showtabline = 2 -- Always reserve space for tabline
+
+vim.opt.showtabline = 2 -- Always reserve space for the tabline (barbar)
+vim.opt.winbar = 'NeoVim > Bread > Crumbs' -- Preload space for barbecue
 
 -- Set <space> as the leader key
 vim.g.mapleader = ' '

@@ -2,14 +2,18 @@ return {
   'romgrk/barbar.nvim',
   -- lazy = false,
   event = 'VeryLazy',
+
   dependencies = {
     'lewis6991/gitsigns.nvim',
     'nvim-tree/nvim-web-devicons',
   },
+
   init = function()
     vim.g.barbar_auto_setup = false
   end,
+
   opts = {
+    theme = 'tokyonight',
     animation = true,
     auto_hide = false,
     tabpages = true,
@@ -37,11 +41,11 @@ return {
         [vim.diagnostic.severity.HINT] = { enabled = true },
       },
 
-      gitsigns = {
-        added = { enabled = true, icon = '+' },
-        changed = { enabled = true, icon = '~' },
-        deleted = { enabled = true, icon = '-' },
-      },
+      -- gitsigns = {
+      --   added = { enabled = true, icon = '+' },
+      --   changed = { enabled = true, icon = '~' },
+      --   deleted = { enabled = true, icon = '-' },
+      -- },
 
       filetype = {
         custom_colors = false,
