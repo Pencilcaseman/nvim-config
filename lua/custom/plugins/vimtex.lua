@@ -7,7 +7,10 @@ end
 
 return {
   'lervag/vimtex',
-  lazy = false, -- we don't want to lazy load VimTeX
+  -- lazy = false, -- we don't want to lazy load VimTeX
+
+  event = 'VeryLazy',
+
   init = function()
     vim.g.vimtex_view_method = 'skim'
   end,

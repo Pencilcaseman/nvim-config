@@ -8,8 +8,10 @@ end
 return {
   'akinsho/toggleterm.nvim',
   event = 'VeryLazy',
+
   version = '*',
-  opts = {--[[ things you want to change go here]]
+
+  opts = {
     shell = vim.env.SHELL,
     size = function(term)
       if term.direction == 'horizontal' then
