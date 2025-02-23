@@ -7,7 +7,7 @@ end
 
 return {
   'chomosuke/typst-preview.nvim',
-  event = 'VeryLazy',
+  cmd = 'TypstPreview',
   build = function()
     require('typst-preview').update()
   end,

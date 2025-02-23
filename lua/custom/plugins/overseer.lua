@@ -1,6 +1,5 @@
 return {
   'stevearc/overseer.nvim',
-  event = 'VeryLazy',
   keys = function(_, keys)
     return {
       { '<leader>ob', '<CMD>OverseerBuild<CR>', desc = '[O]verseer [B]uild' },
