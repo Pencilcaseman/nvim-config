@@ -28,7 +28,7 @@ return {
       pcall(require('telescope').load_extension, 'ui-select')
     end,
 
-    -- stylua: ignore
+    -- stylua: ignore start
     keys = {
       { '<leader>sh', function() require('telescope.builtin').help_tags() end, desc = '[S]earch [H]elp', },
       { '<leader>sk', function() require('telescope.builtin').keymaps() end, desc = '[S]earch [K]eymaps', },
@@ -39,7 +39,7 @@ return {
       { '<leader>sg', function() require('telescope.builtin').live_grep() end, desc = '[S]earch by [G]rep', },
       { '<leader>sd', function() require('telescope.builtin').diagnostics() end, desc = '[S]earch [D]iagnostics', },
       { '<leader>sr', function() require('telescope.builtin').resume() end, desc = '[S]earch [R]esume', },
-      { '<leader><leader>', function() require('telescope.builtin').buffers() end, desc = '[ ] Find existing buffers', },
+      { '<leader>,', function() require('telescope.builtin').buffers() end, desc = '[ ] Find existing buffers', },
 
       {
         '<leader>/',
@@ -71,6 +71,6 @@ return {
         desc = '[S]earch [N]eovim files',
       },
     },
-    -- stylua: enable
+    -- stylua: ignore end
   },
 }
