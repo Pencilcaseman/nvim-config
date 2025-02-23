@@ -1,5 +1,9 @@
 return {
   'toppair/peek.nvim',
+  enabled = function()
+    -- Peek requires deno to be installed
+    return vim.fn.executable 'deno' == 1
+  end,
   cmd = { 'PeekOpen', 'PeekClose' },
   build = 'deno task --quiet build:fast',
   config = function()
