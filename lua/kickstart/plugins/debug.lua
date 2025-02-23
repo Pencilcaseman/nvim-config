@@ -67,29 +67,6 @@ return {
     'leoluz/nvim-dap-go',
   },
 
-  -- keys = function(_, keys)
-  --   local dap = require 'dap'
-  --
-  --   return {
-  --     { '<leader>dc', dap.continue, desc = '[D]ebug: Start/[C]ontinue' },
-  --     { '<leader>dC', dap.run_to_cursor, desc = '[D]ebug: Run to [C]ursor' },
-  --     { '<leader>di', dap.step_into, desc = '[D]ebug: Step [I]nto' },
-  --     { '<leader>do', dap.step_over, desc = '[D]ebug: Step [O]ver' },
-  --     { '<leader>dO', dap.step_out, desc = '[D]ebug: Step [O]ut' },
-  --     { '<leader>db', dap.toggle_breakpoint, desc = '[D]ebug Toggle [B]reakpoint' },
-  --     { '<leader>dq', dap.terminate, desc = '[D]ebug: [Q]uit Session' },
-  --     {
-  --       '<leader>dB',
-  --       function()
-  --         dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-  --       end,
-  --       desc = '[D]ebug: Conditional [B]reakpoint',
-  --     },
-  --
-  --     unpack(keys),
-  --   }
-  -- end,
-
   -- stylua: ignore
   keys = {
     { '<leader>dc', function() require('dap').continue() end, desc = '[D]ebug: Start/[C]ontinue' },
