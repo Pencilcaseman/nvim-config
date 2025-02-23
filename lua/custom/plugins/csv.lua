@@ -7,6 +7,7 @@ end
 
 return {
   'hat0uma/csvview.nvim',
+  event = 'VeryLazy',
   opts = {},
   config = function(_, opts)
     require('csvview').setup(opts)
