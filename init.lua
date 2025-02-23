@@ -18,7 +18,7 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = true
 vim.g.loaded_netrwPlugin = true
 
-vim.t.have_nerd_font = true
+vim.g.have_nerd_font = true
 
 require 'options'
 require 'keymaps'
