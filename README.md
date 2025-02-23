@@ -35,9 +35,72 @@ External Requirements:
   - If you want to write Rust, you will need `cargo`
   - etc.
 
-> **WARNING**
-> The list of requirements is not currently complete, and you may experience
-> issues if you don't have everything installed.
+#### Additional Dependencies by Plugin
+
+##### CMakeTools
+
+CMakeTools provides integration with the CMake build system, allowing you to
+configure, build and run your projects. It also configures your LSP to provide
+correct completions and lints for your project.
+
+###### Dependencies
+
+- [`cmake`](https://cmake.org/)
+
+##### Yazi
+
+Yazi is a file explorer for the command line, and integrates nicely with Neovim.
+You'll need to have Yazi installed for the integration to work.
+Type `<leader>f` for more information.
+
+###### Dependencies
+
+- [`yazi`](https://github.com/sxyazi/yazi)
+
+##### Peek
+
+Peek is a real-time Markdown renderer for Neovim, showing you a live preview of
+what your file will look like when rendered. Type `:PeekStart` to use it.
+
+###### Dependencies
+
+- [`deno`](https://deno.com/)
+
+##### Typst-Preview
+
+Typst is a modern typesetting language, akin to LaTeX. Typst supports live,
+realtime rendering of your document via the Typst-Preview plugin. Type
+`:TypstPreview` to get started.
+
+###### Dependencies
+
+- [`typst`](https://typst.app/)
+
+##### VimTex
+
+VimTex provides LaTeX integrations into Neovim.
+
+###### Dependencies
+
+- [`LaTeX`](https://www.tug.org/texlive/)
+
+##### Debugger Support
+
+Getting debugger support up and running can require a few additional
+dependencies on top of whatever is required for full LSP support in that
+language.
+
+###### Dependencies
+
+- Rust
+  - [Visual Studio Code](https://code.visualstudio.com/)
+  - [`codelldb` plugin](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)
+- C/C++
+  - ???
+- Python
+  - ???
+- Go
+  - ???
 
 ### Install this Configuration
 
@@ -238,4 +301,3 @@ sudo dnf install -y gcc make git ripgrep fd-find unzip neovim
 sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 ```
 </details>
-

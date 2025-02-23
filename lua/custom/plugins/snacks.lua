@@ -80,13 +80,5 @@ return {
       end,
       desc = 'File [E]xplorer',
     },
-
-    -- {
-    --   '<leader>,',
-    --   function()
-    --     Snacks.picker.buffers()
-    --   end,
-    --   desc = 'Buffers',
-    -- },
   },
 }

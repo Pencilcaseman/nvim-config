@@ -2,6 +2,10 @@ return {
   {
     'mikavilpas/yazi.nvim',
 
+    enable = function()
+      return vim.fn.executable 'yazi' == 1
+    end,
+
     keys = {
       {
         '<leader>ff',
