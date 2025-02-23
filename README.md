@@ -242,62 +242,62 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 
 ---
 
-#### Additional Dependencies by Plugin
+## Additional Dependencies by Plugin
 
-##### CMakeTools
+### CMakeTools
 
 CMakeTools provides integration with the CMake build system, allowing you to
 configure, build and run your projects. It also configures your LSP to provide
 correct completions and lints for your project.
 
-###### Dependencies
+#### Dependencies
 
 - [`cmake`](https://cmake.org/)
 
-##### Yazi
+### Yazi
 
 Yazi is a file explorer for the command line, and integrates nicely with Neovim.
 You'll need to have Yazi installed for the integration to work.
 Type `<leader>f` for more information.
 
-###### Dependencies
+#### Dependencies
 
 - [`yazi`](https://github.com/sxyazi/yazi)
 
-##### Peek
+### Peek
 
 Peek is a real-time Markdown renderer for Neovim, showing you a live preview of
 what your file will look like when rendered. Type `:PeekStart` to use it.
 
-###### Dependencies
+#### Dependencies
 
 - [`deno`](https://deno.com/)
 
-##### Typst-Preview
+### Typst-Preview
 
 Typst is a modern typesetting language, akin to LaTeX. Typst supports live,
 realtime rendering of your document via the Typst-Preview plugin. Type
 `:TypstPreview` to get started.
 
-###### Dependencies
+#### Dependencies
 
 - [`typst`](https://typst.app/)
 
-##### VimTex
+### VimTex
 
 VimTex provides LaTeX integrations into Neovim.
 
-###### Dependencies
+#### Dependencies
 
 - [`LaTeX`](https://www.tug.org/texlive/)
 
-##### Debugger Support
+### Debugger Support
 
 Getting debugger support up and running can require a few additional
 dependencies on top of whatever is required for full LSP support in that
 language.
 
-###### Dependencies
+#### Dependencies
 
 - Rust
   - [Visual Studio Code](https://code.visualstudio.com/)
