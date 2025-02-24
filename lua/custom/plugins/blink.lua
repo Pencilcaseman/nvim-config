@@ -1,7 +1,8 @@
 return {
   'saghen/blink.cmp',
 
-  event = 'VeryLazy',
+  -- event = 'VeryLazy',
+  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
 
   dependencies = {
     'rafamadriz/friendly-snippets',

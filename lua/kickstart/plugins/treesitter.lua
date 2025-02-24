@@ -40,6 +40,7 @@ return {
         },
       },
     },
+
     config = function(_, opts)
       -- Tex support
       if type(opts.ensure_installed) == 'table' then

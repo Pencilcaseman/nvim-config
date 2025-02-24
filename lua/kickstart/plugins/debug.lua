@@ -1,4 +1,4 @@
-local configure_rust_dap = function()
+local configure_dap_rust = function()
   local dap = require 'dap'
 
   dap.configurations.rust = {
@@ -41,96 +41,94 @@ local configure_rust_dap = function()
   end
 end
 
-return {
-  'mfussenegger/nvim-dap',
+local configure_dap_cpp = function()
+  -- WARNING: Assumes the visual studio codelldb plugin is installed
 
-  dependencies = {
-    'rcarriga/nvim-dap-ui',
-    'nvim-neotest/nvim-nio',
-    'williamboman/mason.nvim',
-    'jay-babu/mason-nvim-dap.nvim',
-    'mfussenegger/nvim-dap-python',
-    'leoluz/nvim-dap-go',
-  },
+  local dap = require 'dap'
 
-  -- stylua: ignore
-  keys = {
-    { '<leader>dc', function() require('dap').continue() end, desc = '[D]ebug: Start/[C]ontinue' },
-    { '<leader>dC', function() require('dap').run_to_cursor() end, desc = '[D]ebug: Run to [C]ursor' },
-    { '<leader>di', function() require('dap').step_into() end, desc = '[D]ebug: Step [I]nto' },
-    { '<leader>do', function() require('dap').step_over() end, desc = '[D]ebug: Step [O]ver' },
-    { '<leader>dO', function() require('dap').step_out() end, desc = '[D]ebug: Step [O]ut' },
-    { '<leader>db', function() require('dap').toggle_breakpoint() end, desc = '[D]ebug Toggle [B]reakpoint' },
-    { '<leader>dq', function() require('dap').terminate() end, desc = '[D]ebug: [Q]uit Session' },
+  local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
+  local codelldb_path = extension_path .. 'adapter/codelldb'
+  local this_os = vim.uv.os_uname().sysname
+
+  -- The path is different on Windows
+  if this_os:find 'Windows' then
+    codelldb_path = extension_path .. 'adapter\\codelldb.exe'
+  end
+
+  dap.adapters.codelldb = {
+    type = 'executable',
+    command = codelldb_path,
+    name = 'lldb',
+  }
+
+  -- C++ Debugger
+  dap.configurations.cpp = {
     {
-      '<leader>dB',
-      function()
-        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      name = 'Launch file',
+      type = 'codelldb',
+      request = 'launch',
+      program = function()
+        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
       end,
-      desc = '[D]ebug: Conditional [B]reakpoint',
+      MiMode = 'codelldb',
+      cwd = '${workspaceFolder}',
+      stopAtEntry = true,
     },
-  },
-  -- stylua: enable
+  }
+end
 
-  config = function()
-    local dap = require 'dap'
+local configure_dap_go = function()
+  -- Install golang specific config
+  require('dap-go').setup {
+    delve = {
+      -- On Windows delve must be run attached or it crashes.
+      -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
+      detached = vim.fn.has 'win32' == 0,
+    },
+  }
+end
+
+local configure_dap_python = function()
+  require('dap-python').setup 'python3'
+end
+
+local configure_dapui = function()
+  local dapui = require 'dapui'
+
+  -- For more information, see |:help nvim-dap-ui|
+  dapui.setup {
+    icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+    controls = {
+      icons = {
+        pause = '⏸',
+        play = '▶',
+        step_into = '⏎',
+        step_over = '⏭',
+        step_out = '⏮',
+        step_back = 'b',
+        run_last = '▶▶',
+        terminate = '⏹',
+        disconnect = '⏏',
+      },
+    },
+  }
+end
+
+local dap_configured = false
+
+local configure_dap = function()
+  local dap = require 'dap'
+
+  if not dap_configured then
     local dapui = require 'dapui'
 
-    -- local dap_python = require 'dap-python'
-    require('dap-python').setup 'python3'
-
-    -- WARNING: Assumes the visual studio codelldb plugin is installed
-    local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
-    local codelldb_path = extension_path .. 'adapter/codelldb'
-    local this_os = vim.uv.os_uname().sysname
-
-    -- The path is different on Windows
-    if this_os:find 'Windows' then
-      codelldb_path = extension_path .. 'adapter\\codelldb.exe'
-    end
-
-    dap.adapters.codelldb = {
-      type = 'executable',
-      command = codelldb_path,
-      name = 'lldb',
-    }
-
     require('mason-nvim-dap').setup {
-      -- Makes a best effort to setup the various debuggers with
-      -- reasonable debug configurations
       automatic_installation = true,
 
-      -- You can provide additional configuration to the handlers,
-      -- see mason-nvim-dap README for more information
       handlers = {},
 
-      -- You'll need to check that you have the required things installed
-      -- online, please don't ask me how to install them :)
       ensure_installed = {
-        -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
-      },
-    }
-
-    -- Dap UI setup
-    -- For more information, see |:help nvim-dap-ui|
-    dapui.setup {
-      -- Set icons to characters that are more likely to work in every terminal.
-      --    Feel free to remove or use ones that you like more! :)
-      --    Don't feel like these are good choices.
-      icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-      controls = {
-        icons = {
-          pause = '⏸',
-          play = '▶',
-          step_into = '⏎',
-          step_over = '⏭',
-          step_out = '⏮',
-          step_back = 'b',
-          run_last = '▶▶',
-          terminate = '⏹',
-          disconnect = '⏏',
-        },
       },
     }
 
@@ -138,30 +136,71 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    -- Install golang specific config
-    require('dap-go').setup {
-      delve = {
-        -- On Windows delve must be run attached or it crashes.
-        -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
-        detached = vim.fn.has 'win32' == 0,
-      },
-    }
+    configure_dapui()
+    configure_dap_rust()
+    configure_dap_cpp()
+    configure_dap_go()
+    configure_dap_python()
 
-    -- C++ Debugger
-    dap.configurations.cpp = {
-      {
-        name = 'Launch file',
-        type = 'codelldb',
-        request = 'launch',
-        program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        MiMode = 'codelldb',
-        cwd = '${workspaceFolder}',
-        stopAtEntry = true,
-      },
-    }
+    dap_configured = true
+  end
 
-    configure_rust_dap()
-  end,
+  return dap
+end
+
+return {
+  'mfussenegger/nvim-dap',
+
+  dependencies = {
+    { 'rcarriga/nvim-dap-ui', lazy = true },
+    { 'nvim-neotest/nvim-nio', lazy = true },
+    { 'williamboman/mason.nvim', lazy = true },
+    { 'jay-babu/mason-nvim-dap.nvim', lazy = true },
+    { 'mfussenegger/nvim-dap-python', lazy = true },
+    { 'leoluz/nvim-dap-go', lazy = true },
+  },
+
+  -- stylua: ignore
+  keys = {
+    { '<leader>dc', function() configure_dap().continue() end, desc = '[D]ebug: Start/[C]ontinue' },
+    { '<leader>dC', function() configure_dap().run_to_cursor() end, desc = '[D]ebug: Run to [C]ursor' },
+    { '<leader>di', function() configure_dap().step_into() end, desc = '[D]ebug: Step [I]nto' },
+    { '<leader>do', function() configure_dap().step_over() end, desc = '[D]ebug: Step [O]ver' },
+    { '<leader>dO', function() configure_dap().step_out() end, desc = '[D]ebug: Step [O]ut' },
+    { '<leader>db', function() configure_dap().toggle_breakpoint() end, desc = '[D]ebug Toggle [B]reakpoint' },
+    { '<leader>dq', function() configure_dap().terminate() end, desc = '[D]ebug: [Q]uit Session' },
+    {
+      '<leader>dB',
+      function()
+        configure_dap().set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      end,
+      desc = '[D]ebug: Conditional [B]reakpoint',
+    },
+  },
+  -- stylua: enable
+
+  -- config = function()
+  --   local dap = require 'dap'
+  --   local dapui = require 'dapui'
+  --
+  --   require('mason-nvim-dap').setup {
+  --     automatic_installation = true,
+  --
+  --     handlers = {},
+  --
+  --     ensure_installed = {
+  --       'delve',
+  --     },
+  --   }
+  --
+  --   dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+  --   dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+  --   dap.listeners.before.event_exited['dapui_config'] = dapui.close
+  --
+  --   configure_dapui()
+  --   configure_dap_rust()
+  --   configure_dap_cpp()
+  --   configure_dap_go()
+  --   configure_dap_python()
+  -- end,
 }

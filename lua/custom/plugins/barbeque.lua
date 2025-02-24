@@ -9,7 +9,8 @@ return {
   'utilyre/barbecue.nvim',
   name = 'barbecue',
   version = '*',
-  event = 'VeryLazy',
+  -- event = 'VeryLazy',
+  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   dependencies = {
     'SmiteshP/nvim-navic',
     -- 'nvim-tree/nvim-web-devicons',
