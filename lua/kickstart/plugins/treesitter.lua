@@ -7,6 +7,8 @@ return {
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
+      sync_install = false,
+
       ensure_installed = {
         'bash',
         'c',
