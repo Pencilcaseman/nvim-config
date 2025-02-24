@@ -118,10 +118,9 @@ local dap_configured = false
 
 local configure_dap = function()
   local dap = require 'dap'
+  local dapui = require 'dapui'
 
   if not dap_configured then
-    local dapui = require 'dapui'
-
     require('mason-nvim-dap').setup {
       automatic_installation = true,
 
@@ -145,7 +144,10 @@ local configure_dap = function()
     dap_configured = true
   end
 
-  return dap
+  return {
+    dap = dap,
+    dapui = dapui,
+  }
 end
 
 return {
@@ -156,51 +158,29 @@ return {
     { 'nvim-neotest/nvim-nio', lazy = true },
     { 'williamboman/mason.nvim', lazy = true },
     { 'jay-babu/mason-nvim-dap.nvim', lazy = true },
+    { 'folke/lazydev.nvim', lazy = true, opts = { library = { 'nvim-dap-ui' } } },
+
     { 'mfussenegger/nvim-dap-python', lazy = true },
     { 'leoluz/nvim-dap-go', lazy = true },
   },
 
   -- stylua: ignore
   keys = {
-    { '<leader>dc', function() configure_dap().continue() end, desc = '[D]ebug: Start/[C]ontinue' },
-    { '<leader>dC', function() configure_dap().run_to_cursor() end, desc = '[D]ebug: Run to [C]ursor' },
-    { '<leader>di', function() configure_dap().step_into() end, desc = '[D]ebug: Step [I]nto' },
-    { '<leader>do', function() configure_dap().step_over() end, desc = '[D]ebug: Step [O]ver' },
-    { '<leader>dO', function() configure_dap().step_out() end, desc = '[D]ebug: Step [O]ut' },
-    { '<leader>db', function() configure_dap().toggle_breakpoint() end, desc = '[D]ebug Toggle [B]reakpoint' },
-    { '<leader>dq', function() configure_dap().terminate() end, desc = '[D]ebug: [Q]uit Session' },
+    { '<leader>dc', function() configure_dap().dap.continue() end, desc = '[D]ebug: Start/[C]ontinue' },
+    { '<leader>dC', function() configure_dap().dap.run_to_cursor() end, desc = '[D]ebug: Run to [C]ursor' },
+    { '<leader>di', function() configure_dap().dap.step_into() end, desc = '[D]ebug: Step [I]nto' },
+    { '<leader>do', function() configure_dap().dap.step_over() end, desc = '[D]ebug: Step [O]ver' },
+    { '<leader>dO', function() configure_dap().dap.step_out() end, desc = '[D]ebug: Step [O]ut' },
+    { '<leader>db', function() configure_dap().dap.toggle_breakpoint() end, desc = '[D]ebug Toggle [B]reakpoint' },
+    { '<leader>dq', function() configure_dap().dap.terminate() end, desc = '[D]ebug: [Q]uit Session' },
+    { '<leader>de', function() configure_dap().dapui.eval() end, desc = '[D]ebug [E]valuate' },
     {
       '<leader>dB',
       function()
-        configure_dap().set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+        configure_dap().dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
       end,
       desc = '[D]ebug: Conditional [B]reakpoint',
     },
   },
   -- stylua: enable
-
-  -- config = function()
-  --   local dap = require 'dap'
-  --   local dapui = require 'dapui'
-  --
-  --   require('mason-nvim-dap').setup {
-  --     automatic_installation = true,
-  --
-  --     handlers = {},
-  --
-  --     ensure_installed = {
-  --       'delve',
-  --     },
-  --   }
-  --
-  --   dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-  --   dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-  --   dap.listeners.before.event_exited['dapui_config'] = dapui.close
-  --
-  --   configure_dapui()
-  --   configure_dap_rust()
-  --   configure_dap_cpp()
-  --   configure_dap_go()
-  --   configure_dap_python()
-  -- end,
 }
