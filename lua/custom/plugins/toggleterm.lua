@@ -7,7 +7,6 @@ end
 
 return {
   'akinsho/toggleterm.nvim',
-  event = 'VeryLazy',
 
   version = '*',
 
@@ -22,34 +21,34 @@ return {
       return vim.o.lines * 0.4
     end,
   },
+
   keys = function(_, keys)
-    local toggleterm = require 'toggleterm'
     return {
       {
         '<leader>ttf',
         function()
-          toggleterm.toggle(nil, nil, nil, 'float')
+          require('toggleterm').toggle(nil, nil, nil, 'float')
         end,
         desc = '[T]oggle [T]erminal [F]loat',
       },
       {
         '<leader>ttt',
         function()
-          toggleterm.toggle(nil, nil, nil, 'tab')
+          require('toggleterm').toggle(nil, nil, nil, 'tab')
         end,
         desc = '[T]oggle [T]erminal [T]ab',
       },
       {
         '<leader>ttv',
         function()
-          toggleterm.toggle(nil, nil, nil, 'vertical')
+          require('toggleterm').toggle(nil, nil, nil, 'vertical')
         end,
         desc = '[T]oggle [T]erminal [V]ertical',
       },
       {
         '<leader>tth',
         function()
-          toggleterm.toggle(nil, nil, nil, 'horizontal')
+          require('toggleterm').toggle(nil, nil, nil, 'horizontal')
         end,
         desc = '[T]oggle [T]erminal [H]orizontal',
       },

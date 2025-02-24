@@ -7,7 +7,9 @@ end
 
 return {
   'folke/noice.nvim',
+
   event = 'VeryLazy',
+
   opts = {
     statusline = {
       enabled = false,

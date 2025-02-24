@@ -45,11 +45,15 @@ return {
   {
     'neovim/nvim-lspconfig',
 
+    -- event = 'VeryLazy',
+
+    event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
+
     dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', config = true },
-      'saghen/blink.cmp',
+      { 'williamboman/mason.nvim', event = 'VeryLazy' },
+      { 'williamboman/mason-lspconfig.nvim', event = 'VeryLazy' },
+      -- { 'j-hui/fidget.nvim', config = true },
+      { 'saghen/blink.cmp', event = 'VeryLazy' },
     },
 
     opts = {

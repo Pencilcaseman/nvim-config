@@ -42,8 +42,6 @@ return {
       },
     },
 
-    input = { enabled = true },
-
     picker = { enabled = true },
 
     profiler = { enabled = true },
@@ -51,12 +49,6 @@ return {
     notifier = { enabled = true },
 
     quickfile = { enabled = true },
-
-    scope = { enabled = true },
-
-    statuscolumn = { enabled = true },
-
-    words = { enabled = true },
   },
 
   config = function(_, opts)

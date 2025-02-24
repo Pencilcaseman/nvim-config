@@ -1,7 +1,8 @@
 return {
-  { -- Highlight, edit, and navigate code
+  {
     'nvim-treesitter/nvim-treesitter',
     -- event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -53,18 +54,12 @@ return {
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
-  -- {
-  --   'nvim-treesitter/nvim-treesitter-context',
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  --   event = 'VeryLazy',
-  --   opts = {
-  --     enable = true,
-  --   },
-  -- },
+
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'VeryLazy',
+    dependencies = { { 'nvim-treesitter/nvim-treesitter', event = 'VeryLazy' } },
+    -- event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
     opts = {
       ensure_installed = 'all', -- or a list of languages you want to ensure are installed
       indent = {
