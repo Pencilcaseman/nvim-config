@@ -78,6 +78,12 @@ return {
       local lspconfig = require 'lspconfig'
       local cmp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
+      vim.diagnostic.config {
+        virtual_text = true, -- Show diagnostics inline (virtual text)
+        signs = true, -- Show signs in the gutter
+        update_in_insert = true, -- Update diagnostics while typing
+      }
+
       require('mason-lspconfig').setup {
         automatic_installation = true,
         handlers = {
