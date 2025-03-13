@@ -1,81 +1,81 @@
-local configure_dap_rust = function()
-  local dap = require 'dap'
+-- local configure_dap_rust = function()
+--   local dap = require 'dap'
+--
+--   dap.configurations.rust = {
+--     {
+--       name = 'Launch',
+--       type = 'codelldb',
+--       request = 'launch',
+--       program = function()
+--         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug', 'file')
+--       end,
+--       cwd = '${workspaceFolder}',
+--       stopOnEntry = false,
+--       args = {},
+--       runInTerminal = false,
+--     },
+--   }
+--
+--   vim.g.rustaceanvim = function()
+--     -- Update this path
+--     local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.11.4/'
+--     local codelldb_path = extension_path .. 'adapter/codelldb'
+--     local liblldb_path = extension_path .. 'lldb/lib/liblldb'
+--     local this_os = vim.uv.os_uname().sysname
+--
+--     -- The path is different on Windows
+--     if this_os:find 'Windows' then
+--       codelldb_path = extension_path .. 'adapter\\codelldb.exe'
+--       liblldb_path = extension_path .. 'lldb\\bin\\liblldb.dll'
+--     else
+--       -- The liblldb extension is .so for Linux and .dylib for MacOS
+--       liblldb_path = liblldb_path .. (this_os == 'Linux' and '.so' or '.dylib')
+--     end
+--
+--     local cfg = require 'rustaceanvim.config'
+--     return {
+--       dap = {
+--         adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+--       },
+--     }
+--   end
+-- end
 
-  dap.configurations.rust = {
-    {
-      name = 'Launch',
-      type = 'codelldb',
-      request = 'launch',
-      program = function()
-        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug', 'file')
-      end,
-      cwd = '${workspaceFolder}',
-      stopOnEntry = false,
-      args = {},
-      runInTerminal = false,
-    },
-  }
-
-  vim.g.rustaceanvim = function()
-    -- Update this path
-    local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
-    local codelldb_path = extension_path .. 'adapter/codelldb'
-    local liblldb_path = extension_path .. 'lldb/lib/liblldb'
-    local this_os = vim.uv.os_uname().sysname
-
-    -- The path is different on Windows
-    if this_os:find 'Windows' then
-      codelldb_path = extension_path .. 'adapter\\codelldb.exe'
-      liblldb_path = extension_path .. 'lldb\\bin\\liblldb.dll'
-    else
-      -- The liblldb extension is .so for Linux and .dylib for MacOS
-      liblldb_path = liblldb_path .. (this_os == 'Linux' and '.so' or '.dylib')
-    end
-
-    local cfg = require 'rustaceanvim.config'
-    return {
-      dap = {
-        adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-      },
-    }
-  end
-end
-
-local configure_dap_cpp = function()
-  -- WARNING: Assumes the visual studio codelldb plugin is installed
-
-  local dap = require 'dap'
-
-  local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
-  local codelldb_path = extension_path .. 'adapter/codelldb'
-  local this_os = vim.uv.os_uname().sysname
-
-  -- The path is different on Windows
-  if this_os:find 'Windows' then
-    codelldb_path = extension_path .. 'adapter\\codelldb.exe'
-  end
-
-  dap.adapters.codelldb = {
-    type = 'executable',
-    command = codelldb_path,
-    name = 'lldb',
-  }
-
-  -- C++ Debugger
-  dap.configurations.cpp = {
-    {
-      name = 'Launch file',
-      type = 'codelldb',
-      request = 'launch',
-      program = function()
-        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-      end,
-      MiMode = 'codelldb',
-      cwd = '${workspaceFolder}',
-      stopAtEntry = true,
-    },
-  }
-end
+-- local configure_dap_cpp = function()
+--   -- WARNING: Assumes the visual studio codelldb plugin is installed
+--
+--   local dap = require 'dap'
+--
+--   local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
+--   local codelldb_path = extension_path .. 'adapter/codelldb'
+--   local this_os = vim.uv.os_uname().sysname
+--
+--   -- The path is different on Windows
+--   if this_os:find 'Windows' then
+--     codelldb_path = extension_path .. 'adapter\\codelldb.exe'
+--   end
+--
+--   dap.adapters.codelldb = {
+--     type = 'executable',
+--     command = codelldb_path,
+--     name = 'lldb',
+--   }
+--
+--   -- C++ Debugger
+--   dap.configurations.cpp = {
+--     {
+--       name = 'Launch file',
+--       type = 'codelldb',
+--       request = 'launch',
+--       program = function()
+--         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--       end,
+--       MiMode = 'codelldb',
+--       cwd = '${workspaceFolder}',
+--       stopAtEntry = true,
+--     },
+--   }
+-- end
 
 local configure_dap_go = function()
   -- Install golang specific config
@@ -136,8 +136,8 @@ local configure_dap = function()
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     configure_dapui()
-    configure_dap_rust()
-    configure_dap_cpp()
+    -- configure_dap_rust()
+    -- configure_dap_cpp()
     configure_dap_go()
     configure_dap_python()
 
@@ -153,15 +153,17 @@ end
 return {
   'mfussenegger/nvim-dap',
 
-  dependencies = {
-    { 'rcarriga/nvim-dap-ui', lazy = true },
-    { 'nvim-neotest/nvim-nio', lazy = true },
-    { 'williamboman/mason.nvim', lazy = true },
-    { 'jay-babu/mason-nvim-dap.nvim', lazy = true },
-    { 'folke/lazydev.nvim', lazy = true, opts = { library = { 'nvim-dap-ui' } } },
+  event = 'VeryLazy',
 
-    { 'mfussenegger/nvim-dap-python', lazy = true },
-    { 'leoluz/nvim-dap-go', lazy = true },
+  dependencies = {
+    { 'rcarriga/nvim-dap-ui' },
+    { 'nvim-neotest/nvim-nio' },
+    { 'williamboman/mason.nvim' },
+    { 'jay-babu/mason-nvim-dap.nvim' },
+    { 'folke/lazydev.nvim', opts = { library = { 'nvim-dap-ui' } } },
+
+    { 'mfussenegger/nvim-dap-python' },
+    { 'leoluz/nvim-dap-go' },
   },
 
   -- stylua: ignore
@@ -182,5 +184,9 @@ return {
       desc = '[D]ebug: Conditional [B]reakpoint',
     },
   },
+
+  config = function()
+    configure_dap()
+  end,
   -- stylua: enable
 }

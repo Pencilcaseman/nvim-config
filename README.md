@@ -299,12 +299,13 @@ language.
 
 #### Dependencies
 
-- Rust
-  - [Visual Studio Code](https://code.visualstudio.com/)
-  - [`codelldb` plugin](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)
 - C/C++
   - ???
 - Python
   - ???
 - Go
   - ???
+
+<!-- - Rust -->
+<!--   - [Visual Studio Code](https://code.visualstudio.com/) -->
+<!--   - [`codelldb` plugin](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) -->
