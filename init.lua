@@ -29,6 +29,9 @@ vim.opt.winbar = 'NeoVim > Bread > Crumbs' -- Preload space for barbecue
 vim.g.loaded_netrw = true
 vim.g.loaded_netrwPlugin = true
 
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
 require 'options'
 require 'keymaps'
 require 'lazy-bootstrap'
