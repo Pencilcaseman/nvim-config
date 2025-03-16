@@ -25,10 +25,6 @@ jobs:
           cargo install ripgrep
           cargo install fd-find
 
-      - name: Install yazi
-        run: |
-          sudo apt install yazi
-
       - name: Install Deno
         uses: denoland/setup-deno@v2
         with:
