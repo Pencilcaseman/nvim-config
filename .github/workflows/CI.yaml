@@ -17,6 +17,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@nightly
+
+      - name: Install Rust Dependencies
+        run: |
+          cargo install ripgrep
+          cargo install fd-find
+          cargo install yazi
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: vx.x.x
+
+      - name: Install Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Install GnuPlot
+        run: |
+          sudo apt-get install gnuplot
+
+      - name: Install TexLive-Full
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: scheme-full
+
+      - name: Install Tectonic
+        uses: wtfjoke/setup-tectonic@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install Neovim
         run: |
           sudo add-apt-repository ppa:neovim-ppa/unstable -y
