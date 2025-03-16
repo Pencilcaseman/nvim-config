@@ -46,12 +46,12 @@ return {
       lualine_z = {},
     },
 
-    tabline = {
-      lualine_a = { 'buffers' },
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {},
-    },
+    -- tabline = {
+    --   lualine_a = { 'buffers' },
+    --   lualine_x = {},
+    --   lualine_y = {},
+    --   lualine_z = {},
+    -- },
   },
 
   config = function(_, opts)
