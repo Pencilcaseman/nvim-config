@@ -1,30 +1,21 @@
 return {
   'romgrk/barbar.nvim',
 
-  -- lazy = false,
   event = 'VeryLazy',
 
   dependencies = {
-    'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-    'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    'lewis6991/gitsigns.nvim',
+    'nvim-tree/nvim-web-devicons',
   },
-  init = function()
-    vim.g.barbar_auto_setup = false
-  end,
+
   opts = {
-    -- Configure barbar here
     animation = true,
     auto_hide = false,
     tabpages = true,
     clickable = true,
-    --
-    -- Disable highlighting alternate buffers
+
     highlight_alternate = false,
-
-    -- Disable highlighting file icons in inactive buffers
     highlight_inactive_file_icons = false,
-
-    -- Enable highlighting visible buffers
     highlight_visible = false,
 
     icons = {
@@ -32,7 +23,6 @@ return {
       buffer_number = false,
       button = '',
 
-      -- Use the default icons for diagnostics
       diagnostics = {
         [vim.diagnostic.severity.ERROR] = { enabled = true },
         [vim.diagnostic.severity.WARN] = { enabled = true },
@@ -69,6 +59,7 @@ return {
     letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
     no_name_title = nil,
   },
+
   keys = function(_, keys)
     return {
       { 'H', '<CMD>BufferPrevious<CR>', desc = 'Move to the left buffer' },
