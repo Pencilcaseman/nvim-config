@@ -27,7 +27,7 @@ jobs:
 
       - name: Install yazi
         run: |
-          apt install yazi
+          sudo apt install yazi
 
       - name: Install Deno
         uses: denoland/setup-deno@v2
