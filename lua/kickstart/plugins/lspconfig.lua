@@ -3,6 +3,7 @@ get_mason_packages = function()
     'ansible-language-server',
     'ansible-lint',
     'ast-grep',
+    'basedpyright',
     'checkmake',
     'clang-format',
     'clangd',
@@ -28,8 +29,7 @@ get_mason_packages = function()
     'neocmakelsp',
     'nil',
     'omnisharp',
-    'python-lsp-server',
-    'ruff-lsp',
+    'ruff',
     'shellcheck',
     'shfmt',
     'stylua',
@@ -68,8 +68,15 @@ return {
             },
           },
         },
+
         tinymist = {
           settings = { formatterMode = 'typstyle' },
+        },
+
+        ruff = {
+          init_options = {
+            settings = {},
+          },
         },
       },
     },
@@ -86,6 +93,7 @@ return {
 
       require('mason-lspconfig').setup {
         automatic_installation = true,
+        ensure_installed = {},
         handlers = {
           function(server_name)
             local server_opts = opts.servers[server_name] or {}

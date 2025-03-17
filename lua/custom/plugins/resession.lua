@@ -25,17 +25,20 @@ return {
   end,
 
   config = function(_, opts)
-    -- vim.opt.sessionoptions:append 'globals'
-    -- require('resession').add_hook('pre_save', function()
-    --   vim.api.nvim_exec_autocmds('User', { pattern = 'SessionSavePre' })
-    -- end)
-
     local resession = require 'resession'
     resession.setup(opts)
 
     vim.api.nvim_create_autocmd('VimLeavePre', {
       callback = function()
-        if vim.fn.argc(-1) == 0 then
+        local has_open_file = false
+        for buf = 1, vim.fn.bufnr '$' do
+          if vim.fn.buflisted(buf) == 1 then
+            has_open_file = true
+            break
+          end
+        end
+
+        if vim.fn.argc(-1) == 0 and has_open_file then
           resession.save(vim.fn.getcwd(), { dir = 'dirsession', notify = false })
         end
       end,
