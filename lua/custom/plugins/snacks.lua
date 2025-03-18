@@ -104,10 +104,9 @@ return {
     -- Top Pickers & Explorer
     { "<leader>sf", function() Snacks.picker.smart() end, desc = "Smart [S]earch [F]iles" },
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Search Buffers" },
-    { "<leader>/", function() Snacks.picker.grep() end, desc = "Search Grep" },
+    -- { "<leader>/", function() Snacks.picker.grep() end, desc = "Search Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Search Command History" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Search Notification History" },
-    { "<leader>sg", function() Snacks.picker.git_files() end, desc = "[S]earch [G]it" },
     { "<leader>sp", function() Snacks.picker.projects() end, desc = "[S]earch [P]rojects" },
     { '<leader>s"', function() Snacks.picker.registers() end, desc = "[S]earch Registers" },
 
@@ -125,9 +124,9 @@ return {
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
 
     -- Grep
-    { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+    { "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
-    { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+    { "<leader>sg", function() Snacks.picker.grep() end, desc = "[S]earch [G]rep" },
     { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 
     -- search
