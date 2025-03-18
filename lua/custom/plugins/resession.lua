@@ -4,7 +4,7 @@ return {
   event = 'VeryLazy',
 
   dependencies = {
-    'romgrk/barbar.nvim',
+    { 'romgrk/barbar.nvim', event = 'VeryLazy' },
   },
 
   opts = {

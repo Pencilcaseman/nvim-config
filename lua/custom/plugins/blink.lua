@@ -2,11 +2,11 @@ return {
   'saghen/blink.cmp',
 
   -- event = 'VeryLazy',
-  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
+  event = 'InsertEnter',
+  lazy = true,
 
   dependencies = {
     'rafamadriz/friendly-snippets',
-    -- 'nvim-tree/nvim-web-devicons',
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
 
