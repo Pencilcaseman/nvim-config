@@ -6,14 +6,10 @@ local utils = require 'utils'
 local plugins = {
   require 'kickstart/plugins/which-key',
   require 'kickstart/plugins/telescope',
-  -- require 'kickstart/plugins/cmp',
   require 'kickstart/plugins/tokyonight',
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',
-
   require 'kickstart/plugins/lint',
-  require 'kickstart/plugins/autopairs',
-  -- require 'kickstart/plugins/neo-tree',
 }
 
 -- Other plugins useful for a full configuration

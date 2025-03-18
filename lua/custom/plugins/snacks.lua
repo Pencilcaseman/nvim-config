@@ -73,6 +73,8 @@ return {
     notifier = { enabled = true },
 
     quickfile = { enabled = true },
+
+    rename = { enabled = true },
   },
 
   config = function(_, opts)
