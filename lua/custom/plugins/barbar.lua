@@ -21,7 +21,7 @@ return {
     icons = {
       buffer_index = true,
       buffer_number = false,
-      button = '',
+      button = false,
 
       diagnostics = {
         [vim.diagnostic.severity.ERROR] = { enabled = true },
@@ -41,12 +41,11 @@ return {
         enabled = true,
       },
 
-      separator = { left = '', right = '' },
       modified = { button = '󰧞' },
       pinned = { button = '󰐃', filename = true },
       alternate = { filetype = { enabled = false } },
       current = { buffer_index = true },
-      inactive = { button = '' },
+      inactive = { button = false },
       visible = { modified = { buffer_number = false } },
     },
 
@@ -75,6 +74,10 @@ return {
 
       unpack(keys),
     }
+  end,
+
+  init = function()
+    vim.g.barbar_auto_setup = false
   end,
 
   config = function(_, fn_opts)
