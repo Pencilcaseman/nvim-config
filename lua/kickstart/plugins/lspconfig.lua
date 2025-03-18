@@ -111,16 +111,6 @@ return {
             vim.keymap.set(mode or 'n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          local tb = require 'telescope.builtin'
-          map('gd', tb.lsp_definitions, '[G]oto [D]efinition')
-          map('gr', tb.lsp_references, '[G]oto [R]eferences')
-          map('gI', tb.lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>D', tb.lsp_type_definitions, 'Type [D]efinition')
-          map('<leader>ds', tb.lsp_document_symbols, '[D]ocument [S]ymbols')
-          map('<leader>cr', vim.lsp.buf.rename, '[C]ode: Rename')
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-
           -- Toggle inlay hints if supported
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
