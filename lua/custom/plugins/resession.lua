@@ -3,10 +3,6 @@ return {
 
   event = 'LazyFile',
 
-  dependencies = {
-    { 'romgrk/barbar.nvim' },
-  },
-
   opts = {
     extensions = {
       barbar = {},

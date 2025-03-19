@@ -5,7 +5,6 @@ local utils = require 'utils'
 -- Minimal plugin set
 local plugins = {
   require 'kickstart/plugins/which-key',
-  require 'kickstart/plugins/telescope',
   require 'kickstart/plugins/tokyonight',
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',

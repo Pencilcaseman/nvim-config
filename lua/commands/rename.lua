@@ -1,1 +1,4 @@
-vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
+-- LSP rename
+vim.keymap.set('n', '<leader>cr', function()
+  vim.lsp.buf.rename()
+end, { desc = '[C]ode [R]ename' })

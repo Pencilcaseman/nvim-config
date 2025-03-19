@@ -9,12 +9,9 @@ return {
   'utilyre/barbecue.nvim',
   name = 'barbecue',
   version = '*',
-  -- event = 'VeryLazy',
-  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
+  event = 'LazyFile',
   dependencies = {
     'SmiteshP/nvim-navic',
-    -- 'nvim-tree/nvim-web-devicons',
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   opts = {
     theme = 'tokyonight',

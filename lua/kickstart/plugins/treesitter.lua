@@ -54,7 +54,7 @@ return {
     event = 'VeryLazy',
 
     opts = {
-      ensure_installed = 'all', -- or a list of languages you want to ensure are installed
+      auto_install = true,
       indent = {
         enable = true,
       },

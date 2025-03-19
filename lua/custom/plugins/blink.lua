@@ -1,14 +1,7 @@
 return {
   'saghen/blink.cmp',
 
-  -- event = 'VeryLazy',
   event = 'InsertEnter',
-
-  dependencies = {
-    'rafamadriz/friendly-snippets',
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-  },
-
   version = '*',
 
   ---@module 'blink.cmp'

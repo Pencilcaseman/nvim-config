@@ -8,7 +8,6 @@ end
 return {
   'MeanderingProgrammer/render-markdown.nvim',
   ft = 'markdown', -- Loads when a markdown file is opened
-  dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {},

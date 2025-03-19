@@ -2,9 +2,7 @@ return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   dependencies = {
-    -- 'nvim-tree/nvim-web-devicons',
     'yavorski/lualine-macro-recording.nvim',
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   opts = {
     icons_enabled = vim.g.have_nerd_font,
