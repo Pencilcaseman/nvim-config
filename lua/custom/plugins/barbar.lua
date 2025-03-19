@@ -1,7 +1,7 @@
 return {
   'romgrk/barbar.nvim',
 
-  event = 'VeryLazy',
+  event = 'LazyFile',
 
   dependencies = {
     'lewis6991/gitsigns.nvim',
@@ -78,9 +78,5 @@ return {
 
   init = function()
     vim.g.barbar_auto_setup = false
-  end,
-
-  config = function(_, fn_opts)
-    require('barbar').setup(fn_opts)
   end,
 }

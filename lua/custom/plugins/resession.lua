@@ -1,10 +1,10 @@
 return {
   'stevearc/resession.nvim',
 
-  event = 'VeryLazy',
+  event = 'LazyFile',
 
   dependencies = {
-    { 'romgrk/barbar.nvim', event = 'VeryLazy' },
+    { 'romgrk/barbar.nvim' },
   },
 
   opts = {
@@ -13,14 +13,29 @@ return {
     },
   },
 
-  keys = function(_, keys)
-    local resession = require 'resession'
-
+  keys = function()
     return {
-      { '<leader>ws', resession.save, desc = '[W]orkspace: [S]ave Session' },
-      { '<leader>wl', resession.load, desc = '[W]orkspace: [L]oad Session' },
-      { '<leader>wd', resession.delete, desc = '[W]orkspace: [D]elete Session' },
-      unpack(keys),
+      {
+        '<leader>ws',
+        function()
+          require('resession').save()
+        end,
+        desc = '[W]orkspace: [S]ave Session',
+      },
+      {
+        '<leader>wl',
+        function()
+          require('resession').load()
+        end,
+        desc = '[W]orkspace: [L]oad Session',
+      },
+      {
+        '<leader>wd',
+        function()
+          require('resession').delete()
+        end,
+        desc = '[W]orkspace: [D]elete Session',
+      },
     }
   end,
 

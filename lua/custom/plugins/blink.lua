@@ -3,7 +3,6 @@ return {
 
   -- event = 'VeryLazy',
   event = 'InsertEnter',
-  lazy = true,
 
   dependencies = {
     'rafamadriz/friendly-snippets',

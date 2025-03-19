@@ -10,4 +10,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+local function lazy_file()
+  local Event = require 'lazy.core.handler.event'
+  local lazy_file_events = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
+  Event.mappings.LazyFile = { id = 'LazyFile', event = lazy_file_events }
+  Event.mappings['User LazyFile'] = Event.mappings.LazyFile
+end
+
+lazy_file()
+
 -- vim: ts=2 sts=2 sw=2 et

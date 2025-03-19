@@ -2,13 +2,11 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
 
-    -- event = 'VeryLazy',
-    event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
-    lazy = true,
+    event = 'LazyFile',
 
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    main = 'nvim-treesitter.configs',
+
     opts = {
       sync_install = false,
 
@@ -30,43 +28,30 @@ return {
 
       -- Autoinstall languages that are not installed
       auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-
-      indent = {
-        enable = true,
-        disable = {
-          'ruby',
-        },
-      },
+      highlight = { enable = true },
+      indent = { enable = true },
     },
 
-    config = function(_, opts)
-      -- Tex support
-      if type(opts.ensure_installed) == 'table' then
-        vim.list_extend(opts.ensure_installed, { 'bibtex' })
-      end
-      if type(opts.highlight.disable) == 'table' then
-        vim.list_extend(opts.highlight.disable, { 'latex' })
-      else
-        opts.highlight.disable = { 'latex' }
-      end
+    init = function(plugin)
+      -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
+      -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
+      -- no longer trigger the **nvim-treesitter** module to be loaded in time.
+      -- Luckily, the only things that those plugins need are the custom queries, which we make available
+      -- during startup.
+      require('lazy.core.loader').add_to_rtp(plugin)
+      require 'nvim-treesitter.query_predicates'
+    end,
 
+    config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
 
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { { 'nvim-treesitter/nvim-treesitter', event = 'VeryLazy' } },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
 
-    -- event = 'VeryLazy',
-    event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
+    event = 'VeryLazy',
 
     opts = {
       ensure_installed = 'all', -- or a list of languages you want to ensure are installed

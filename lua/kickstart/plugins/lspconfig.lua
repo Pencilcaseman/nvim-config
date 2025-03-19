@@ -45,15 +45,12 @@ return {
   {
     'neovim/nvim-lspconfig',
 
-    -- event = 'VeryLazy',
-
-    event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
+    event = 'LazyFile',
 
     dependencies = {
-      { 'williamboman/mason.nvim', event = 'VeryLazy' },
-      { 'williamboman/mason-lspconfig.nvim', event = 'VeryLazy' },
-      -- { 'j-hui/fidget.nvim', config = true },
-      { 'saghen/blink.cmp', event = 'VeryLazy' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
+      { 'saghen/blink.cmp' },
     },
 
     opts = {
@@ -125,6 +122,7 @@ return {
 
   {
     'williamboman/mason.nvim',
+
     cmd = 'Mason',
     build = ':MasonUpdate',
     opts_extend = { 'ensure_installed' },

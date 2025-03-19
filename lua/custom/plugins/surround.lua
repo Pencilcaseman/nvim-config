@@ -1,6 +1,8 @@
 return {
   'kylechui/nvim-surround',
-  event = 'VeryLazy',
+
+  event = 'LazyFile',
+
   opts = {
     keymaps = {
       normal = 'gs',
