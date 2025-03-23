@@ -49,22 +49,22 @@ return {
 
     dependencies = {
       { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
+      { 'williamboman/mason-lspconfig.nvim', config = function() end },
       { 'saghen/blink.cmp' },
     },
 
     opts = {
       servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              runtime = { version = 'LuaJIT' },
-              diagnostics = { globals = { 'vim', 'require' } },
-              workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-              telemetry = { enable = false },
-            },
-          },
-        },
+        -- lua_ls = {
+        --   settings = {
+        --     Lua = {
+        --       runtime = { version = 'LuaJIT' },
+        --       diagnostics = { globals = { 'vim', 'require' } },
+        --       workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+        --       telemetry = { enable = false },
+        --     },
+        --   },
+        -- },
 
         tinymist = {
           settings = { formatterMode = 'typstyle' },
@@ -121,11 +121,24 @@ return {
   },
 
   {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
+
+  {
     'williamboman/mason.nvim',
 
     cmd = 'Mason',
     build = ':MasonUpdate',
     opts_extend = { 'ensure_installed' },
+
     opts = {
       ensure_installed = get_mason_packages(),
     },
@@ -145,3 +158,19 @@ return {
     end,
   },
 }
+
+-- return {
+--   'neoclide/coc.nvim',
+--   opts = {},
+--   config = function(_, opts)
+--     require('coc.nvim').setup(opts)
+--   end,
+-- }
+
+-- return {
+--   'neoclide/coc.nvim',
+--   branch = 'master',
+--   build = "npm ci",
+--   -- event = { 'BufReadPre', 'BufNewFile'},
+--   lazy = false,
+-- }
