@@ -1,6 +1,14 @@
 return {
   'saghen/blink.cmp',
 
+  cond = function()
+    if vim.g.vscode then
+      return false
+    end
+
+    return true
+  end,
+
   dependencies = {
     'xzbdmw/colorful-menu.nvim',
   },

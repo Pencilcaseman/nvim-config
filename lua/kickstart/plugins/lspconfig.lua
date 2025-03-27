@@ -55,25 +55,8 @@ return {
 
     opts = {
       servers = {
-        -- lua_ls = {
-        --   settings = {
-        --     Lua = {
-        --       runtime = { version = 'LuaJIT' },
-        --       diagnostics = { globals = { 'vim', 'require' } },
-        --       workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-        --       telemetry = { enable = false },
-        --     },
-        --   },
-        -- },
-
         tinymist = {
           settings = { formatterMode = 'typstyle' },
-        },
-
-        ruff = {
-          init_options = {
-            settings = {},
-          },
         },
       },
     },
@@ -161,19 +144,3 @@ return {
     end,
   },
 }
-
--- return {
---   'neoclide/coc.nvim',
---   opts = {},
---   config = function(_, opts)
---     require('coc.nvim').setup(opts)
---   end,
--- }
-
--- return {
---   'neoclide/coc.nvim',
---   branch = 'master',
---   build = "npm ci",
---   -- event = { 'BufReadPre', 'BufNewFile'},
---   lazy = false,
--- }

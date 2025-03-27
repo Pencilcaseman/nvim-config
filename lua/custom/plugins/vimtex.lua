@@ -1,14 +1,5 @@
-local utils = require 'utils'
-
--- Not a required plugin
-if utils.is_minimal() then
-  return {}
-end
-
 return {
   'lervag/vimtex',
-
-  -- lazy = false,
 
   ft = 'tex',
 

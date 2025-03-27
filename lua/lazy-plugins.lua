@@ -1,27 +1,16 @@
 -- [[ Configure and install plugins ]]
 
-local utils = require 'utils'
-
--- Minimal plugin set
 local plugins = {
   require 'kickstart/plugins/which-key',
   require 'kickstart/plugins/tokyonight',
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',
   require 'kickstart/plugins/lint',
-}
-
--- Other plugins useful for a full configuration
-local other_plugins = {
   require 'kickstart/plugins/gitsigns',
   require 'kickstart/plugins/lspconfig',
   require 'kickstart.plugins.conform',
   require 'kickstart/plugins/debug',
 }
-
-if not utils.is_minimal() then
-  table.insert(plugins, other_plugins)
-end
 
 require('lazy').setup({
   plugins,
