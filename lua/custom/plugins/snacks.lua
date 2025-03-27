@@ -1,7 +1,10 @@
 return {
   'folke/snacks.nvim',
+
   priority = 1000,
   lazy = false,
+
+  version = '*',
 
   ---@type snacks.Config
   opts = {
@@ -26,6 +29,10 @@ return {
                 dir = 'dirsession',
                 silence_errors = true,
               })
+
+              -- Remove the cmdline bar at the bottom. noice.nvim gives us a
+              -- cmdline bar, so the empty space at the bottom is pointless.
+              vim.o.cmdheight = 0
             end,
           },
           { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
@@ -144,7 +151,8 @@ return {
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "[S]earch [Q]uickfix List" },
     { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
     { "<leader>su", function() Snacks.picker.undo() end, desc = "[S]earch [U]ndo" },
-    { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "[S]earch [C]olorschemes" },
+    { "<leader>sz", function() Snacks.picker.zoxide() end, desc = "[S]earch [Z]oxide" },
+    { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Search [C]olorschemes" },
 
     -- LSP
     { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },

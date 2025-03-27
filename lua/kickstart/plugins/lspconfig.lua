@@ -115,6 +115,9 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
+
+          -- Code Actions
+          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
         end,
       })
     end,

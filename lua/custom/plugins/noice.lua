@@ -1,10 +1,3 @@
-local utils = require 'utils'
-
--- Not a required plugin
-if utils.is_minimal() then
-  return {}
-end
-
 return {
   'folke/noice.nvim',
 
@@ -13,6 +6,10 @@ return {
   opts = {
     statusline = {
       enabled = false,
+    },
+
+    cmdline = {
+      enabled = true,
     },
 
     lsp = {
@@ -44,19 +41,8 @@ return {
     },
   },
 
-  -- dependencies = {
-  --   'MunifTanjim/nui.nvim',
-  --   {
-  --     'rcarriga/nvim-notify',
-  --     opts = {
-  --       timeout = 1000,
-  --       stages = 'slide',
-  --       top_down = false,
-  --     },
-  --   },
-  -- },
-
   config = function(_, opts)
     require('noice').setup(opts)
+    vim.o.cmdheight = 0
   end,
 }
