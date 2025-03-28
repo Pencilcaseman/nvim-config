@@ -58,25 +58,25 @@ return {
       { 'folke/lazydev.nvim', opts = { library = { 'nvim-dap-ui' } } },
     },
 
-  -- stylua: ignore
-  keys = {
-    { '<leader>dc', function() require('dap').continue() end, desc = '[D]ebug: Start/[C]ontinue' },
-    { '<leader>dC', function() require('dap').run_to_cursor() end, desc = '[D]ebug: Run to [C]ursor' },
-    { '<leader>di', function() require('dap').step_into() end, desc = '[D]ebug: Step [I]nto' },
-    { '<leader>do', function() require('dap').step_over() end, desc = '[D]ebug: Step [O]ver' },
-    { '<leader>dO', function() require('dap').step_out() end, desc = '[D]ebug: Step [O]ut' },
-    { '<leader>db', function() require('dap').toggle_breakpoint() end, desc = '[D]ebug Toggle [B]reakpoint' },
-    { '<leader>dq', function() require('dap').terminate() end, desc = '[D]ebug: [Q]uit Session' },
-    { '<leader>de', function() require('dapui').eval() end, desc = '[D]ebug [E]valuate' },
-    {
-      '<leader>dB',
-      function()
-        configure_dap().dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-      end,
-      desc = '[D]ebug: Conditional [B]reakpoint',
+    -- stylua: ignore
+    keys = {
+      { '<leader>dc', function() require('dap').continue() end, desc = '[D]ebug: Start/[C]ontinue' },
+      { '<leader>dC', function() require('dap').run_to_cursor() end, desc = '[D]ebug: Run to [C]ursor' },
+      { '<leader>di', function() require('dap').step_into() end, desc = '[D]ebug: Step [I]nto' },
+      { '<leader>do', function() require('dap').step_over() end, desc = '[D]ebug: Step [O]ver' },
+      { '<leader>dO', function() require('dap').step_out() end, desc = '[D]ebug: Step [O]ut' },
+      { '<leader>db', function() require('dap').toggle_breakpoint() end, desc = '[D]ebug Toggle [B]reakpoint' },
+      { '<leader>dq', function() require('dap').terminate() end, desc = '[D]ebug: [Q]uit Session' },
+      { '<leader>de', function() require('dapui').eval() end, desc = '[D]ebug [E]valuate' },
+      {
+        '<leader>dB',
+        function()
+          configure_dap().dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+        end,
+        desc = '[D]ebug: Conditional [B]reakpoint',
+      },
+      -- stylua: enable
     },
-    -- stylua: enable
-  },
 
     config = function()
       require('mason-nvim-dap').setup {
