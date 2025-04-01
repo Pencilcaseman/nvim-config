@@ -110,7 +110,8 @@ return {
     -- stylua: ignore start
 
     -- Top Pickers & Explorer
-    { "<leader>sf", function() Snacks.picker.smart() end, desc = "Smart [S]earch [F]iles" },
+    { "<leader>sf", function() Snacks.picker.files() end, desc = "Smart [S]earch [F]iles" },
+    { "<leader>sF", function() Snacks.picker.smart() end, desc = "Smart [S]earch [F]iles" },
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Search Buffers" },
     -- { "<leader>/", function() Snacks.picker.grep() end, desc = "Search Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Search Command History" },
