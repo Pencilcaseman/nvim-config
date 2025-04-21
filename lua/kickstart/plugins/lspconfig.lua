@@ -1,5 +1,5 @@
 get_mason_packages = function()
-  return {
+  local packages = {
     'ansible-language-server',
     'ansible-lint',
     'ast-grep',
@@ -27,7 +27,6 @@ get_mason_packages = function()
     'markdownlint',
     'marksman',
     'neocmakelsp',
-    'nil',
     'omnisharp',
     'ruff',
     'shellcheck',
@@ -39,6 +38,14 @@ get_mason_packages = function()
     'vtsls',
     'zls',
   }
+
+  -- nil requires the `nix` executable to exist
+
+  if vim.fn.executable 'nix' then
+    packages = vim.tbl_deep_extend('force', packages, { 'nil' })
+  end
+
+  return packages
 end
 
 return {
