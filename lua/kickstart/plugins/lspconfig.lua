@@ -61,6 +61,7 @@ return {
     },
 
     opts = {
+      autoformat = false,
       servers = {
         tinymist = {
           settings = { formatterMode = 'typstyle' },

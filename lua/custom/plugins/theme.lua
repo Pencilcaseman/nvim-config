@@ -9,6 +9,9 @@ return {
     vim.cmd [[highlight LineNrAbove guifg=#516C96]]
     vim.cmd [[highlight LineNrBelow guifg=#516C96]]
 
+    -- vim.cmd [[highlight DiagnosticUnnecessary guifg=#8D9D90]]
+    vim.cmd [[highlight DiagnosticUnnecessary guifg=#A39594]]
+
     vim.cmd [[highlight BufferCurrentCHANGED guibg=#222436 guifg=#6B71F2]]
     vim.cmd [[highlight BufferCurrentDELETED guibg=#222436 guifg=#E55444]]
     vim.cmd [[highlight BufferCurrentADDED guibg=#222436 guifg=#43E661]]
