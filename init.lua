@@ -23,6 +23,8 @@ vim.g.maplocalleader = ' '
 vim.opt.spell = true
 vim.opt.spelllang = 'en'
 
+vim.opt.wrap = false
+
 vim.opt.showtabline = 2 -- Always reserve space for the tabline (barbar)
 vim.opt.winbar = 'NeoVim > Bread > Crumbs' -- Preload space for barbecue
 
