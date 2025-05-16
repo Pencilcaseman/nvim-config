@@ -1,3 +1,17 @@
+local function selection_count()
+  if vim.fn.mode():find '[vV]' then
+    local counts = vim.fn.wordcount()
+
+    local starts = vim.fn.line 'v'
+    local ends = vim.fn.line '.'
+    local lines = starts <= ends and ends - starts + 1 or starts - ends + 1
+
+    return string.format('L:%d bW:%d C:%d', lines, counts.visual_words, counts.visual_chars)
+  else
+    return ''
+  end
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
@@ -30,7 +44,7 @@ return {
       },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
       lualine_c = { 'filename', 'macro_recording' },
-      lualine_x = { 'encoding', 'fileformat', 'filetype' },
+      lualine_x = { selection_count, 'encoding', 'fileformat', 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' },
     },
