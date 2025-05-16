@@ -6,7 +6,7 @@ local function selection_count()
     local ends = vim.fn.line '.'
     local lines = starts <= ends and ends - starts + 1 or starts - ends + 1
 
-    return string.format('L:%d bW:%d C:%d', lines, counts.visual_words, counts.visual_chars)
+    return string.format('L:%d W:%d C:%d', lines, counts.visual_words, counts.visual_chars)
   else
     return ''
   end
