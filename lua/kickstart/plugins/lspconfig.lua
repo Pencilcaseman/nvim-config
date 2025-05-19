@@ -39,12 +39,6 @@ get_mason_packages = function()
     'zls',
   }
 
-  -- nil requires the `nix` executable to exist
-
-  if vim.fn.executable 'nix' then
-    packages = vim.tbl_deep_extend('force', packages, { 'nil' })
-  end
-
   return packages
 end
 
