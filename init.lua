@@ -25,6 +25,10 @@ vim.opt.spelllang = 'en'
 
 vim.opt.wrap = false
 
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 vim.opt.showtabline = 2 -- Always reserve space for the tabline (barbar)
 vim.opt.winbar = 'NeoVim > Bread > Crumbs' -- Preload space for barbecue
 
