@@ -58,7 +58,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Space d d to open diagnostic float
 vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = '[D]ocument [D]iagnostics' })
 
--- Space f o to open the current working directory in the OS file viewer
-vim.keymap.set('n', '<leader>fo', ':silent ! open .<CR>', { desc = '[F]ilesystem [O]pen', silent = true, noremap = true })
+-- Space f o to open the current working directory in the MacOS file explorer
+if vim.fn.has 'mac' then
+  vim.keymap.set('n', '<leader>fo', ':silent ! open .<CR>', { desc = '[F]ilesystem [O]pen', silent = true, noremap = true })
+end
 
 -- vim: ts=2 sts=2 sw=2 et
