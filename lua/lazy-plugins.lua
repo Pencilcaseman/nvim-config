@@ -1,20 +1,18 @@
--- [[ Configure and install plugins ]]
-
 local plugins = {
-  require 'kickstart/plugins/which-key',
-  require 'kickstart/plugins/tokyonight',
-  require 'kickstart/plugins/mini',
-  require 'kickstart/plugins/treesitter',
-  require 'kickstart/plugins/lint',
-  require 'kickstart/plugins/gitsigns',
-  require 'kickstart/plugins/lspconfig',
-  require 'kickstart.plugins.conform',
-  require 'kickstart/plugins/debug',
+  require 'core/plugins/which-key',
+  require 'core/plugins/tokyonight',
+  require 'core/plugins/mini',
+  require 'core/plugins/treesitter',
+  require 'core/plugins/lint',
+  require 'core/plugins/gitsigns',
+  require 'core/plugins/lspconfig',
+  require 'core.plugins.conform',
+  require 'core/plugins/debug',
 }
 
 require('lazy').setup({
   plugins,
-  { import = 'custom.plugins' },
+  { import = 'plugins' },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
@@ -34,5 +32,3 @@ require('lazy').setup({
     },
   },
 })
-
--- vim: ts=2 sts=2 sw=2 et
