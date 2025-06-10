@@ -46,7 +46,7 @@ return {
   {
     'neovim/nvim-lspconfig',
 
-    event = 'LazyFile',
+    event = 'VeryLazy',
 
     dependencies = {
       { 'mason-org/mason.nvim' },
@@ -74,6 +74,7 @@ return {
       }
 
       require('mason-lspconfig').setup {
+        automatic_enable = true,
         automatic_installation = true,
         ensure_installed = {},
         handlers = {

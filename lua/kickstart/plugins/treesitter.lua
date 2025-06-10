@@ -2,10 +2,14 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
 
-    event = 'LazyFile',
+    version = false,
+    -- event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
 
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs',
+
+    cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall' },
 
     opts = {
       sync_install = false,
@@ -62,7 +66,7 @@ return {
         enable = true,
 
         additional_vim_regex_highlighting = {
-          'ruby',
+          -- 'ruby',
         },
       },
       textobjects = {

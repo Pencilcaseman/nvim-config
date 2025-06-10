@@ -1,7 +1,7 @@
 return {
   'stevearc/resession.nvim',
 
-  event = 'LazyFile',
+  event = 'VeryLazy',
 
   opts = {
     extensions = {

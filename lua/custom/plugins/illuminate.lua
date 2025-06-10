@@ -1,4 +1,4 @@
 return {
   'RRethy/vim-illuminate',
-  event = 'LazyFile',
+  event = 'VeryLazy',
 }
