@@ -12,6 +12,8 @@ if vim.env.PROF then
   }
 end
 
+vim.o.winborder = 'double'
+
 -- Set this to false if you do not have a NerdFont installed
 vim.g.have_nerd_font = true
 

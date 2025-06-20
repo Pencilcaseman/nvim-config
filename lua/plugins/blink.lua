@@ -11,6 +11,7 @@ return {
 
   dependencies = {
     'xzbdmw/colorful-menu.nvim',
+    'rafamadriz/friendly-snippets',
   },
 
   event = 'InsertEnter',
@@ -20,6 +21,8 @@ return {
   ---@type blink.cmp.Config
   opts = {
     keymap = { preset = 'super-tab' },
+
+    -- signature = { window = { border = 'single' } },
 
     appearance = {
       nerd_font_variant = 'normal',
@@ -41,18 +44,14 @@ return {
     },
 
     completion = {
-      -- accept = {
-      --   -- experimental auto-brackets support
-      --   auto_brackets = {
-      --     enabled = true,
-      --   },
-      -- },
-
       trigger = {
         show_on_trigger_character = true,
       },
 
       menu = {
+        -- border = 'single',
+        scrollbar = false,
+
         draw = {
           columns = { { 'kind_icon' }, { 'label', gap = 1 } },
           components = {
@@ -69,6 +68,7 @@ return {
       },
 
       documentation = {
+        -- border = 'single',
         auto_show = true,
         auto_show_delay_ms = 200,
       },

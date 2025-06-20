@@ -33,6 +33,7 @@ return {
       TEST = { icon = '⏲ ', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
       DEBUG = { icon = ' ', color = 'debug_color', alt = { 'DEBUG', 'TRACE' } },
       STAGE = { icon = ' ', color = 'stage', alt = { 'STAGE', 'STEP', 'TASK', 'PART', 'PHASE', 'FEAT', 'FEATURE' } },
+      CORRECT = { icon = '', color = 'correct', alt = { 'CORRECT', 'CHECK', 'YES', 'Y' } },
     },
 
     gui_style = {
@@ -71,6 +72,7 @@ return {
       debug_color = { 'AlgorithmDebug', '#56BD26' },
       stage = { 'AlgorithmStage', '#C104C4' },
       perf = { 'AlgorithmPerf', '#B61C67' },
+      correct = { 'AlgorithmPerf', '#3CE154' },
     },
 
     search = {

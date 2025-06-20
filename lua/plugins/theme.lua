@@ -29,7 +29,6 @@ return {
     vim.cmd [[highlight BufferAlternateADDED guibg=#282A3F guifg=#43E661]]
 
     if vim.g.neovide then
-      -- This is a comment
       vim.opt.guifont = 'Monaspace Radon Var'
     end
   end,
