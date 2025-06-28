@@ -21,6 +21,8 @@ return {
   opts = {
     icons_enabled = vim.g.have_nerd_font,
 
+    theme = 'monokai-pro',
+
     extensions = {
       'fzf',
       'mason',

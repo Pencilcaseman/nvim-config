@@ -1,12 +1,16 @@
 return {
   'utilyre/barbecue.nvim',
-  name = 'barbecue',
-  version = '*',
-  event = 'VeryLazy',
+
   dependencies = {
     'SmiteshP/nvim-navic',
   },
+
+  name = 'barbecue',
+  version = '*',
+  event = 'VeryLazy',
+
   opts = {
-    theme = 'tokyonight',
+    -- theme = 'tokyonight',
+    theme = 'monokai-pro',
   },
 }
