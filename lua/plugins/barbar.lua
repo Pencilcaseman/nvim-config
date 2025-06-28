@@ -22,8 +22,6 @@ return {
       buffer_number = false,
       button = false,
 
-      separator = { left = '▎', right = '' },
-
       diagnostics = {
         [vim.diagnostic.severity.ERROR] = { enabled = true },
         [vim.diagnostic.severity.WARN] = { enabled = true },

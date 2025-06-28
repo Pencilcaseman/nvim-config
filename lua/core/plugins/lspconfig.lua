@@ -4,6 +4,7 @@ get_mason_packages = function()
     'ansible-lint',
     'ast-grep',
     'basedpyright',
+    'biome',
     'checkmake',
     'clang-format',
     'clangd',
@@ -14,7 +15,6 @@ get_mason_packages = function()
     'delve',
     'docker-compose-language-service',
     'dockerfile-language-server',
-    'eslint-lsp',
     'flake8',
     'hadolint',
     'java-debug-adapter',
@@ -35,7 +35,6 @@ get_mason_packages = function()
     'tectonic',
     'texlab',
     'tinymist',
-    'vtsls',
     'zls',
   }
 
