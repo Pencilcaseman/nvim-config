@@ -66,7 +66,7 @@ elseif theme == 'monokai-pro' then
 
       vim.cmd [[highlight LazyGitBorder guibg=#FF0000 guifg=#00FF00]]
       vim.cmd [[highlight BufferTabpageFill guibg=#2C2A2E]]
-      vim.cmd [[highlight FloatBorder guibg=#AC9CF2 guifg=#AC9CF2]]
+      vim.cmd [[highlight LazyGitBorder guibg=#AC9CF2 guifg=#AC9CF2]]
 
       if vim.g.neovide then
         vim.opt.guifont = 'Monaspace Radon Var'

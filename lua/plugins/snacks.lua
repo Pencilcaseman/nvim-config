@@ -90,7 +90,8 @@ return {
         cherryPickedCommitBgColor = { fg = 'Identifier' },
         cherryPickedCommitFgColor = { fg = 'Function' },
         defaultFgColor = { fg = 'Normal' },
-        inactiveBorderColor = { fg = 'FloatBorder' },
+        -- inactiveBorderColor = { fg = 'FloatBorder' },
+        inactiveBorderColor = { fg = 'LazyGitBorder' },
         optionsTextColor = { fg = 'Function' },
         searchingActiveBorderColor = { fg = 'MatchParen', bold = true },
         selectedLineBgColor = { bg = 'Visual' }, -- set to `default` to have no background colour
