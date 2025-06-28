@@ -6,15 +6,17 @@
 
 ## Introduction
 
-This is my custom Neovim configuration with a collection of useful plugins,
+This is my Neovim configuration, containing a collection of useful plugins,
 keybinds and settings.
 
-It is based off [Kickstart.Nvim](https://github.com/nvim-lua/kickstart.nvim),
-which is a wonderful starting point for a custom configuration. The actual code
-was originally forked from
-[Kickstart-Modular.nvim](https://github.com/dam9000/kickstart-modular.nvim),
+It was originally built upon [Kickstart-Modular.nvim](https://github.com/dam9000/kickstart-modular.nvim),
 which is a fork of the original Kickstart configuration with some changes made
 to simplify the project layout.
+
+### Screenshots
+
+For more screenshots of the configuration, please refer to [the `images`
+directory](https://github.com/Pencilcaseman/nvim-config/tree/master/images)
 
 ## Installation
 
