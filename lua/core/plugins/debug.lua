@@ -51,6 +51,7 @@ return {
 
     dependencies = {
       { 'rcarriga/nvim-dap-ui' },
+      { 'leoluz/nvim-dap-go' },
       {
         'theHamsta/nvim-dap-virtual-text',
         opts = {},
