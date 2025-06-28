@@ -1,5 +1,9 @@
 # Neovim Configuration
 
+![dashboard](./images/dashboard.png)
+
+![debugger](./images/debug.png)
+
 ## Introduction
 
 This is my custom Neovim configuration with a collection of useful plugins,

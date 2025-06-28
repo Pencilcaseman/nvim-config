@@ -64,13 +64,37 @@ return {
       },
     },
 
-    explorer = { enabled = true },
+    explorer = { enabled = false },
+
+    -- explorer = {
+    --   enabled = true,
+    --   -- theme = {
+    --   --   SnacksPickerDirectory = 'MatchParen',
+    --   --   -- Another thing
+    --   -- },
+    -- },
 
     indent = {
       enabled = true,
       hl = 'SnacksIndent',
       animate = {
         enabled = false,
+      },
+    },
+
+    lazygit = {
+      enabled = true,
+      theme = {
+        [241] = { fg = 'Special' },
+        activeBorderColor = { fg = 'MatchParen', bold = true },
+        cherryPickedCommitBgColor = { fg = 'Identifier' },
+        cherryPickedCommitFgColor = { fg = 'Function' },
+        defaultFgColor = { fg = 'Normal' },
+        inactiveBorderColor = { fg = 'FloatBorder' },
+        optionsTextColor = { fg = 'Function' },
+        searchingActiveBorderColor = { fg = 'MatchParen', bold = true },
+        selectedLineBgColor = { bg = 'Visual' }, -- set to `default` to have no background colour
+        unstagedChangesColor = { fg = 'DiagnosticError' },
       },
     },
 
@@ -90,23 +114,6 @@ return {
   end,
 
   keys = {
-    -- Top Pickers & Explorer
-    {
-      '<leader>e',
-      function()
-        Snacks.explorer.open()
-      end,
-      desc = 'File [E]xplorer',
-    },
-
-    {
-      '<leader>E',
-      function()
-        Snacks.explorer.reveal()
-      end,
-      desc = 'File [E]xplorer',
-    },
-
     -- stylua: ignore start
 
     -- Top Pickers & Explorer
@@ -120,19 +127,20 @@ return {
     { '<leader>s"', function() Snacks.picker.registers() end, desc = "[S]earch Registers" },
 
     -- git
-    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
-    { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
-    { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
-    { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-    { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
-    { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "[G]it [B]ranches" },
+    { "<leader>gl", function() Snacks.picker.git_log() end, desc = "[G]it [L]og" },
+    { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "[G]it Log [L]ine" },
+    { "<leader>gs", function() Snacks.picker.git_status() end, desc = "[G]it [S]tatus" },
+    { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "[G]it [S]tash" },
+    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "[G]it [D]iff (Hunks)" },
+    { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "[G]it Log [F]ile" },
+    { "<leader>gg", function() Snacks.lazygit.open() end, desc = "Lazy[G]it"},
 
     -- find
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
 
-    -- Grep
+    -- grep
     { "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
     { "<leader>sg", function() Snacks.picker.grep() end, desc = "[S]earch [G]rep" },
