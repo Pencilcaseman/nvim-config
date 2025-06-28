@@ -68,6 +68,15 @@ elseif theme == 'monokai-pro' then
       vim.cmd [[highlight BufferTabpageFill guibg=#2C2A2E]]
       vim.cmd [[highlight LazyGitBorder guibg=#AC9CF2 guifg=#AC9CF2]]
 
+      vim.cmd [[highlight FidgetTitle  guifg=#C792EA gui=bold]]
+      vim.cmd [[highlight FidgetTask   guifg=#FFFFFF]]
+      vim.cmd [[highlight FidgetNormal guibg=#2A2A2A]]
+      vim.cmd [[highlight FidgetDone   guifg=#A0E8A0]]
+      vim.cmd [[highlight FidgetSpin   guifg=#61AFEF]]
+
+      vim.cmd [[highlight FidgetProgressBar guibg=#61AFEF]]
+      vim.cmd [[highlight FidgetProgressText  guifg=#000000 gui=bold]]
+
       if vim.g.neovide then
         vim.opt.guifont = 'Monaspace Radon Var'
       end
