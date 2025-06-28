@@ -1,6 +1,8 @@
 return {
   'chentoast/marks.nvim',
-  event = 'VeryLazy',
+
+  -- event = 'VeryLazy',
+  event = 'LazyFile',
 
   opts = {
     default_mappings = false,

@@ -14,7 +14,10 @@ end
 
 return {
   'nvim-lualine/lualine.nvim',
-  event = 'VeryLazy',
+
+  -- event = 'VeryLazy',
+  event = 'LazyFile',
+
   dependencies = {
     'yavorski/lualine-macro-recording.nvim',
   },

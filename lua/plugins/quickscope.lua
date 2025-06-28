@@ -1,6 +1,9 @@
 return {
   'unblevable/quick-scope',
-  event = 'VeryLazy',
+
+  -- event = 'VeryLazy',
+  event = 'LazyFile',
+
   config = function()
     -- We have to delay the highlight until after the colorscheme is loaded
     vim.defer_fn(function()

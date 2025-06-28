@@ -7,7 +7,8 @@ return {
 
   name = 'barbecue',
   version = '*',
-  event = 'VeryLazy',
+
+  event = 'LazyFile',
 
   opts = {
     -- theme = 'tokyonight',
