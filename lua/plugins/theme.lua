@@ -64,9 +64,9 @@ elseif theme == 'monokai-pro' then
 
       vim.cmd [[colorscheme monokai-pro]]
 
-      vim.cmd [[highlight LazyGitBorder guibg=#FF0000 guifg=#00FF00]]
+      vim.cmd [[highlight LazyGitBorder     guibg=#FF0000 guifg=#00FF00]]
       vim.cmd [[highlight BufferTabpageFill guibg=#2C2A2E]]
-      vim.cmd [[highlight LazyGitBorder guibg=#AC9CF2 guifg=#AC9CF2]]
+      vim.cmd [[highlight LazyGitBorder     guibg=#AC9CF2 guifg=#AC9CF2]]
 
       vim.cmd [[highlight FidgetTitle  guifg=#C792EA gui=bold]]
       vim.cmd [[highlight FidgetTask   guifg=#FFFFFF]]
@@ -76,6 +76,9 @@ elseif theme == 'monokai-pro' then
 
       vim.cmd [[highlight FidgetProgressBar guibg=#61AFEF]]
       vim.cmd [[highlight FidgetProgressText  guifg=#000000 gui=bold]]
+
+      vim.cmd [[highlight FlashMatch guibg=#4E3188]]
+      vim.cmd [[highlight FlashLabel guibg=#134881 guifg=#54D2FB gui=bold]]
 
       if vim.g.neovide then
         vim.opt.guifont = 'Monaspace Radon Var'
