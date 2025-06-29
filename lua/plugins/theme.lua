@@ -77,8 +77,8 @@ elseif theme == 'monokai-pro' then
       vim.cmd [[highlight FidgetProgressBar guibg=#61AFEF]]
       vim.cmd [[highlight FidgetProgressText  guifg=#000000 gui=bold]]
 
-      vim.cmd [[highlight FlashMatch guibg=#4E3188]]
-      vim.cmd [[highlight FlashLabel guibg=#134881 guifg=#54D2FB gui=bold]]
+      vim.cmd [[highlight FlashMatch guibg=#2D4561]]
+      vim.cmd [[highlight FlashLabel guibg=#2D4561 guifg=#81FFFF gui=bold]]
 
       if vim.g.neovide then
         vim.opt.guifont = 'Monaspace Radon Var'
