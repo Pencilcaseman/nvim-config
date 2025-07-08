@@ -1,6 +1,6 @@
 return {
   'Civitasv/cmake-tools.nvim',
-  cmd = 'CMake', -- Only load when the 'CMake' command is run
+  event = 'VeryLazy',
   dependencies = {
     'stevearc/overseer.nvim',
     'nvim-lua/plenary.nvim',

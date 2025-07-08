@@ -4,8 +4,7 @@ local disable_filetypes = {
 }
 
 local disabled_filepaths = {
-  vim.fs.normalize '/Users/tobydavis/Library/CloudStorage/Dropbox/University/Modules/ArtificialIntelligence/Coursework/AISearch/templates',
-  vim.fs.normalize '/Users/tobydavis/Library/CloudStorage/Dropbox/University/Modules/ArtificialIntelligence/Coursework/AISearch/cltz62',
+  -- vim.fs.normalize '/my/path',
 }
 
 local disable_by_filetype = function(bufnr)
@@ -56,21 +55,65 @@ end
 
 return {
   'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
+
+  -- event = { 'BufWritePre' },
+  event = { 'LazyFile' },
+
   cmd = { 'ConformInfo' },
+
   keys = {
     {
       '<leader>f',
       function()
+        -- Format regardless of the autoformatting option
+        vim.g.conform_format_override = true
         require('conform').format { async = true, lsp_format = 'fallback' }
+        vim.g.conform_format_override = false
       end,
       mode = '',
       desc = '[F]ormat buffer',
     },
+
+    {
+      '<leader>tf',
+      function()
+        -- If autoformat is currently disabled for this buffer, enable it,
+        -- otherwise disable it
+        if vim.b.disable_autoformat then
+          vim.cmd 'FormatEnable'
+          vim.notify 'Enabled autoformat for current buffer'
+        else
+          vim.cmd 'FormatDisable!'
+          vim.notify 'Disabled autoformat for current buffer'
+        end
+      end,
+      desc = '[T]oggle Auto[F]ormat for the Current Buffer',
+    },
+
+    {
+      '<leader>tF',
+      function()
+        -- If autoformat is currently disabled globally, enable it globally,
+        -- otherwise disable it globally
+        if vim.g.disable_autoformat then
+          vim.cmd 'FormatEnable'
+          vim.notify 'Enabled autoformat globally'
+        else
+          vim.cmd 'FormatDisable'
+          vim.notify 'Disabled autoformat globally'
+        end
+      end,
+      desc = '[T]oggle Auto[F]ormat Globally',
+    },
   },
+
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
+      if vim.g.conform_format_override or vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        return
+      end
+
       local lsp_format_opt
 
       if disable_by_filepath(bufnr) or disable_by_filetype(bufnr) then
@@ -94,4 +137,28 @@ return {
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
     },
   },
+
+  config = function(_, opts)
+    require('conform').setup(opts)
+
+    vim.api.nvim_create_user_command('FormatDisable', function(args)
+      if args.bang then
+        -- :FormatDisable! disables autoformat for this buffer only
+        vim.b.disable_autoformat = true
+      else
+        -- :FormatDisable disables autoformat globally
+        vim.g.disable_autoformat = true
+      end
+    end, {
+      desc = 'Disable autoformat-on-save',
+      bang = true, -- allows the bang variant
+    })
+
+    vim.api.nvim_create_user_command('FormatEnable', function()
+      vim.b.disable_autoformat = false
+      vim.g.disable_autoformat = false
+    end, {
+      desc = 'Re-enable autoformat-on-save',
+    })
+  end,
 }
