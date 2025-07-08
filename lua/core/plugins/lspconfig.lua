@@ -17,6 +17,7 @@ get_mason_packages = function()
     'dockerfile-language-server',
     'flake8',
     'hadolint',
+    'harper-ls',
     'java-debug-adapter',
     'java-test',
     'jdtls',
