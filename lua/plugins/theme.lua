@@ -1,5 +1,6 @@
 -- local theme = 'tokyonight'
 local theme = 'monokai-pro'
+-- local theme = 'none'
 
 if theme == 'tokyonight' then
   return {

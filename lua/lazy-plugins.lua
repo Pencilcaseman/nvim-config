@@ -1,6 +1,5 @@
 local plugins = {
   require 'core/plugins/which-key',
-  require 'core/plugins/tokyonight',
   require 'core/plugins/mini',
   require 'core/plugins/treesitter',
   require 'core/plugins/lint',
