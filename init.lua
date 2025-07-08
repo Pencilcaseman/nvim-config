@@ -43,6 +43,9 @@ vim.g.loaded_netrwPlugin = true
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
+-- Inherit environment from original shell
+vim.opt.shellcmdflag = "-lc"
+
 require 'options'
 require 'keymaps'
 require 'lazy-bootstrap'
