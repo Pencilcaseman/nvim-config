@@ -3,7 +3,6 @@ return {
     'nvim-treesitter/nvim-treesitter',
 
     version = false,
-    -- event = 'VeryLazy',
     event = { 'BufReadPost', 'BufNewFile' },
 
     build = ':TSUpdate',
@@ -55,7 +54,7 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
 
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
 
     opts = {
       auto_install = true,
