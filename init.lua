@@ -12,7 +12,7 @@ if vim.env.PROF then
   }
 end
 
-vim.o.winborder = 'double'
+-- vim.o.winborder = 'double'
 
 -- Set this to false if you do not have a NerdFont installed
 vim.g.have_nerd_font = true
@@ -44,7 +44,7 @@ vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 -- Inherit environment from original shell
-vim.opt.shellcmdflag = "-lc"
+vim.opt.shellcmdflag = '-lc'
 
 require 'options'
 require 'keymaps'

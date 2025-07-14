@@ -1,5 +1,8 @@
 -- local theme = 'tokyonight'
-local theme = 'monokai-pro'
+-- local theme = 'monokai-pro'
+-- local theme = 'onedarkpro'
+-- local theme = 'catppuccin'
+local theme = 'kanagawa'
 -- local theme = 'none'
 
 if theme == 'tokyonight' then
@@ -84,6 +87,124 @@ elseif theme == 'monokai-pro' then
       if vim.g.neovide then
         vim.opt.guifont = 'Monaspace Radon Var'
       end
+    end,
+  }
+elseif theme == 'onedarkpro' then
+  return {
+    'olimorris/onedarkpro.nvim',
+
+    lazy = false,
+    priority = 1000,
+
+    opts = {},
+
+    config = function(_, opts)
+      require('onedarkpro').setup(opts)
+
+      vim.cmd [[colorscheme onedark_vivid]]
+    end,
+  }
+elseif theme == 'catppuccin' then
+  return {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+
+    opts = {
+      default_integrations = false,
+
+      integrations = {
+        barbar = true,
+        barbecue = {
+          dim_dirname = true, -- directory name is dimmed by default
+          bold_basename = true,
+          dim_context = false,
+          alt_background = false,
+        },
+        fidget = true,
+        flash = true,
+        gitsigns = true,
+        grug_far = true,
+        indent_blankline = {
+          enabled = true,
+          scope_color = '', -- catppuccin color (eg. `lavender`) Default: text
+          colored_indent_levels = false,
+        },
+        mason = true,
+        neotree = true,
+        noice = true,
+        dap = true,
+        dap_ui = true,
+
+        native_lsp = {
+          enabled = true,
+          virtual_text = {
+            errors = { 'italic' },
+            hints = { 'italic' },
+            warnings = { 'italic' },
+            information = { 'italic' },
+            ok = { 'italic' },
+          },
+          underlines = {
+            errors = { 'underline' },
+            hints = { 'underline' },
+            warnings = { 'underline' },
+            information = { 'underline' },
+            ok = { 'underline' },
+          },
+          inlay_hints = {
+            background = true,
+          },
+        },
+
+        notify = true,
+
+        nvim_surround = true,
+        treesitter = true,
+        overseer = true,
+        render_markdown = true,
+        which_key = true,
+      },
+    },
+
+    config = function(_, opts)
+      require('catppuccin').setup(opts)
+
+      vim.cmd [[colorscheme catppuccin-mocha]]
+    end,
+  }
+elseif theme == 'kanagawa' then
+  return {
+    'rebelot/kanagawa.nvim',
+
+    opts = {
+      compile = true,
+      commentStyle = { italic = true },
+      functionStyle = {},
+      keywordStyle = { italic = true },
+      statementStyle = { bold = true },
+      typeStyle = {},
+      transparent = false,
+      dimInactive = false,
+      terminalColors = true,
+      colors = {
+        palette = {},
+        theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+      },
+      overrides = function(colors)
+        return {}
+      end,
+      theme = 'wave',
+      background = {
+        dark = 'wave',
+        light = 'lotus',
+      },
+    },
+
+    config = function(_, opts)
+      require('kanagawa').setup(opts)
+
+      vim.cmd [[colorscheme kanagawa]]
     end,
   }
 else
