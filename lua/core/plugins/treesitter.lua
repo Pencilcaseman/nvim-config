@@ -1,3 +1,7 @@
+local custom_extensions = {
+  { name = 'rune', ext = 'rn', map_to = 'rust' },
+}
+
 return {
   {
     'nvim-treesitter/nvim-treesitter',
@@ -99,6 +103,19 @@ return {
     },
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
+
+      for key, _ in pairs(custom_extensions) do
+        local item = custom_extensions[key]
+
+        vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+          pattern = '*.' .. item.ext,
+          callback = function()
+            vim.bo.filetype = item.name
+          end,
+        })
+
+        vim.treesitter.language.register(item.map_to, item.name)
+      end
     end,
   },
 }
