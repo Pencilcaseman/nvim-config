@@ -35,6 +35,10 @@ return {
         deleted = { enabled = true, icon = '-' },
       },
 
+      separator = {
+        left = '',
+      },
+
       filetype = {
         custom_colors = false,
         enabled = true,
