@@ -11,7 +11,7 @@ return {
 
   dependencies = {
     'xzbdmw/colorful-menu.nvim',
-    'rafamadriz/friendly-snippets',
+    -- 'rafamadriz/friendly-snippets',
   },
 
   event = 'InsertEnter',
