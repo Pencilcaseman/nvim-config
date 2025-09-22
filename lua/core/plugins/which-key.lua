@@ -49,7 +49,6 @@ return {
         { '<leader>f', group = '[F]ile Explorer' },
         { '<leader>g', group = '[G]it' },
         { '<leader>o', group = '[O]oversser' },
-        { '<leader>S', group = '[S]urround' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
