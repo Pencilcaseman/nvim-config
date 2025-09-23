@@ -20,37 +20,37 @@ return {
       },
     }
     require('mini.bracketed').setup()
-    require('mini.files').setup {
-      windows = {
-        preview = true,
-        width_preview = 80,
-      },
-    }
+    -- require('mini.files').setup {
+    --   windows = {
+    --     preview = true,
+    --     width_preview = 80,
+    --   },
+    -- }
     require('mini.colors').setup()
   end,
 
-  keys = {
-    {
-      '<leader>e',
-      function()
-        if MiniFiles.get_explorer_state() then
-          MiniFiles.close()
-        else
-          MiniFiles.open()
-        end
-      end,
-      desc = 'File [E]xplorer',
-    },
-    {
-      '<leader>E',
-      function()
-        if MiniFiles.get_explorer_state() then
-          MiniFiles.close()
-        else
-          MiniFiles.open(vim.api.nvim_buf_get_name(0))
-        end
-      end,
-      desc = 'File [E]xplorer',
-    },
-  },
+  -- keys = {
+  --   {
+  --     '<leader>e',
+  --     function()
+  --       if MiniFiles.get_explorer_state() then
+  --         MiniFiles.close()
+  --       else
+  --         MiniFiles.open()
+  --       end
+  --     end,
+  --     desc = 'File [E]xplorer',
+  --   },
+  --   {
+  --     '<leader>E',
+  --     function()
+  --       if MiniFiles.get_explorer_state() then
+  --         MiniFiles.close()
+  --       else
+  --         MiniFiles.open(vim.api.nvim_buf_get_name(0))
+  --       end
+  --     end,
+  --     desc = 'File [E]xplorer',
+  --   },
+  -- },
 }
