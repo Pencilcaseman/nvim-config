@@ -8,8 +8,6 @@ return {
 
   ---@type snacks.Config
   opts = {
-    -- bigfile = { enabled = true },
-
     dashboard = {
       enabled = true,
 
