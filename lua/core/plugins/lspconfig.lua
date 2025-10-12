@@ -36,6 +36,7 @@ get_mason_packages = function()
     'tectonic',
     'texlab',
     'tinymist',
+    'typstyle',
     'zls',
   }
 
