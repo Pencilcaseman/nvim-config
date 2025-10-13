@@ -5,7 +5,7 @@ return {
   config = function()
     require('mini.ai').setup()
     require('mini.comment').setup()
-    require('mini.pairs').setup()
+    -- require('mini.pairs').setup() -- auto-pairs
     require('mini.surround').setup {
       mappings = {
         add = 'ra', -- Add surrounding in Normal and Visual modes
