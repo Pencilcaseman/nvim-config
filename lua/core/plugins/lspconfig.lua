@@ -64,11 +64,17 @@ return {
             },
           },
         },
+        harper_ls = {
+          settings = {
+            ['harper-ls'] = {
+              dialect = 'British',
+            },
+          },
+        },
       },
     },
 
     config = function(_, opts)
-      local lspconfig = require 'lspconfig'
       local cmp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
       vim.diagnostic.config {
@@ -85,7 +91,7 @@ return {
           function(server_name)
             local server_opts = opts.servers[server_name] or {}
             server_opts.capabilities = vim.tbl_deep_extend('force', {}, cmp_capabilities, server_opts.capabilities or {})
-            lspconfig[server_name].setup(server_opts)
+            vim.lsp.config(server_name, server_opts)
           end,
         },
       }
