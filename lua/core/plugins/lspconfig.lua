@@ -64,13 +64,6 @@ return {
             },
           },
         },
-        harper_ls = {
-          settings = {
-            ['harper-ls'] = {
-              dialect = 'British',
-            },
-          },
-        },
       },
     },
 
@@ -82,6 +75,14 @@ return {
         signs = true, -- Show signs in the gutter
         update_in_insert = true, -- Update diagnostics while typing
       }
+
+      vim.lsp.config('harper_ls', {
+        settings = {
+          ['harper-ls'] = {
+            dialect = 'British',
+          },
+        },
+      })
 
       require('mason-lspconfig').setup {
         automatic_enable = true,
