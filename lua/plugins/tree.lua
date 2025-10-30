@@ -10,6 +10,8 @@ return {
 
     keys = {
       { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'File [E]xplorer' },
+      { '<leader>fe', '<cmd>Neotree toggle reveal<cr>', desc = '[F]ind File in [E]xplorer' },
+      { '<leader>E', '<cmd>Neotree toggle current<cr>', desc = 'File [E]xplorer in Current Tab' },
     },
   },
 }
