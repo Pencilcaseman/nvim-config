@@ -3,6 +3,8 @@ return {
   event = 'VeryLazy',
   version = false,
   config = function()
+    vim.keymap.set({ 'n', 'x' }, 'r', '<Nop>')
+
     require('mini.ai').setup()
     require('mini.comment').setup()
     -- require('mini.pairs').setup() -- auto-pairs
