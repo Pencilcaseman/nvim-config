@@ -10,6 +10,10 @@ return {
       vim.cmd [[highlight QuickScopePrimary guifg=#afff5f guibg=none gui=underline,bold cterm=underline,bold]]
       vim.cmd [[highlight QuickScopeSecondary guifg=#5fffff guibg=none gui=underline,bold cterm=underline,bold]]
 
+      -- Invert foreground and background
+      -- vim.cmd [[highlight QuickScopePrimary guifg=NONE guibg=NONE gui=reverse,bold cterm=reverse,bold]]
+      -- vim.cmd [[highlight QuickScopeSecondary guifg=NONE guibg=NONE gui=reverse,bold cterm=reverse,bold]]
+
       vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
 
       -- stylua: ignore
