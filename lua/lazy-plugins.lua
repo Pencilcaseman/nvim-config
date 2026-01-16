@@ -5,7 +5,7 @@ local plugins = {
   require 'core/plugins/lint',
   require 'core/plugins/gitsigns',
   require 'core/plugins/lspconfig',
-  require 'core.plugins.conform',
+  require 'core/plugins/conform',
   require 'core/plugins/debug',
 }
 

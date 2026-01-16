@@ -12,8 +12,6 @@ if vim.env.PROF then
   }
 end
 
--- vim.o.winborder = 'double'
-
 -- Set this to false if you do not have a NerdFont installed
 vim.g.have_nerd_font = true
 
@@ -36,9 +34,6 @@ vim.opt.modelines = 3
 
 vim.opt.showtabline = 2 -- Always reserve space for the tabline (barbar)
 vim.opt.winbar = 'NeoVim > Bread > Crumbs' -- Preload space for barbecue
-
-vim.g.loaded_netrw = true
-vim.g.loaded_netrwPlugin = true
 
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

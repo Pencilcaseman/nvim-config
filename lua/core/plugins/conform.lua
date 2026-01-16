@@ -63,7 +63,7 @@ return {
 
   keys = {
     {
-      '<leader>f',
+      '<leader>F',
       function()
         -- Format regardless of the autoformatting option
         vim.g.conform_format_override = true
@@ -131,11 +131,6 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       typst = { 'typstyle', lsp_format = 'prefer' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
     },
   },
 
