@@ -56,7 +56,6 @@ end
 return {
   'stevearc/conform.nvim',
 
-  -- event = { 'BufWritePre' },
   event = { 'LazyFile' },
 
   cmd = { 'ConformInfo' },

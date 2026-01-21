@@ -17,7 +17,7 @@ get_mason_packages = function()
     'dockerfile-language-server',
     'flake8',
     'hadolint',
-    -- 'harper-ls',
+    'harper-ls',
     'java-debug-adapter',
     'java-test',
     'jdtls',
@@ -45,79 +45,62 @@ end
 return {
   {
     'neovim/nvim-lspconfig',
-
     event = 'VeryLazy',
 
     dependencies = {
-      { 'mason-org/mason.nvim' },
-      { 'mason-org/mason-lspconfig.nvim', config = function() end },
-      { 'saghen/blink.cmp' },
+      'mason-org/mason.nvim',
+      'mason-org/mason-lspconfig.nvim',
+      'saghen/blink.cmp',
     },
 
-    opts = {
-      autoformat = false,
-      servers = {
-        tinymist = {
-          settings = {
-            tinymist = {
-              formatterMode = 'typstyle',
-            },
-          },
-        },
-      },
-    },
-
-    config = function(_, opts)
-      local cmp_capabilities = require('blink.cmp').get_lsp_capabilities()
+    config = function()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       vim.diagnostic.config {
-        virtual_text = true, -- Show diagnostics inline (virtual text)
-        signs = true, -- Show signs in the gutter
-        update_in_insert = true, -- Update diagnostics while typing
+        virtual_text = false,
+        signs = true,
+        update_in_insert = true,
       }
+
+      local server_configs = {
+        tinymist = {
+          settings = {
+            tinymist = { formatterMode = 'typstyle' },
+          },
+        },
+      }
+
+      for name, cfg in pairs(server_configs) do
+        cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
+
+        vim.lsp.config(name, cfg)
+      end
 
       require('mason-lspconfig').setup {
         automatic_enable = true,
         automatic_installation = true,
-        ensure_installed = {},
-        handlers = {
-          function(server_name)
-            local server_opts = opts.servers[server_name] or {}
-            server_opts.capabilities = vim.tbl_deep_extend('force', {}, cmp_capabilities, server_opts.capabilities or {})
-            vim.lsp.config(server_name, server_opts)
-          end,
-        },
       }
 
-      -- LSP Keybindings
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
-        callback = function(event)
-          local map = function(keys, func, desc, mode)
-            vim.keymap.set(mode or 'n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+        group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
+        callback = function(ev)
+          local buf = ev.buf
+
+          local function map(keys, fn, desc)
+            vim.keymap.set('n', keys, fn, { buffer = buf, desc = 'LSP: ' .. desc })
           end
 
-          -- Code Actions
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          map('gd', vim.lsp.buf.definition, '[G]o to [D]efinition')
+          map('gr', vim.lsp.buf.references, '[G]o to [R]eferences')
+          map('K', vim.lsp.buf.hover, 'Hover')
         end,
       })
     end,
   },
 
   {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-
-  {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
 
     cmd = 'Mason',
     build = ':MasonUpdate',

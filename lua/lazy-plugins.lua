@@ -2,7 +2,6 @@ local plugins = {
   require 'core/plugins/which-key',
   require 'core/plugins/mini',
   require 'core/plugins/treesitter',
-  require 'core/plugins/lint',
   require 'core/plugins/gitsigns',
   require 'core/plugins/lspconfig',
   require 'core/plugins/conform',
