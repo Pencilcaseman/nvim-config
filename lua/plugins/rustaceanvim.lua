@@ -1,5 +1,6 @@
-return {
-  'mrcjkb/rustaceanvim',
-  version = '^5', -- Recommended
-  lazy = false, -- This plugin is already lazy
-}
+local add, now = MiniDeps.add, MiniDeps.now
+
+now(function()
+  -- Already lazy
+  add 'mrcjkb/rustaceanvim'
+end)

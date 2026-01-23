@@ -1,15 +1,14 @@
-return {
-  'saecki/crates.nvim',
-  event = { 'BufRead Cargo.toml' },
-  opts = {
+local add, later = MiniDeps.add, MiniDeps.later
+
+later(function()
+  add 'saecki/crates.nvim'
+
+  require('crates').setup {
     lsp = {
       enabled = true,
       actions = true,
       completion = true,
       hover = true,
     },
-  },
-  config = function(_, opts)
-    require('crates').setup(opts)
-  end,
-}
+  }
+end)

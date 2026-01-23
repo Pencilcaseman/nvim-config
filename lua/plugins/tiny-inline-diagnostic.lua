@@ -1,9 +1,10 @@
-return {
-  'rachartier/tiny-inline-diagnostic.nvim',
-  event = 'VeryLazy',
-  priority = 1000,
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local now_if_args = _G.Config.now_if_args
 
-  opts = {
+later(function()
+  add 'rachartier/tiny-inline-diagnostic.nvim'
+
+  require('tiny-inline-diagnostic').setup {
     preset = 'powerline',
 
     options = {
@@ -11,10 +12,8 @@ return {
         enabled = true,
       },
     },
-  },
+  }
 
-  config = function(_, opts)
-    require('tiny-inline-diagnostic').setup(opts)
-    vim.diagnostic.config { virtual_text = false } -- Disable Neovim's default virtual text diagnostics
-  end,
-}
+  -- Disable Neovim's default virtual text diagnostics
+  vim.diagnostic.config { virtual_text = false }
+end)

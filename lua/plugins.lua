@@ -1,11 +1,20 @@
-local add, later = MiniDeps.add, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+require 'plugins.theme'
 
-later(function()
-  add 'windwp/nvim-autopairs'
-  require('nvim-autopairs').setup {}
-end)
+require 'plugins.treesitter'
+require 'plugins.lspconfig'
+
+require 'plugins.mini'
+
+require 'plugins.blink'
 
 require 'plugins.barbar'
 require 'plugins.barbeque'
+require 'plugins.illuminate'
+require 'plugins.debug'
 require 'plugins.conform'
+
+require 'plugins.tiny-inline-diagnostic'
+require 'plugins.haskell_tools'
+require 'plugins.vimtex'
+require 'plugins.typst_preview'
+require 'plugins.rustaceanvim'

@@ -1,28 +1,39 @@
-return {
-  'saghen/blink.cmp',
+local add = MiniDeps.add
+local now_if_args = _G.Config.now_if_args
 
-  cond = function()
-    if vim.g.vscode then
-      return false
-    end
+function build_blink(params)
+  vim.notify('Building blink.cmp', vim.log.levels.INFO)
+  local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = params.path }):wait()
+  if obj.code == 0 then
+    vim.notify('Building blink.cmp done', vim.log.levels.INFO)
+  else
+    vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
+  end
+end
 
-    return true
-  end,
+now_if_args(function()
+  if vim.g.vscode then
+    return
+  end
 
-  dependencies = {
-    'xzbdmw/colorful-menu.nvim',
-    -- 'rafamadriz/friendly-snippets',
-  },
+  add {
+    source = 'saghen/blink.cmp',
+    checkout = 'main',
+    hooks = {
+      post_install = build_blink,
+      post_checkout = build_blink,
+    },
+    depends = {
+      'xzbdmw/colorful-menu.nvim',
+    },
+  }
 
-  event = 'InsertEnter',
-  version = '*',
-
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
+  require('blink.cmp').setup {
     keymap = { preset = 'super-tab' },
 
-    -- signature = { window = { border = 'single' } },
+    fuzzy = {
+      implementation = 'prefer_rust',
+    },
 
     appearance = {
       nerd_font_variant = 'normal',
@@ -37,8 +48,6 @@ return {
       },
     },
 
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
@@ -49,7 +58,6 @@ return {
       },
 
       menu = {
-        -- border = 'single',
         scrollbar = false,
 
         draw = {
@@ -68,7 +76,6 @@ return {
       },
 
       documentation = {
-        -- border = 'single',
         auto_show = true,
         auto_show_delay_ms = 200,
       },
@@ -77,13 +84,5 @@ return {
         enabled = true,
       },
     },
-
-    -- Experimental
-    -- signature = {
-    --   enabled = true,
-    --   window = { show_documentation = false },
-    -- },
-  },
-
-  opts_extend = { 'sources.default' },
-}
+  }
+end)

@@ -1,17 +1,11 @@
-return {
-  'lervag/vimtex',
+local add, later = MiniDeps.add, MiniDeps.later
 
-  ft = 'tex',
+later(function()
+  add 'lervag/vimtex'
 
-  init = function()
-    vim.g.vimtex_view_method = 'skim'
-  end,
-
-  config = function()
-    vim.g.vimtex_view_method = 'skim'
-    vim.g.vimtex_complete_enabled = 1
-    vim.g.vimtex_matchparen_enabled = 1
-    vim.g.vimtex_syntax_enabled = 1
-    vim.g.vimtex_fold_enabled = 0
-  end,
-}
+  vim.g.vimtex_view_method = 'skim'
+  vim.g.vimtex_complete_enabled = 1
+  vim.g.vimtex_matchparen_enabled = 1
+  vim.g.vimtex_syntax_enabled = 1
+  vim.g.vimtex_fold_enabled = 0
+end)

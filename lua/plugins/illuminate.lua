@@ -1,16 +1,14 @@
-return {
-  'RRethy/vim-illuminate',
-  event = 'LazyFile',
-  opts = {
+local add, later = MiniDeps.add, MiniDeps.later
+
+later(function()
+  add 'RRethy/vim-illuminate'
+
+  require('illuminate').configure {
     providers = {
       'lsp',
       'treesitter',
       -- 'regex',
     },
     delay = 200,
-  },
-
-  config = function(_, opts)
-    require('illuminate').configure(opts)
-  end,
-}
+  }
+end)
