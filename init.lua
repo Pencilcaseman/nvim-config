@@ -2,15 +2,15 @@ if vim.loader then
   vim.loader.enable()
 end
 
-if vim.env.PROF then
-  local snacks = vim.fn.stdpath 'data' .. '/lazy/snacks.nvim'
-  vim.opt.rtp:append(snacks)
-  require('snacks.profiler').startup {
-    startup = {
-      event = 'VimEnter',
-    },
-  }
-end
+-- if vim.env.PROF then
+--   local snacks = vim.fn.stdpath 'data' .. '/lazy/snacks.nvim'
+--   vim.opt.rtp:append(snacks)
+--   require('snacks.profiler').startup {
+--     startup = {
+--       event = 'VimEnter',
+--     },
+--   }
+-- end
 
 -- Set this to false if you do not have a NerdFont installed
 vim.g.have_nerd_font = true
@@ -43,7 +43,7 @@ vim.opt.shellcmdflag = '-lc'
 
 require 'options'
 require 'keymaps'
-require 'lazy-bootstrap'
-require 'lazy-plugins'
+require 'bootstrap-mini-deps'
+require 'plugins'
 require 'custom-commands'
 require 'autocmds'

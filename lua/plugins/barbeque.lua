@@ -1,17 +1,13 @@
-return {
-  'utilyre/barbecue.nvim',
+local add, later = MiniDeps.add, MiniDeps.later
+local now_if_args = _G.Config.now_if_args
 
-  dependencies = {
-    'SmiteshP/nvim-navic',
-  },
+later(function()
+    add({
+        source = 'utilyre/barbecue.nvim',
+        depends = {
+            'SmiteshP/nvim-navic',
+        }
+    })
 
-  name = 'barbecue',
-  version = '*',
-
-  event = 'LazyFile',
-
-  opts = {
-    -- theme = 'tokyonight',
-    theme = 'monokai-pro',
-  },
-}
+    require('barbecue').setup({})
+end)
