@@ -1,5 +1,18 @@
 local now, later = MiniDeps.now, MiniDeps.later
 
+local function map(keys, fn, desc)
+  vim.keymap.set('n', keys, fn, { buffer = buf, desc = desc })
+end
+
+local nmap_leader = function(suffix, rhs, desc)
+  vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
+end
+
+local xmap_leader = function(suffix, rhs, desc)
+  vim.keymap.set('x', '<Leader>' .. suffix, rhs, { desc = desc })
+end
+
+
 -- stylua: ignore start
 now(function() require('mini.starter').setup() end)
 
@@ -23,33 +36,17 @@ later(function() require('mini.trailspace').setup() end)
 
 -- stylua: ignore end
 
--- now(function()
---   vim.opt.sessionoptions:append 'globals'
---
---   require('mini.sessions').setup {
---     autoread = true,
---     autowrite = true,
---
---     force = { read = false, write = true, delete = true },
---   }
--- end)
-
 now(function()
-  vim.opt.sessionoptions:append 'globals'
-
   require('mini.sessions').setup {
-    autoread = true,
-    autowrite = true,
     force = { read = false, write = true, delete = true },
-
-    hooks = {
-      pre = {
-        write = function()
-          vim.api.nvim_exec_autocmds('User', { pattern = 'SessionSavePre' })
-        end,
-      },
-    },
   }
+end)
+
+later(function()
+  require('mini.tabline').setup {}
+
+  map('H', '<CMD>bprev<CR>', 'Previous  Buffer')
+  map('L', '<CMD>bnext<CR>', 'Next Buffer')
 end)
 
 later(function()
@@ -77,19 +74,6 @@ later(function()
       width_preview = 60,
     },
   }
-end)
-
-later(function()
-  require('mini.files').setup {
-    windows = {
-      preview = true,
-      width_preview = 60,
-    },
-  }
-
-  local function map(keys, fn, desc)
-    vim.keymap.set('n', keys, fn, { buffer = buf, desc = 'LSP: ' .. desc })
-  end
 
   -- File explorer
   map('<leader>e', function()
@@ -169,14 +153,6 @@ later(function()
     },
   }
 end)
-
-local nmap_leader = function(suffix, rhs, desc)
-  vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
-end
-
-local xmap_leader = function(suffix, rhs, desc)
-  vim.keymap.set('x', '<Leader>' .. suffix, rhs, { desc = desc })
-end
 
 local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
 local git_log_buf_cmd = git_log_cmd .. ' --follow -- %'

@@ -1,14 +1,14 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add, now = MiniDeps.add, MiniDeps.now
 
-later(function()
+now(function()
+  vim.g.barbar_auto_setup = false
+
   add {
     source = 'romgrk/barbar.nvim',
     depends = {
       'nvim-tree/nvim-web-devicons',
     },
   }
-
-  vim.g.barbar_auto_setup = false
 
   require('barbar').setup {
     animation = true,

@@ -1,6 +1,5 @@
 require 'plugins.theme'
 
-require 'plugins.resession'
 require 'plugins.sleuth'
 require 'plugins.treesitter'
 require 'plugins.lspconfig'
@@ -9,7 +8,7 @@ require 'plugins.mini'
 
 require 'plugins.blink'
 
-require 'plugins.barbar'
+-- require 'plugins.barbar'
 require 'plugins.barbeque'
 require 'plugins.illuminate'
 require 'plugins.conform'
