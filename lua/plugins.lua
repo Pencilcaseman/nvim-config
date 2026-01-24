@@ -8,11 +8,11 @@ require 'plugins.mini'
 
 require 'plugins.blink'
 
--- require 'plugins.barbar'
 require 'plugins.barbeque'
 require 'plugins.illuminate'
 require 'plugins.conform'
 require 'plugins.marks'
+require 'plugins.indent-blanklines'
 
 require 'plugins.tiny-inline-diagnostic'
 require 'plugins.haskell_tools'

@@ -25,9 +25,6 @@ vim.opt.modelines = 3
 vim.opt.showtabline = 2 -- Always reserve space for the tabline (barbar)
 vim.opt.winbar = 'NeoVim > Bread > Crumbs' -- Preload space for barbecue
 
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-
 -- Inherit environment from original shell
 vim.opt.shellcmdflag = '-lc'
 

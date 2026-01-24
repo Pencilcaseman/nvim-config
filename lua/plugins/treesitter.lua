@@ -4,34 +4,53 @@ local now_if_args = _G.Config.now_if_args
 local ts_langs = {
   'bash',
   'c',
+  'c_sharp',
   'cpp',
+  'css',
+  'csv',
   'diff',
+  'dockerfile',
   'elixir',
   'git_config',
-  'heex',
+  'gitcommit',
+  'gitignore',
+  'go',
+  'gomod',
+  'graphql',
   'haskell',
+  'heex',
   'html',
-  'java',
+  'ini',
   'java',
   'javascript',
+  'jsdoc',
   'json',
-  'jsonc',
   'lua',
+  'luadoc',
+  'make',
   'markdown',
   'markdown_inline',
+  'php',
   'python',
   'query',
   'regex',
   'rust',
+  'scss',
+  'sql',
+  'svelte',
+  'terraform',
   'toml',
+  'tsx',
   'typescript',
   'vim',
   'vimdoc',
+  'vue',
+  'xml',
   'yaml',
 }
 
 local ts_post_install = function()
-  require('nvim-treesitter').install(ts_langs, { force = true })
+  vim.cmd 'TSUpdate'
 end
 
 now_if_args(function()
@@ -46,6 +65,8 @@ now_if_args(function()
 
   local treesitter = require 'nvim-treesitter'
   treesitter.setup()
+
+  treesitter.install(ts_langs)
 
   vim.api.nvim_create_autocmd('FileType', {
     pattern = '*',
