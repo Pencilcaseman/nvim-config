@@ -24,7 +24,7 @@ later(function() require('mini.comment').setup() end)
 later(function() require('mini.diff').setup() end)
 later(function() require('mini.extra').setup() end)
 later(function() require('mini.git').setup() end)
-later(function() require('mini.indentscope').setup() end)
+-- later(function() require('mini.indentscope').setup() end)
 later(function() require('mini.jump').setup() end)
 later(function() require('mini.jump2d').setup() end)
 later(function() require('mini.keymap').setup() end)
@@ -96,13 +96,15 @@ end)
 later(function()
   local miniclue = require 'mini.clue'
 
-  leader_group_clues = {
+  local leader_group_clues = {
     { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
     { mode = 'n', keys = '<Leader>c', desc = '+Code' },
     { mode = 'n', keys = '<Leader>d', desc = '+Debug' },
     { mode = 'n', keys = '<Leader>e', desc = '+Explore/Edit' },
     { mode = 'n', keys = '<Leader>o', desc = '+Overseer' },
     { mode = 'n', keys = '<Leader>s', desc = '+Search' },
+
+    -- { mode = 'n', keys = 'm', desc = '+Marks' },
   }
 
   miniclue.setup {
@@ -132,6 +134,7 @@ later(function()
       { mode = { 'n', 'x' }, keys = 's' }, -- `s` key (mini.surround, etc.)
       { mode = { 'n', 'x' }, keys = 'z' }, -- `z` key
     },
+
     window = {
       delay = 0,
     },

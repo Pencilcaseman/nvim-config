@@ -1,34 +1,62 @@
 local add = MiniDeps.add
 local now_if_args = _G.Config.now_if_args
 
+local ts_langs = {
+  'bash',
+  'c',
+  'cpp',
+  'diff',
+  'elixir',
+  'git_config',
+  'heex',
+  'haskell',
+  'html',
+  'java',
+  'java',
+  'javascript',
+  'json',
+  'jsonc',
+  'lua',
+  'markdown',
+  'markdown_inline',
+  'python',
+  'query',
+  'regex',
+  'rust',
+  'toml',
+  'typescript',
+  'vim',
+  'vimdoc',
+  'yaml',
+}
+
+local ts_post_install = function()
+  require('nvim-treesitter').install(ts_langs, { force = true })
+end
+
 now_if_args(function()
   add {
     source = 'nvim-treesitter/nvim-treesitter',
+    checkout = 'main',
     hooks = {
-      post_checkout = function()
-        vim.cmd 'TSUpdateSync'
-        vim.cmd 'TSUpdate'
-        vim.cmd 'TSInstall'
-      end,
+      post_install = ts_post_install,
+      post_checkout = ts_post_install,
     },
   }
 
-  require('nvim-treesitter').setup {
-    sync_install = false,
-    auto_install = true,
-    highlight = { enable = true },
-    indent = { enable = true },
-  }
+  local treesitter = require 'nvim-treesitter'
+  treesitter.setup()
 
   vim.api.nvim_create_autocmd('FileType', {
-    pattern = { '<filetype>' },
-    callback = function()
-      -- Start treesitter on file open
-      vim.treesitter.start()
+    pattern = '*',
+    callback = function(args)
+      local ok = pcall(vim.treesitter.start)
 
-      -- Folding
-      vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.wo[0][0].foldmethod = 'expr'
+      if ok then
+        vim.wo[0][0].foldmethod = 'expr'
+        vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.bo[args.buf].indentexpr = 'v:lua.vim.treesitter.indent.get()'
+      end
     end,
   })
 end)
