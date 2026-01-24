@@ -1,76 +1,74 @@
 local add, later = MiniDeps.add, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
 
 later(function()
-    add({
-        source = 'romgrk/barbar.nvim',
-        depends = {
-            'nvim-tree/nvim-web-devicons',
-        }
-    })
+  add {
+    source = 'romgrk/barbar.nvim',
+    depends = {
+      'nvim-tree/nvim-web-devicons',
+    },
+  }
 
-    vim.g.barbar_auto_setup = false
+  vim.g.barbar_auto_setup = false
 
-    require('barbar').setup {
-        animation = true,
-        auto_hide = false,
-        tabpages = true,
-        clickable = true,
+  require('barbar').setup {
+    animation = true,
+    auto_hide = false,
+    tabpages = true,
+    clickable = true,
 
-        highlight_alternate = false,
-        highlight_inactive_file_icons = false,
-        highlight_visible = false,
+    highlight_alternate = false,
+    highlight_inactive_file_icons = false,
+    highlight_visible = false,
 
-        icons = {
-            buffer_index = true,
-            buffer_number = false,
-            button = false,
+    icons = {
+      buffer_index = true,
+      buffer_number = false,
+      button = false,
 
-            diagnostics = {
-                [vim.diagnostic.severity.ERROR] = { enabled = true },
-                [vim.diagnostic.severity.WARN] = { enabled = true },
-                [vim.diagnostic.severity.INFO] = { enabled = true },
-                [vim.diagnostic.severity.HINT] = { enabled = true },
-            },
+      diagnostics = {
+        [vim.diagnostic.severity.ERROR] = { enabled = true },
+        [vim.diagnostic.severity.WARN] = { enabled = true },
+        [vim.diagnostic.severity.INFO] = { enabled = true },
+        [vim.diagnostic.severity.HINT] = { enabled = true },
+      },
 
-            separator = {
-                left = '',
-            },
+      separator = {
+        left = '',
+      },
 
-            filetype = {
-                custom_colors = false,
-                enabled = true,
-            },
+      filetype = {
+        custom_colors = false,
+        enabled = true,
+      },
 
-            modified = { button = '󰧞' },
-            pinned = { button = '󰐃', filename = true },
-            alternate = { filetype = { enabled = false } },
-            current = { buffer_index = true },
-            inactive = { button = false },
-            visible = { modified = { buffer_number = false } },
-        },
+      modified = { button = '󰧞' },
+      pinned = { button = '󰐃', filename = true },
+      alternate = { filetype = { enabled = false } },
+      current = { buffer_index = true },
+      inactive = { button = false },
+      visible = { modified = { buffer_number = false } },
+    },
 
-        insert_at_end = true,
-        insert_at_start = false,
-        maximum_padding = 1,
-        minimum_padding = 1,
-        maximum_length = 30,
-        semantic_letters = true,
-        letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
-        no_name_title = nil,
-    }
+    insert_at_end = true,
+    insert_at_start = false,
+    maximum_padding = 1,
+    minimum_padding = 1,
+    maximum_length = 30,
+    semantic_letters = true,
+    letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
+    no_name_title = nil,
+  }
 
-    -- 5. Keymaps (equivalent to 'keys' in lazy)
-    local map = vim.api.nvim_set_keymap
+  local map = vim.api.nvim_set_keymap
 
-    map('n', 'H', '<CMD>BufferPrevious<CR>', { desc = 'Move to the left buffer', noremap = true })
-    map('n', 'L', '<CMD>BufferNext<CR>', { desc = 'Move to the right buffer', noremap = true })
+  map('n', 'H', '<CMD>BufferPrevious<CR>', { desc = 'Move to the left buffer', noremap = true })
+  map('n', 'L', '<CMD>BufferNext<CR>', { desc = 'Move to the right buffer', noremap = true })
 
-    map('n', '<space>bp', '<CMD>BufferPin<CR>', { desc = 'Pin the current buffer', noremap = true })
-    map('n', '<space>bc', '<CMD>BufferClose<CR>', { desc = 'Close the current buffer', noremap = true })
-    map('n', '<space>bC', '<CMD>BufferCloseAllButCurrentOrPinned<CR>', { desc = 'Close all but the current buffer or pinned buffers', noremap = true })
-    map('n', '<space>bg', '<CMD>BufferPick<CR>', { desc = 'Magic pick buffers', noremap = true })
+  map('n', '<space>bp', '<CMD>BufferPin<CR>', { desc = 'Pin the current buffer', noremap = true })
+  map('n', '<space>bc', '<CMD>BufferClose<CR>', { desc = 'Close the current buffer', noremap = true })
+  map('n', '<space>bC', '<CMD>BufferCloseAllButCurrentOrPinned<CR>', { desc = 'Close all but the current buffer or pinned buffers', noremap = true })
+  map('n', '<space>bg', '<CMD>BufferPick<CR>', { desc = 'Magic pick buffers', noremap = true })
 
-    map('n', '<S-left>', '<CMD>BufferMovePrevious<CR>', { desc = 'Move the current buffer left', noremap = true })
-    map('n', '<S-right>', '<CMD>BufferMoveNext<CR>', { desc = 'Move the current buffer right', noremap = true })
+  map('n', '<S-left>', '<CMD>BufferMovePrevious<CR>', { desc = 'Move the current buffer left', noremap = true })
+  map('n', '<S-right>', '<CMD>BufferMoveNext<CR>', { desc = 'Move the current buffer right', noremap = true })
 end)

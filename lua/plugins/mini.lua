@@ -23,13 +23,23 @@ later(function() require('mini.trailspace').setup() end)
 
 -- stylua: ignore end
 
+-- now(function()
+--   vim.opt.sessionoptions:append 'globals'
+--
+--   require('mini.sessions').setup {
+--     autoread = true,
+--     autowrite = true,
+--
+--     force = { read = false, write = true, delete = true },
+--   }
+-- end)
+
 now(function()
   vim.opt.sessionoptions:append 'globals'
 
   require('mini.sessions').setup {
     autoread = true,
     autowrite = true,
-
     force = { read = false, write = true, delete = true },
 
     hooks = {
