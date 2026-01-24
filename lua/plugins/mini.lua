@@ -1,5 +1,4 @@
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local now, later = MiniDeps.now, MiniDeps.later
 
 -- stylua: ignore start
 now(function() require('mini.starter').setup() end)
@@ -18,10 +17,30 @@ later(function() require('mini.jump2d').setup() end)
 later(function() require('mini.keymap').setup() end)
 later(function() require('mini.notify').setup() end)
 later(function() require('mini.pick').setup() end)
+later(function() require('mini.statusline').setup() end)
 later(function() require('mini.surround').setup() end)
 later(function() require('mini.trailspace').setup() end)
 
 -- stylua: ignore end
+
+now(function()
+  vim.opt.sessionoptions:append 'globals'
+
+  require('mini.sessions').setup {
+    autoread = true,
+    autowrite = true,
+
+    force = { read = false, write = true, delete = true },
+
+    hooks = {
+      pre = {
+        write = function()
+          vim.api.nvim_exec_autocmds('User', { pattern = 'SessionSavePre' })
+        end,
+      },
+    },
+  }
+end)
 
 later(function()
   require('mini.pairs').setup {
@@ -85,9 +104,11 @@ later(function()
 
   leader_group_clues = {
     { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
+    { mode = 'n', keys = '<Leader>c', desc = '+Code' },
+    { mode = 'n', keys = '<Leader>d', desc = '+Debug' },
     { mode = 'n', keys = '<Leader>e', desc = '+Explore/Edit' },
-    { mode = 'n', keys = '<Leader>s', desc = '+Search' },
     { mode = 'n', keys = '<Leader>o', desc = '+Overseer' },
+    { mode = 'n', keys = '<Leader>s', desc = '+Search' },
   }
 
   miniclue.setup {
@@ -129,8 +150,8 @@ later(function()
   hipatterns.setup {
     highlighters = {
       fixme = hi_words({ 'FIXME', 'Fixme', 'fixme' }, 'MiniHipatternsFixme'),
+      panic = hi_words({ 'PANIC', 'Panic', 'panic' }, 'MiniHipatternsFixme'),
       hack = hi_words({ 'HACK', 'Hack', 'hack' }, 'MiniHipatternsHack'),
-      panic = hi_words({ 'PANIC', 'Panic', 'panic' }, 'MiniHipatternsHack'),
       todo = hi_words({ 'TODO', 'Todo', 'todo' }, 'MiniHipatternsTodo'),
       note = hi_words({ 'NOTE', 'Note', 'note' }, 'MiniHipatternsNote'),
 
@@ -149,6 +170,29 @@ end
 
 local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
 local git_log_buf_cmd = git_log_cmd .. ' --follow -- %'
+
+local function session_action(action)
+  return function()
+    local mini_sessions = require 'mini.sessions'
+
+    vim.ui.input({ prompt = 'Session Name: ' }, function(name)
+      -- Cancel if user hits Esc or enters nothing
+      if name == nil then
+        return
+      end
+
+      if name == '' then
+        name = nil
+      end
+
+      if action == 'write' then
+        mini_sessions.write(name)
+      elseif action == 'delete' then
+        mini_sessions.delete(name)
+      end
+    end)
+  end
+end
 
 -- stylua: ignore start
 nmap_leader('s/', '<Cmd>Pick history scope="/"<CR>',            '"/" history')
@@ -186,4 +230,7 @@ nmap_leader('go', '<Cmd>lua MiniDiff.toggle_overlay()<CR>', 'Toggle overlay')
 nmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>',  'Show at cursor')
 
 nmap_leader('xs', '<Cmd>lua MiniGit.show_at_cursor()<CR>',  'Show at selection')
+
+nmap_leader('msd', session_action("delete"),  'Delete Session')
+nmap_leader('msw', session_action("write"),   'Write Session')
 -- stylua: ignore end

@@ -1,7 +1,7 @@
 local add = MiniDeps.add
 local now_if_args = _G.Config.now_if_args
 
-function build_blink(params)
+local function build_blink(params)
   vim.notify('Building blink.cmp', vim.log.levels.INFO)
   local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = params.path }):wait()
   if obj.code == 0 then

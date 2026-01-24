@@ -1,22 +1,20 @@
-return {
-  'stevearc/overseer.nvim',
-  keys = function(_, keys)
-    return {
-      { '<leader>ob', '<CMD>OverseerBuild<CR>', desc = '[O]verseer [B]uild' },
-      { '<leader>oc', '<CMD>OverseerClose<CR>', desc = '[O]verseer [C]lose' },
-      { '<leader>od', '<CMD>OverseerDeleteBundle<CR>', desc = '[O]verseer [D]elete Bundle' },
-      { '<leader>ol', '<CMD>OverseerLoadBundle<CR>', desc = '[O]verseer [L]oad Bundle' },
-      { '<leader>oo', '<CMD>OverseerOpen<CR>', desc = '[O]verseer [O]pen' },
-      { '<leader>or', '<CMD>OverseerRun<CR>', desc = '[O]verseer [R]un' },
-      { '<leader>os', '<CMD>OverseerSaveBundle<CR>', desc = '[O]verseer [S]ave Bundle' },
-      { '<leader>ot', '<CMD>OverseerTaskAction<CR>', desc = '[O]verseer [T]ask Action' },
-      { '<leader>ot', '<CMD>OverseerTaskAction<CR>', desc = '[O]verseer [T]ask Action' },
+local add, later = MiniDeps.add, MiniDeps.later
 
-      unpack(keys),
-    }
-  end,
-  opts = {},
-  config = function(_, opts)
-    require('overseer').setup(opts)
-  end,
-}
+later(function()
+  add 'stevearc/overseer.nvim'
+  require('overseer').setup {}
+
+  local nmap_leader = function(suffix, rhs, desc)
+    vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
+  end
+
+  nmap_leader('ob', '<CMD>OverseerBuild<CR>', '[O]verseer [B]uild')
+  nmap_leader('oc', '<CMD>OverseerClose<CR>', '[O]verseer [C]lose')
+  nmap_leader('od', '<CMD>OverseerDeleteBundle<CR>', '[O]verseer [D]elete Bundle')
+  nmap_leader('ol', '<CMD>OverseerLoadBundle<CR>', '[O]verseer [L]oad Bundle')
+  nmap_leader('oo', '<CMD>OverseerOpen<CR>', '[O]verseer [O]pen')
+  nmap_leader('or', '<CMD>OverseerRun<CR>', '[O]verseer [R]un')
+  nmap_leader('os', '<CMD>OverseerSaveBundle<CR>', '[O]verseer [S]ave Bundle')
+  nmap_leader('ot', '<CMD>OverseerTaskAction<CR>', '[O]verseer [T]ask Action')
+  nmap_leader('ot', '<CMD>OverseerTaskAction<CR>', '[O]verseer [T]ask Action')
+end)

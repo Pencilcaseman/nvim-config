@@ -1,3 +1,5 @@
-return {
-  'tpope/vim-sleuth',
-}
+local now, add = MiniDeps.now, MiniDeps.add
+
+now(function()
+  add 'tpope/vim-sleuth'
+end)

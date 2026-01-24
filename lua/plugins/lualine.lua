@@ -1,3 +1,6 @@
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local now_if_args = _G.Config.now_if_args
+
 local function format(component, text, hl_group)
   if not hl_group then
     return text
@@ -82,6 +85,59 @@ local function pretty_path(opts)
     return dirpath .. parts[#parts]
   end
 end
+
+later(function()
+  add {
+    source = 'nvim-lualine/lualine.nvim',
+    depends = {
+      'yavorski/lualine-macro-recording.nvim',
+    },
+  }
+
+  require('lualine').config {
+    icons_enabled = vim.g.have_nerd_font,
+
+    extensions = {
+      'fzf',
+      'mason',
+      'nvim-dap-ui',
+      'overseer',
+      'toggleterm',
+    },
+
+    sections = {
+      lualine_a = {
+        {
+          'mode',
+          fmt = function(str)
+            -- Formats as:
+            -- NORMAL => NOR
+            -- INSERT => INS
+            -- VISUAL => VIS
+            return str:sub(1, 3)
+          end,
+        },
+      },
+      lualine_b = { 'branch', 'diff', 'diagnostics' },
+      -- lualine_c = { 'filename', 'macro_recording' },
+      lualine_c = { {
+        pretty_path { filename_hl = 'Bold', modified_hl = 'MatchParen' },
+      }, 'macro_recording' },
+      lualine_x = { selection_count, 'encoding', 'fileformat', 'filetype' },
+      lualine_y = { 'progress' },
+      lualine_z = { 'location' },
+    },
+
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = { 'filename' },
+      lualine_x = { 'location' },
+      lualine_y = {},
+      lualine_z = {},
+    },
+  }
+end)
 
 return {
   'nvim-lualine/lualine.nvim',
