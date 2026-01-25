@@ -104,6 +104,13 @@ later(function()
     { mode = 'n', keys = '<Leader>o', desc = '+Overseer' },
     { mode = 'n', keys = '<Leader>s', desc = '+Search' },
 
+    { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
+    { mode = 'n', keys = '<Leader>c', desc = '+Code' },
+    { mode = 'n', keys = '<Leader>d', desc = '+Debug' },
+    { mode = 'n', keys = '<Leader>e', desc = '+Explore/Edit' },
+    { mode = 'n', keys = '<Leader>o', desc = '+Overseer' },
+    { mode = 'n', keys = '<Leader>s', desc = '+Search' },
+
     -- { mode = 'n', keys = 'm', desc = '+Marks' },
   }
 
@@ -133,6 +140,10 @@ later(function()
       { mode = 'n', keys = '<C-w>' }, -- Window commands
       { mode = { 'n', 'x' }, keys = 's' }, -- `s` key (mini.surround, etc.)
       { mode = { 'n', 'x' }, keys = 'z' }, -- `z` key
+      { mode = { 'x', 'o' }, keys = 'a' }, -- Text objects
+      { mode = { 'x', 'o' }, keys = 'i' },
+      { mode = { 'x', 'o' }, keys = 'l' },
+      { mode = { 'x', 'o' }, keys = 'r' },
     },
 
     window = {

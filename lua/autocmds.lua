@@ -1,12 +1,4 @@
 -- #############################################################################
--- Automatically resize splits to keep them the same size
--- #############################################################################
-vim.api.nvim_create_autocmd('VimResized', {
-  pattern = '*',
-  command = 'wincmd =',
-})
-
--- #############################################################################
 -- Save the relative position of the cursor in the window when switching buffers
 -- #############################################################################
 
