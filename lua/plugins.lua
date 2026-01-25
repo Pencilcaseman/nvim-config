@@ -15,10 +15,7 @@ require 'plugins.marks'
 require 'plugins.indent-blanklines'
 
 require 'plugins.tiny-inline-diagnostic'
-require 'plugins.haskell_tools'
-require 'plugins.vimtex'
 require 'plugins.typst_preview'
-require 'plugins.rustaceanvim'
 
 require 'plugins.overseer'
 require 'plugins.debug'
