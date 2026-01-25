@@ -90,7 +90,7 @@ now_if_args(function()
 
   vim.diagnostic.config {
     virtual_text = false,
-    signs = true,
+    signs = false,
     update_in_insert = true,
   }
 

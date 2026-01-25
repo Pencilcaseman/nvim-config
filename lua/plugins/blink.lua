@@ -1,5 +1,4 @@
-local add = MiniDeps.add
-local now_if_args = _G.Config.now_if_args
+local add, later = MiniDeps.add, MiniDeps.later
 
 local function build_blink(params)
   vim.notify('Building blink.cmp', vim.log.levels.INFO)
@@ -11,7 +10,7 @@ local function build_blink(params)
   end
 end
 
-now_if_args(function()
+later(function()
   if vim.g.vscode then
     return
   end

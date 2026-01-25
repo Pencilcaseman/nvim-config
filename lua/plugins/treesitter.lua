@@ -1,4 +1,4 @@
-local add = MiniDeps.add
+local add, later = MiniDeps.add, MiniDeps.later
 local now_if_args = _G.Config.now_if_args
 
 local ts_langs = {
@@ -82,7 +82,7 @@ now_if_args(function()
   })
 end)
 
-now_if_args(function()
+later(function()
   add {
     source = 'nvim-treesitter/nvim-treesitter-textobjects',
     checkout = 'main',
@@ -103,31 +103,20 @@ now_if_args(function()
     },
   }
 
-  -- -- Define the wrapper function
-  -- local function map_obj(key, query, group)
-  --   vim.keymap.set({ 'x', 'o' }, key, function()
-  --     require('nvim-treesitter-textobjects.select').select_textobject(query, group or 'textobjects')
-  --   end, {
-  --     desc = 'TS' .. query,
-  --   })
-  -- end
-
   local function map_obj(key, query, group)
-    -- Clean up the query string to make a nice description
-    -- e.g., "@function.outer" -> "Function"
     local desc = query
-      :gsub('^@', '') -- Remove @
-      :gsub('%.outer$', '') -- Remove .outer
-      :gsub('%.inner$', '') -- Remove .inner
-      :gsub('%.lhs$', ' Left') -- .lhs -> Left
-      :gsub('%.rhs$', ' Right') -- .rhs -> Right
-      :gsub('%.scope$', '') -- Remove .scope
+      :gsub('^@', '') -- Remove '@'
+      :gsub('%.outer$', '') -- Remove '.outer'
+      :gsub('%.inner$', '') -- Remove '.inner'
+      :gsub('%.lhs$', ' Left') -- '.lhs' -> 'Left'
+      :gsub('%.rhs$', ' Right') -- '.rhs' -> 'Right'
+      :gsub('%.scope$', '') -- Remove '.scope'
       :gsub('^%l', string.upper) -- Capitalize first letter
 
     vim.keymap.set({ 'x', 'o' }, key, function()
       require('nvim-treesitter-textobjects.select').select_textobject(query, group or 'textobjects')
     end, {
-      desc = desc, -- mini.clue will use this!
+      desc = desc,
     })
   end
 

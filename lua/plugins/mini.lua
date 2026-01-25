@@ -8,10 +8,6 @@ local nmap_leader = function(suffix, rhs, desc)
   vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
 end
 
-local xmap_leader = function(suffix, rhs, desc)
-  vim.keymap.set('x', '<Leader>' .. suffix, rhs, { desc = desc })
-end
-
 
 -- stylua: ignore start
 now(function() require('mini.starter').setup() end)
@@ -21,10 +17,8 @@ later(function() require('mini.align').setup() end)
 later(function() require('mini.bracketed').setup() end)
 later(function() require('mini.colors').setup() end)
 later(function() require('mini.comment').setup() end)
-later(function() require('mini.diff').setup() end)
 later(function() require('mini.extra').setup() end)
 later(function() require('mini.git').setup() end)
--- later(function() require('mini.indentscope').setup() end)
 later(function() require('mini.jump').setup() end)
 later(function() require('mini.jump2d').setup() end)
 later(function() require('mini.keymap').setup() end)
@@ -43,10 +37,24 @@ now(function()
 end)
 
 later(function()
+  require('mini.diff').setup {
+    view = {
+      style = 'sign',
+    },
+  }
+
+  -- Change colors slightly to make them stand out more
+  vim.cmd [[ highlight MiniDiffSignAdd guifg=#67cc20 ]]
+  vim.cmd [[ highlight MiniDiffSignChange guifg=#46a1f0 ]]
+  vim.cmd [[ highlight MiniDiffSignDelete guifg=#ff5c43 ]]
+end)
+
+later(function()
   require('mini.tabline').setup {}
 
-  map('H', '<CMD>bprev<CR>', 'Previous  Buffer')
+  map('H', '<CMD>bprev<CR>', 'Previous Buffer')
   map('L', '<CMD>bnext<CR>', 'Next Buffer')
+  map('<leader>bd', '<CMD>bd<CR>', 'Delete Buffer')
 end)
 
 later(function()
