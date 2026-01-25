@@ -76,7 +76,7 @@ now_if_args(function()
       if ok then
         vim.wo[0][0].foldmethod = 'expr'
         vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-        vim.bo[args.buf].indentexpr = 'v:lua.vim.treesitter.indent.get()'
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end
     end,
   })

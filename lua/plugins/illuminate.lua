@@ -7,8 +7,8 @@ later(function()
     providers = {
       'lsp',
       'treesitter',
-      -- 'regex',
+      'regex',
     },
-    delay = 200,
+    delay = 0,
   }
 end)
