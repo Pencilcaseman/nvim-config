@@ -83,5 +83,8 @@ later(function()
         enabled = true,
       },
     },
+
+    -- Experimental
+    signature = { enabled = true },
   }
 end)

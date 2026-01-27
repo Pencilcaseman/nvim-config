@@ -100,6 +100,9 @@ now_if_args(function()
         tinymist = { formatterMode = 'typstyle' },
       },
     },
+    clangd = {
+      cmd = { 'clangd', '--query-driver=/nix/store/*/bin/*' },
+    },
   }
 
   for name, cfg in pairs(server_configs) do

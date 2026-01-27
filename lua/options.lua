@@ -1,32 +1,18 @@
--- [[ Setting options ]]
-
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Conceal level 2
 vim.opt.conceallevel = 2
 
--- Column limit at 80 -- higlight at 81
+-- Column limit at 80 -- highlight at 81
 vim.opt.colorcolumn = '81'
 vim.opt.textwidth = 80
 
--- Enable mouse mode, can be useful for resizing splits for example!
+-- Enable mouse mode
 vim.opt.mouse = 'a'
-
--- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
 
 -- Break on words instead of characters
 vim.opt.linebreak = true
-
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -38,8 +24,9 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+-- Enable signcolumn and add space for two items (diff and marks)
+vim.opt.signcolumn = 'yes:2'
+-- vim.opt.signcolumn = 'auto:3'
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -48,24 +35,13 @@ vim.opt.updatetime = 250
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
--- Preview substitutions live, as you type!
+-- Preview substitutions live
 vim.opt.inccommand = 'split'
 
--- Show which line your cursor is on
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 5
 
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-
+-- Disable folding on startup
 vim.wo.foldlevel = 100
-
--- vim: ts=2 sts=2 sw=2 et
