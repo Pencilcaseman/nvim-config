@@ -5,6 +5,7 @@ require 'plugins.treesitter'
 require 'plugins.lspconfig'
 
 require 'plugins.mini'
+require 'plugins.flash'
 
 require 'plugins.blink'
 
