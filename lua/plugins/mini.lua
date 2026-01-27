@@ -15,18 +15,20 @@ now(function() require('mini.starter').setup() end)
 later(function() require('mini.ai').setup() end)
 later(function() require('mini.align').setup() end)
 later(function() require('mini.bracketed').setup() end)
+later(function() require('mini.bufremove').setup() end)
 later(function() require('mini.colors').setup() end)
 later(function() require('mini.comment').setup() end)
 later(function() require('mini.extra').setup() end)
 later(function() require('mini.git').setup() end)
-later(function() require('mini.jump').setup() end)
-later(function() require('mini.jump2d').setup() end)
+-- later(function() require('mini.jump').setup() end)
 later(function() require('mini.keymap').setup() end)
+later(function() require('mini.misc').setup() end)
 later(function() require('mini.notify').setup() end)
 later(function() require('mini.pick').setup() end)
 later(function() require('mini.statusline').setup() end)
 later(function() require('mini.surround').setup() end)
 later(function() require('mini.trailspace').setup() end)
+later(function() require('mini.visits').setup() end)
 
 -- stylua: ignore end
 
@@ -37,13 +39,34 @@ now(function()
 end)
 
 later(function()
+  require('mini.basics').setup {
+    options = {
+      basic = true,
+      extra_ui = true,
+      win_borders = 'double', -- single, double, auto
+    },
+
+    mappings = {
+      basic = true,
+      option_toggle_prefix = [[\]],
+      windows = true,
+    },
+
+    autocommands = {
+      basic = true,
+      relnum_in_visual_mode = false,
+    },
+  }
+end)
+
+later(function()
   require('mini.diff').setup {
     view = {
-      style = 'sign',
+      style = 'sign', -- 'sign' or 'number'
     },
   }
 
-  -- Change colors slightly to make them stand out more
+  -- -- Change colors slightly to make them stand out more
   vim.cmd [[ highlight MiniDiffSignAdd guifg=#67cc20 ]]
   vim.cmd [[ highlight MiniDiffSignChange guifg=#46a1f0 ]]
   vim.cmd [[ highlight MiniDiffSignDelete guifg=#ff5c43 ]]
@@ -54,7 +77,8 @@ later(function()
 
   map('H', '<CMD>bprev<CR>', 'Previous Buffer')
   map('L', '<CMD>bnext<CR>', 'Next Buffer')
-  map('<leader>bd', '<CMD>bd<CR>', 'Delete Buffer')
+  map('<leader>bd', MiniBufremove.delete, 'Delete Buffer')
+  map('<leader>bD', '<CMD>CloseAllButCurrent<CR>', 'Delete Buffer')
 end)
 
 later(function()
@@ -209,8 +233,8 @@ nmap_leader('sa', '<Cmd>Pick git_hunks scope="staged"<CR>',     'Added hunks (al
 nmap_leader('sb', '<Cmd>Pick buffers<CR>',                      'Buffers')
 nmap_leader('sc', '<Cmd>Pick git_commits<CR>',                  'Commits (all)')
 nmap_leader('sC', '<Cmd>Pick git_commits path="%"<CR>',         'Commits (buf)')
-nmap_leader('sd', '<Cmd>Pick diagnostic scope="all"<CR>',       'Diagnostic workspace')
-nmap_leader('sD', '<Cmd>Pick diagnostic scope="current"<CR>',   'Diagnostic buffer')
+nmap_leader('sd', '<Cmd>Pick diagnostic scope="current"<CR>',   'Diagnostic buffer')
+nmap_leader('sD', '<Cmd>Pick diagnostic scope="all"<CR>',       'Diagnostic workspace')
 nmap_leader('sf', '<Cmd>Pick files<CR>',                        'Files')
 nmap_leader('sg', '<Cmd>Pick grep_live<CR>',                    'Grep live')
 nmap_leader('sG', '<Cmd>Pick grep pattern="<cword>"<CR>',       'Grep current word')
