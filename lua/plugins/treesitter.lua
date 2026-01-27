@@ -151,8 +151,8 @@ later(function()
   -- Assignments (e.g. x = 10)
   map_obj('a=', '@assignment.outer')
   map_obj('i=', '@assignment.inner')
-  map_obj('l=', '@assignment.lhs') -- Left-hand side
-  map_obj('r=', '@assignment.rhs') -- Right-hand side
+  -- map_obj('l=', '@assignment.lhs') -- Left-hand side
+  -- map_obj('r=', '@assignment.rhs') -- Right-hand side
 
   -- Blocks (content inside {})
   map_obj('ab', '@block.outer')
