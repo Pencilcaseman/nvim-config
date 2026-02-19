@@ -63,6 +63,7 @@ now_if_args(function()
   local ensured_packages = get_mason_packages()
 
   require('mason').setup {
+    PATH = 'append',
     ensure_installed = ensured_packages,
   }
 
@@ -106,7 +107,6 @@ now_if_args(function()
         'clangd',
         '--background-index',
         '-j=8',
-        '--query-driver=/nix/store/*/bin/*,/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
         '--clang-tidy',
         '--clang-tidy-checks=*',
         '--all-scopes-completion',

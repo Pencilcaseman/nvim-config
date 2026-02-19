@@ -2,7 +2,7 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 
 -- Column limit at 80 -- highlight at 81
 vim.opt.colorcolumn = '81'

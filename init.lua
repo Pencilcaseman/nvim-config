@@ -2,14 +2,13 @@ if vim.loader then
   vim.loader.enable()
 end
 
--- Set this to false if you do not have a NerdFont installed
 vim.g.have_nerd_font = true
 
 -- Set <space> as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- -- Enable spell checking
+-- Enable spell checking
 vim.opt.spell = true
 vim.opt.spelllang = 'en'
 
