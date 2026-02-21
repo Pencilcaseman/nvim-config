@@ -54,7 +54,10 @@ later(function()
     src = 'https://github.com/mason-org/mason.nvim',
     hooks = {
       post_checkout = function()
-        vim.cmd 'MasonUpdate'
+        -- Trigger this after Mason has been configured
+        later(function()
+          vim.cmd 'MasonUpdate'
+        end)
       end,
     },
   }

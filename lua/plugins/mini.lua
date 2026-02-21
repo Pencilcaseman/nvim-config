@@ -24,6 +24,8 @@ now(function()
   map('<leader>bD', '<CMD>CloseAllButCurrent<CR>', 'Delete Buffer')
 end)
 
+now(function() require('mini.statusline').setup() end)
+
 later(function() require('mini.ai').setup() end)
 later(function() require('mini.align').setup() end)
 later(function() require('mini.bracketed').setup() end)
@@ -34,7 +36,6 @@ later(function() require('mini.extra').setup() end)
 later(function() require('mini.git').setup() end)
 later(function() require('mini.keymap').setup() end)
 later(function() require('mini.misc').setup() end)
-later(function() require('mini.statusline').setup() end)
 later(function() require('mini.surround').setup() end)
 later(function() require('mini.trailspace').setup() end)
 later(function() require('mini.visits').setup() end)
@@ -47,10 +48,10 @@ now(function()
   }
 end)
 
--- later(function()
---   require('mini.notify').setup()
---   vim.api.nvim_create_user_command('MiniMessages', MiniNotify.show_history, {})
--- end)
+later(function()
+  require('mini.notify').setup()
+  vim.api.nvim_create_user_command('MiniMessages', MiniNotify.show_history, {})
+end)
 
 later(function()
   require('mini.basics').setup {

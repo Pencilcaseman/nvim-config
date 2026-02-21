@@ -1,10 +1,8 @@
 tags
-test.sh
-.luarc.json
-nvim
 
 nvim-pack-lock.json
+.luarc.json
 
 spell/
-lazy-lock.json
+
 .DS_Store
