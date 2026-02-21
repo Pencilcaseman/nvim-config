@@ -8,7 +8,6 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- If we open a code file, set textwidth to 999999
-
 vim.api.nvim_create_autocmd('FileType', {
   group = 'SetTextWidth',
   pattern = {

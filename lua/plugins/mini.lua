@@ -24,7 +24,6 @@ later(function() require('mini.git').setup() end)
 later(function() require('mini.keymap').setup() end)
 later(function() require('mini.misc').setup() end)
 later(function() require('mini.notify').setup() end)
-later(function() require('mini.pick').setup() end)
 later(function() require('mini.statusline').setup() end)
 later(function() require('mini.surround').setup() end)
 later(function() require('mini.trailspace').setup() end)
@@ -196,6 +195,15 @@ later(function()
       note = hi_words({ 'NOTE', 'Note', 'note' }, 'MiniHipatternsNote'),
 
       hex_color = hipatterns.gen_highlighter.hex_color(),
+    },
+  }
+end)
+
+later(function()
+  require('mini.pick').setup {
+    options = {
+      content_from_bottom = true,
+      use_cache = true,
     },
   }
 end)
