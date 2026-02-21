@@ -15,6 +15,15 @@ end)
 -- stylua: ignore start
 now(function() require('mini.starter').setup() end)
 
+now(function()
+  require('mini.tabline').setup {}
+
+  map('H', '<CMD>bprev<CR>', 'Previous Buffer')
+  map('L', '<CMD>bnext<CR>', 'Next Buffer')
+  map('<leader>bd', require('mini.bufremove').delete, 'Delete Buffer')
+  map('<leader>bD', '<CMD>CloseAllButCurrent<CR>', 'Delete Buffer')
+end)
+
 later(function() require('mini.ai').setup() end)
 later(function() require('mini.align').setup() end)
 later(function() require('mini.bracketed').setup() end)
@@ -25,7 +34,6 @@ later(function() require('mini.extra').setup() end)
 later(function() require('mini.git').setup() end)
 later(function() require('mini.keymap').setup() end)
 later(function() require('mini.misc').setup() end)
-later(function() require('mini.notify').setup() end)
 later(function() require('mini.statusline').setup() end)
 later(function() require('mini.surround').setup() end)
 later(function() require('mini.trailspace').setup() end)
@@ -37,6 +45,12 @@ now(function()
   require('mini.sessions').setup {
     force = { read = false, write = true, delete = true },
   }
+end)
+
+later(function()
+  require('mini.notify').setup()
+
+  vim.api.nvim_create_user_command('MiniMessages', MiniNotify.show_history, {})
 end)
 
 later(function()
@@ -71,15 +85,6 @@ later(function()
   vim.cmd [[ highlight MiniDiffSignAdd guifg=#67cc20 ]]
   vim.cmd [[ highlight MiniDiffSignChange guifg=#46a1f0 ]]
   vim.cmd [[ highlight MiniDiffSignDelete guifg=#ff5c43 ]]
-end)
-
-later(function()
-  require('mini.tabline').setup {}
-
-  map('H', '<CMD>bprev<CR>', 'Previous Buffer')
-  map('L', '<CMD>bnext<CR>', 'Next Buffer')
-  map('<leader>bd', MiniBufremove.delete, 'Delete Buffer')
-  map('<leader>bD', '<CMD>CloseAllButCurrent<CR>', 'Delete Buffer')
 end)
 
 later(function()
