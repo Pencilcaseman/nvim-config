@@ -21,7 +21,7 @@ vim.opt.expandtab = true
 vim.opt.modeline = true
 vim.opt.modelines = 3
 
-vim.opt.showtabline = 2 -- Always reserve space for the tabline (barbar)
+-- vim.opt.showtabline = 2 -- Always reserve space for the tabline (barbar)
 vim.opt.winbar = 'NeoVim > Bread > Crumbs' -- Preload space for barbecue
 
 -- Inherit environment from original shell
@@ -29,6 +29,6 @@ vim.opt.shellcmdflag = '-lc'
 
 require 'options'
 require 'keymaps'
-require 'bootstrap-mini-deps'
+require 'packman'
 require 'plugins'
 require 'custom-commands'

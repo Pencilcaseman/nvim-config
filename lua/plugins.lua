@@ -2,12 +2,11 @@ require 'plugins.theme'
 
 require 'plugins.sleuth'
 require 'plugins.treesitter'
+require 'plugins.blink'
 require 'plugins.lspconfig'
 
 require 'plugins.mini'
 require 'plugins.flash'
-
-require 'plugins.blink'
 
 require 'plugins.barbeque'
 require 'plugins.illuminate'

@@ -1,11 +1,14 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later = PackMan.add, PackMan.later
 
 later(function()
-  add { source = 'chomosuke/typst-preview.nvim', hooks = {
-    post_checkout = function()
-      require('typst-preview').update()
-    end,
-  } }
+  add {
+    src = 'https://github.com/chomosuke/typst-preview.nvim',
+    hooks = {
+      post_checkout = function()
+        require('typst-preview').update()
+      end,
+    },
+  }
 
   vim.g.vimtex_view_method = 'skim'
   vim.g.vimtex_complete_enabled = 1

@@ -1,5 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local add, later, now_if_args = PackMan.add, PackMan.later, PackMan.now_if_args
 
 local ts_langs = {
   'bash',
@@ -55,11 +54,10 @@ end
 
 now_if_args(function()
   add {
-    source = 'nvim-treesitter/nvim-treesitter',
-    checkout = 'main',
+    src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+    version = 'main',
     hooks = {
       post_install = ts_post_install,
-      post_checkout = ts_post_install,
     },
   }
 
@@ -68,24 +66,14 @@ now_if_args(function()
 
   treesitter.install(ts_langs)
 
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern = '*',
-    callback = function(args)
-      local ok = pcall(vim.treesitter.start)
-
-      if ok then
-        vim.wo[0][0].foldmethod = 'expr'
-        vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-      end
-    end,
-  })
+  vim.o.foldmethod = 'expr'
+  vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 end)
 
 later(function()
   add {
-    source = 'nvim-treesitter/nvim-treesitter-textobjects',
-    checkout = 'main',
+    src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
+    version = 'main',
   }
 
   vim.g.no_plugin_maps = true
@@ -151,8 +139,6 @@ later(function()
   -- Assignments (e.g. x = 10)
   map_obj('a=', '@assignment.outer')
   map_obj('i=', '@assignment.inner')
-  -- map_obj('l=', '@assignment.lhs') -- Left-hand side
-  -- map_obj('r=', '@assignment.rhs') -- Right-hand side
 
   -- Blocks (content inside {})
   map_obj('ab', '@block.outer')

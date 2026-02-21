@@ -1,14 +1,8 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later = PackMan.add, PackMan.later
 
-local function build_blink(params)
-  vim.notify('Building blink.cmp', vim.log.levels.INFO)
-  local obj = vim.system({ 'cargo', '+nightly', 'build', '--release' }, { cwd = params.path }):wait()
-  if obj.code == 0 then
-    vim.notify('Building blink.cmp done', vim.log.levels.INFO)
-  else
-    vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
-  end
-end
+later(function()
+  add 'https://github.com/xzbdmw/colorful-menu.nvim'
+end)
 
 later(function()
   if vim.g.vscode then
@@ -16,14 +10,17 @@ later(function()
   end
 
   add {
-    source = 'saghen/blink.cmp',
-    checkout = 'main',
+    src = 'https://github.com/saghen/blink.cmp',
+    version = 'v1.9.1',
     hooks = {
-      post_install = build_blink,
-      post_checkout = build_blink,
-    },
-    depends = {
-      'xzbdmw/colorful-menu.nvim',
+      post_install = function()
+        vim.notify 'Building blink.cmp from source...'
+        vim.cmd 'BlinkCmp build'
+      end,
+      post_checkout = function()
+        vim.notify 'Building blink.cmp from source...'
+        vim.cmd 'BlinkCmp build'
+      end,
     },
   }
 

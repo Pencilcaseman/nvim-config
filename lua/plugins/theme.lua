@@ -1,7 +1,7 @@
-local add, now = MiniDeps.add, MiniDeps.now
+local add, now = PackMan.add, PackMan.now
 
 now(function()
-  add 'ellisonleao/gruvbox.nvim'
+  add 'https://github.com/ellisonleao/gruvbox.nvim'
 
   vim.o.background = 'dark'
   vim.cmd [[colorscheme gruvbox]]

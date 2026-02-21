@@ -1,6 +1,6 @@
-local later, add = MiniDeps.later, MiniDeps.add
+local add, later = PackMan.add, PackMan.later
 
 later(function()
-  add 'lukas-reineke/indent-blankline.nvim'
+  add 'https://github.com/lukas-reineke/indent-blankline.nvim'
   require('ibl').setup {}
 end)

@@ -1,7 +1,7 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later = PackMan.add, PackMan.later
 
 later(function()
-  add 'RRethy/vim-illuminate'
+  add 'https://github.com/RRethy/vim-illuminate'
 
   require('illuminate').configure {
     providers = {

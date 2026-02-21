@@ -1,7 +1,7 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later = PackMan.add, PackMan.later
 
 later(function()
-  add 'stevearc/overseer.nvim'
+  add 'https://github.com/stevearc/overseer.nvim'
   require('overseer').setup {}
 
   local nmap_leader = function(suffix, rhs, desc)

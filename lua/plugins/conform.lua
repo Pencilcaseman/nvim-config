@@ -1,5 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local add, later = PackMan.add, PackMan.later
 
 local disable_filetypes = {
   -- c = true,
@@ -57,7 +56,7 @@ local disable_by_filepath = function(bufnr)
 end
 
 later(function()
-  add 'stevearc/conform.nvim'
+  add 'https://github.com/stevearc/conform.nvim'
 
   require('conform').setup {
     notify_on_error = false,

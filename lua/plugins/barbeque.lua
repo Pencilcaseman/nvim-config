@@ -1,13 +1,10 @@
-local add, later = MiniDeps.add, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local add, later = PackMan.add, PackMan.later
 
 later(function()
-    add({
-        source = 'utilyre/barbecue.nvim',
-        depends = {
-            'SmiteshP/nvim-navic',
-        }
-    })
+  add 'https://github.com/SmiteshP/nvim-navic'
+end)
 
-    require('barbecue').setup({})
+later(function()
+  add 'https://github.com/utilyre/barbecue.nvim'
+  require('barbecue').setup {}
 end)

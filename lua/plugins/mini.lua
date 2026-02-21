@@ -1,4 +1,4 @@
-local now, later = MiniDeps.now, MiniDeps.later
+local add, now, later = PackMan.add, PackMan.now, PackMan.later
 
 local function map(keys, fn, desc)
   vim.keymap.set('n', keys, fn, { buffer = buf, desc = desc })
@@ -8,6 +8,9 @@ local nmap_leader = function(suffix, rhs, desc)
   vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
 end
 
+now(function()
+  add 'https://github.com/nvim-mini/mini.nvim'
+end)
 
 -- stylua: ignore start
 now(function() require('mini.starter').setup() end)
@@ -20,7 +23,6 @@ later(function() require('mini.colors').setup() end)
 later(function() require('mini.comment').setup() end)
 later(function() require('mini.extra').setup() end)
 later(function() require('mini.git').setup() end)
--- later(function() require('mini.jump').setup() end)
 later(function() require('mini.keymap').setup() end)
 later(function() require('mini.misc').setup() end)
 later(function() require('mini.notify').setup() end)

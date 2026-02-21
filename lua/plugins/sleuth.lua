@@ -1,5 +1,5 @@
-local now, add = MiniDeps.now, MiniDeps.add
+local add, now = PackMan.add, PackMan.now
 
 now(function()
-  add 'tpope/vim-sleuth'
+  add 'https://github.com/tpope/vim-sleuth'
 end)

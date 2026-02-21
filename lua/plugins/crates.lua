@@ -1,4 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later = PackMan.add, PackMan.later
 
 later(function()
   add 'saecki/crates.nvim'

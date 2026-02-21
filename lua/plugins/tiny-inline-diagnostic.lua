@@ -1,8 +1,7 @@
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local add, later = PackMan.add, PackMan.later
 
 later(function()
-  add 'rachartier/tiny-inline-diagnostic.nvim'
+  add 'https://github.com/rachartier/tiny-inline-diagnostic.nvim'
 
   require('tiny-inline-diagnostic').setup {
     preset = 'powerline',

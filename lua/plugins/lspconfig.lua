@@ -1,5 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local add, later = PackMan.add, PackMan.later
 
 get_mason_packages = function()
   local packages = {
@@ -50,9 +49,9 @@ get_mason_packages = function()
   return packages
 end
 
-now_if_args(function()
+later(function()
   add {
-    source = 'mason-org/mason.nvim',
+    src = 'https://github.com/mason-org/mason.nvim',
     hooks = {
       post_checkout = function()
         vim.cmd 'MasonUpdate'
@@ -78,15 +77,10 @@ now_if_args(function()
   end)
 end)
 
-now_if_args(function()
-  add {
-    source = 'neovim/nvim-lspconfig',
-    depends = {
-      'mason-org/mason.nvim',
-      'mason-org/mason-lspconfig.nvim',
-      'saghen/blink.cmp',
-    },
-  }
+later(function() add 'https://github.com/mason-org/mason.nvim' end)
+later(function() add 'https://github.com/mason-org/mason-lspconfig.nvim' end)
+later(function()
+  add 'https://github.com/neovim/nvim-lspconfig'
 
   local capabilities = require('blink.cmp').get_lsp_capabilities()
 

@@ -1,16 +1,15 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later = PackMan.add, PackMan.later
+
+later(function() add 'https://github.com/rcarriga/nvim-dap-ui' end )
+later(function() add 'https://github.com/nvim-neotest/nvim-nio' end )
+later(function() add 'https://github.com/jay-babu/mason-nvim-dap.nvim' end )
+later(function() add 'https://github.com/theHamsta/nvim-dap-virtual-text' end )
+later(function() add 'https://github.com/leoluz/nvim-dap-go' end )
+later(function() add 'https://github.com/folke/lazydev.nvim' end )
 
 later(function()
   add {
-    source = 'mfussenegger/nvim-dap',
-    depends = {
-      'rcarriga/nvim-dap-ui',
-      'nvim-neotest/nvim-nio', -- Required by nvim-dap-ui
-      'jay-babu/mason-nvim-dap.nvim',
-      'theHamsta/nvim-dap-virtual-text',
-      'leoluz/nvim-dap-go',
-      'folke/lazydev.nvim',
-    },
+    src = 'https://github.com/mfussenegger/nvim-dap',
   }
 
   local dap = require 'dap'

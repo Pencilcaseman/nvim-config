@@ -1,7 +1,7 @@
-local later, add = MiniDeps.later, MiniDeps.add
+local add, later = PackMan.add, PackMan.later
 
 later(function()
-  add 'chentoast/marks.nvim'
+  add 'https://github.com/chentoast/marks.nvim'
   require('marks').setup {
     -- builtin_marks = {
     --   '.',
