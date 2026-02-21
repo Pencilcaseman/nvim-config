@@ -26,8 +26,9 @@ vim.opt.winbar = 'NeoVim > Bread > Crumbs' -- Preload space for barbecue
 -- Inherit environment from original shell
 vim.opt.shellcmdflag = '-lc'
 
+require 'packman'
+
 require 'options'
 require 'keymaps'
-require 'packman'
 require 'plugins'
 require 'custom-commands'

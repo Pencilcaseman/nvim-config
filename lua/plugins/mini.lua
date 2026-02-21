@@ -47,11 +47,10 @@ now(function()
   }
 end)
 
-later(function()
-  require('mini.notify').setup()
-
-  vim.api.nvim_create_user_command('MiniMessages', MiniNotify.show_history, {})
-end)
+-- later(function()
+--   require('mini.notify').setup()
+--   vim.api.nvim_create_user_command('MiniMessages', MiniNotify.show_history, {})
+-- end)
 
 later(function()
   require('mini.basics').setup {

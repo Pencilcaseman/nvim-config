@@ -35,6 +35,15 @@ local function infer_name_from_src(src)
   return tail:gsub('%.git$', '')
 end
 
+local function packadd_if_needed(name, data)
+  -- data.active means "already on rtp" for this event
+  if data.active then return end
+  local ok, err = pcall(vim.cmd.packadd, name)
+  if not ok then
+    notify(("packadd failed for %s:\n%s"):format(name, err), vim.log.levels.ERROR)
+  end
+end
+
 ---Add a plugin using vim.pack.add.
 ---@param spec string|PluginSpec
 function PackMan.add(spec)

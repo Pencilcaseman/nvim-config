@@ -13,10 +13,16 @@ later(function()
     src = 'https://github.com/saghen/blink.cmp',
     version = 'main',
     hooks = {
-      post_install = function()
-        vim.notify 'Building blink.cmp from source...'
-        vim.cmd 'BlinkCmp build'
+      post_install = function(params)
+        vim.notify('Building blink.cmp', vim.log.levels.INFO)
+        local obj = vim.system({ 'cargo', '+nightly', 'build', '--release' }, { cwd = params.path }):wait()
+        if obj.code == 0 then
+          vim.notify('Building blink.cmp done', vim.log.levels.INFO)
+        else
+          vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
+        end
       end,
+
       post_checkout = function()
         vim.notify 'Building blink.cmp from source...'
         vim.cmd 'BlinkCmp build'

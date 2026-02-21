@@ -77,9 +77,8 @@ later(function()
   end)
 end)
 
-later(function() add 'https://github.com/mason-org/mason.nvim' end)
-later(function() add 'https://github.com/mason-org/mason-lspconfig.nvim' end)
 later(function()
+  add 'https://github.com/mason-org/mason-lspconfig.nvim'
   add 'https://github.com/neovim/nvim-lspconfig'
 
   local capabilities = require('blink.cmp').get_lsp_capabilities()
