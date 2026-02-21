@@ -11,7 +11,7 @@ later(function()
 
   add {
     src = 'https://github.com/saghen/blink.cmp',
-    version = 'v1.9.1',
+    version = 'main',
     hooks = {
       post_install = function()
         vim.notify 'Building blink.cmp from source...'

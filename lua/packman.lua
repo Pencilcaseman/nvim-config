@@ -20,7 +20,7 @@ _G.PackMan = {}
 local load_queue = {}
 local is_processing = false
 
-local TIME_BUDGET_MS = 8
+local TIME_BUDGET_MS = 32
 local TIME_BUDGET_NS = TIME_BUDGET_MS * 1000000
 
 local function infer_name_from_src(src)
@@ -165,6 +165,62 @@ vim.api.nvim_create_autocmd('VimEnter', {
     if not is_processing and #load_queue > 0 then
       is_processing = true
       vim.defer_fn(process_queue, 10)
+    end
+  end,
+})
+
+local function get_plugin_names()
+  -- vim.pack.get() returns a table of installed plugins in the new native system
+  local plugins = vim.pack.get()
+  local names = {}
+  for name, _ in pairs(plugins) do
+    table.insert(names, name)
+  end
+  table.sort(names)
+  return names
+end
+
+vim.api.nvim_create_user_command('PackMan', function(opts)
+  local subcommand = opts.fargs[1]
+  local args = { unpack(opts.fargs, 2) }
+
+  if subcommand == 'update' then
+    if #args == 0 then
+      vim.notify('PackMan: Updating all plugins...', vim.log.levels.INFO)
+      vim.pack.update()
+    else
+      vim.notify('PackMan: Updating ' .. table.concat(args, ', '), vim.log.levels.INFO)
+      vim.pack.update(args)
+    end
+  elseif subcommand == 'add' then
+    if #args == 0 then
+      vim.notify('Usage: :PackMan add <url_or_name>', vim.log.levels.ERROR)
+      return
+    end
+
+    local spec = args[1]
+    PackMan.add(spec)
+    vim.notify('PackMan: Added ' .. spec, vim.log.levels.INFO)
+  else
+    vim.notify('Unknown subcommand: ' .. subcommand, vim.log.levels.ERROR)
+  end
+end, {
+  nargs = '+', -- Requires at least one argument (the subcommand)
+  desc = 'PackMan interface: update [plugins...], add <spec>',
+  complete = function(arg_lead, cmd_line, cursor_pos)
+    local split_args = vim.split(cmd_line, '%s+')
+
+    if #split_args == 2 then
+      local subcommands = { 'update', 'add' }
+      return vim.tbl_filter(function(val)
+        return vim.startswith(val, arg_lead)
+      end, subcommands)
+    end
+
+    if split_args[2] == 'update' then
+      return vim.tbl_filter(function(val)
+        return vim.startswith(val, arg_lead)
+      end, get_plugin_names())
     end
   end,
 })

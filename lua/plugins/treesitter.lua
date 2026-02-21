@@ -48,7 +48,7 @@ local ts_langs = {
   'yaml',
 }
 
-local ts_post_install = function()
+local ts_post_checkout = function()
   vim.cmd 'TSUpdate'
 end
 
@@ -57,7 +57,7 @@ now_if_args(function()
     src = 'https://github.com/nvim-treesitter/nvim-treesitter',
     version = 'main',
     hooks = {
-      post_install = ts_post_install,
+      post_checkout = ts_post_checkout,
     },
   }
 
