@@ -13,9 +13,6 @@ It was originally built upon [Kickstart-Modular.nvim](https://github.com/dam9000
 which is a fork of the original Kickstart configuration with some changes made
 to simplify the project layout.
 
-***NOTE:*** This configuration uses the new `vim.pack` plugin API and requires
-nightly neovim (0.12).
-
 ### Screenshots
 
 For more screenshots of the configuration, please refer to [the `images`
@@ -26,7 +23,7 @@ directory](https://github.com/Pencilcaseman/nvim-config/tree/master/images)
 ### Install Neovim
 
 This configuration targets *only* the latest
-['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest
+<!-- ['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest -->
 ['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim.
 If you are experiencing issues, please make sure you have the latest versions.
 
