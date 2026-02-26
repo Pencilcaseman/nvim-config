@@ -1,8 +1,8 @@
 require 'plugins.theme'
+require 'plugins.sleuth'
 
 require 'plugins.mini'
 
-require 'plugins.sleuth'
 require 'plugins.treesitter'
 require 'plugins.blink'
 require 'plugins.lspconfig'
@@ -20,4 +20,3 @@ require 'plugins.typst_preview'
 
 require 'plugins.overseer'
 require 'plugins.debug'
-

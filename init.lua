@@ -8,10 +8,6 @@ vim.g.have_nerd_font = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Enable spell checking
-vim.opt.spell = true
-vim.opt.spelllang = 'en'
-
 vim.opt.wrap = false
 
 vim.opt.tabstop = 4

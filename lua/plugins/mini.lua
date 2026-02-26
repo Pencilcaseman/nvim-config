@@ -24,7 +24,46 @@ now(function()
   map('<leader>bD', '<CMD>CloseAllButCurrent<CR>', 'Delete Buffer')
 end)
 
-now(function() require('mini.statusline').setup() end)
+local function selection_count()
+  if vim.fn.mode():find '[vV]' then
+    local counts = vim.fn.wordcount()
+
+    local starts = vim.fn.line 'v'
+    local ends = vim.fn.line '.'
+    local lines = starts <= ends and ends - starts + 1 or starts - ends + 1
+
+    return string.format('L:%d W:%d C:%d', lines, counts.visual_words, counts.visual_chars)
+  else
+    return ''
+  end
+end
+
+now(function()
+  local msl = require('mini.statusline')
+
+  msl.setup({
+    content = {
+      active = function()
+        local mode, mode_hl = msl.section_mode({ trunc_width = 120 })
+        local filename      = msl.section_filename({ trunc_width = 140 })
+        local word_count    = selection_count()
+        local fileinfo      = msl.section_fileinfo({ trunc_width = 120 })
+        local location      = msl.section_location({ trunc_width = 75 })
+        local search        = msl.section_searchcount({ trunc_width = 75 })
+
+        return msl.combine_groups({
+          { hl = mode_hl,                  strings = { mode } },
+          '%<',
+          { hl = 'MiniStatuslineFilename', strings = { filename } },
+          '%=',
+          { hl = 'MiniStatuslineFilename', strings = { word_count } },
+          { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+          { hl = mode_hl,                  strings = { search, location } },
+        })
+      end
+    }
+  })
+end)
 
 later(function() require('mini.ai').setup() end)
 later(function() require('mini.align').setup() end)
