@@ -311,7 +311,6 @@ end
 ---@param spec string|PackManSpec
 ---@param opts? table forwarded to vim.pack.add
 function PackMan.add(spec, opts)
-  init()
   opts = opts or {}
 
   local expanded = {}
@@ -345,42 +344,7 @@ end
 
 -- Original-style "now": optional glob condition against current buffer name.
 ---@param task PackManTask
----@param condition? string|PackManCondition
-function PackMan.now(task, condition)
-  init()
-
-  if condition then
-    local opts = type(condition) == 'table' and condition or { pattern = condition }
-    local pattern = opts.pattern
-    if pattern then
-      local buf_name = vim.api.nvim_buf_get_name(0)
-      if buf_name == '' then
-        buf_name = '[No Name]'
-      end
-
-      local function matches_one(p)
-        return vim.fn.match(buf_name, vim.fn.glob2regpat(p)) ~= -1
-      end
-
-      if type(pattern) == 'string' then
-        if not matches_one(pattern) then
-          return
-        end
-      elseif type(pattern) == 'table' then
-        local ok_any = false
-        for _, p in ipairs(pattern) do
-          if matches_one(p) then
-            ok_any = true
-            break
-          end
-        end
-        if not ok_any then
-          return
-        end
-      end
-    end
-  end
-
+function PackMan.now(task)
   local ok, err = pcall(task)
   if not ok then
     notify(tostring(err), vim.log.levels.ERROR)
@@ -391,8 +355,6 @@ end
 ---@param task PackManTask
 ---@param condition? string|PackManCondition
 function PackMan.later(task, condition)
-  init()
-
   if condition then
     local events = condition
     local opts = {}
@@ -464,7 +426,6 @@ local function iter_pack_get()
 end
 
 function PackMan.clean(opts)
-  init()
   opts = opts or {}
   local force = opts.force == true
 

@@ -8,22 +8,6 @@ local nmap_leader = function(suffix, rhs, desc)
   vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
 end
 
-now(function()
-  add 'https://github.com/nvim-mini/mini.nvim'
-end)
-
--- stylua: ignore start
-now(function() require('mini.starter').setup() end)
-
-now(function()
-  require('mini.tabline').setup {}
-
-  map('H', '<CMD>bprev<CR>', 'Previous Buffer')
-  map('L', '<CMD>bnext<CR>', 'Next Buffer')
-  map('<leader>bd', require('mini.bufremove').delete, 'Delete Buffer')
-  map('<leader>bD', '<CMD>CloseAllButCurrent<CR>', 'Delete Buffer')
-end)
-
 local function selection_count()
   if vim.fn.mode():find '[vV]' then
     local counts = vim.fn.wordcount()
@@ -39,31 +23,56 @@ local function selection_count()
 end
 
 now(function()
-  local msl = require('mini.statusline')
+  add 'https://github.com/nvim-mini/mini.nvim'
+end)
 
-  msl.setup({
+now(function()
+  require('mini.sessions').setup {
+    force = { read = false, write = true, delete = true },
+  }
+end)
+
+now(function()
+  require('mini.starter').setup()
+end)
+
+now(function()
+  require('mini.tabline').setup {}
+
+  map('H', '<CMD>bprev<CR>', 'Previous Buffer')
+  map('L', '<CMD>bnext<CR>', 'Next Buffer')
+  map('<leader>bd', require('mini.bufremove').delete, 'Delete Buffer')
+  map('<leader>bD', '<CMD>CloseAllButCurrent<CR>', 'Delete Buffer')
+end)
+
+now(function()
+  local msl = require 'mini.statusline'
+
+  msl.setup {
     content = {
       active = function()
-        local mode, mode_hl = msl.section_mode({ trunc_width = 120 })
-        local filename      = msl.section_filename({ trunc_width = 140 })
-        local word_count    = selection_count()
-        local fileinfo      = msl.section_fileinfo({ trunc_width = 120 })
-        local location      = msl.section_location({ trunc_width = 75 })
-        local search        = msl.section_searchcount({ trunc_width = 75 })
+        local mode, mode_hl = msl.section_mode { trunc_width = 120 }
+        local filename = msl.section_filename { trunc_width = 140 }
+        local word_count = selection_count()
+        local fileinfo = msl.section_fileinfo { trunc_width = 120 }
+        local location = msl.section_location { trunc_width = 75 }
+        local search = msl.section_searchcount { trunc_width = 75 }
 
-        return msl.combine_groups({
-          { hl = mode_hl,                  strings = { mode } },
+        return msl.combine_groups {
+          { hl = mode_hl, strings = { mode } },
           '%<',
           { hl = 'MiniStatuslineFilename', strings = { filename } },
           '%=',
           { hl = 'MiniStatuslineFilename', strings = { word_count } },
           { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-          { hl = mode_hl,                  strings = { search, location } },
-        })
-      end
-    }
-  })
+          { hl = mode_hl, strings = { search, location } },
+        }
+      end,
+    },
+  }
 end)
+
+-- stylua: ignore start
 
 later(function() require('mini.ai').setup() end)
 later(function() require('mini.align').setup() end)
@@ -80,12 +89,6 @@ later(function() require('mini.trailspace').setup() end)
 later(function() require('mini.visits').setup() end)
 
 -- stylua: ignore end
-
-now(function()
-  require('mini.sessions').setup {
-    force = { read = false, write = true, delete = true },
-  }
-end)
 
 later(function()
   require('mini.notify').setup()
