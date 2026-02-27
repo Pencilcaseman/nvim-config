@@ -49,6 +49,7 @@ local ts_langs = {
 }
 
 local ts_post_checkout = function()
+  require('nvim-treesitter').install(ts_langs)
   vim.cmd 'TSUpdate'
 end
 
@@ -61,10 +62,7 @@ now_if_args(function()
     },
   }
 
-  local treesitter = require 'nvim-treesitter'
-  treesitter.setup()
-
-  treesitter.install(ts_langs)
+  require('nvim-treesitter').setup()
 
   vim.o.foldmethod = 'expr'
   vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
