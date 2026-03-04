@@ -1,4 +1,4 @@
-local add, now, now_if_args, later = PackMan.add, PackMan.now, PackMan.now_if_args, PackMan.later
+local add, now, later = PackMan.add, PackMan.now, PackMan.later
 
 local function map(keys, fn, desc)
   vim.keymap.set('n', keys, fn, { buffer = buf, desc = desc })
@@ -119,6 +119,10 @@ later(function() require('mini.visits').setup() end)
 -- stylua: ignore end
 
 later(function()
+  require('mini.cursorword').setup { delay = 0 }
+end)
+
+later(function()
   require('mini.notify').setup()
   vim.api.nvim_create_user_command('MiniMessages', MiniNotify.show_history, {})
 end)
@@ -157,11 +161,12 @@ later(function()
   vim.cmd [[ highlight MiniDiffSignDelete guifg=#ff5c43 ]]
 end)
 
-later(function()
-  require('mini.pairs').setup {
-    modes = { command = true },
-  }
-end)
+-- Replaced with blink.pairs
+-- later(function()
+--   require('mini.pairs').setup {
+--     modes = { command = true },
+--   }
+-- end)
 
 later(function()
   require('mini.cmdline').setup {

@@ -10,7 +10,6 @@ require 'plugins.lspconfig'
 require 'plugins.flash'
 
 require 'plugins.barbeque'
-require 'plugins.illuminate'
 require 'plugins.conform'
 require 'plugins.marks'
 require 'plugins.indent-blanklines'
