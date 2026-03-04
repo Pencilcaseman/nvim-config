@@ -53,7 +53,7 @@ local ts_post_checkout = function()
   vim.cmd 'TSUpdate'
 end
 
-now_if_args(function()
+later(function()
   add {
     src = 'https://github.com/nvim-treesitter/nvim-treesitter',
     version = 'main',
