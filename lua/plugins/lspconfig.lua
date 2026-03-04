@@ -1,48 +1,80 @@
 local add, later = PackMan.add, PackMan.later
 
-get_mason_packages = function()
+local get_mason_packages = function()
   local packages = {
+    -- Generic
+    'ast-grep',
+    'harper-ls',
+
+    -- Ansible
     'ansible-language-server',
     'ansible-lint',
-    'ast-grep',
-    'basedpyright',
+
+    -- Docker
+    'docker-compose-language-service',
+    'dockerfile-language-server',
+    'hadolint',
+
+    -- Bash
     'bash-debug-adapter',
+    'shellcheck',
+    'shfmt',
+
+    -- JavaScript/TypeScript
     'biome',
+    'jdtls',
+    'js-debug-adapter',
+    'json-lsp',
+
+    -- Make/CMake/C/C++
     'checkmake',
     'clang-format',
     'clangd',
     'cmakelang',
     'cmakelint',
     'codelldb',
-    'debugpy',
-    'docker-compose-language-service',
-    'dockerfile-language-server',
-    'flake8',
     'gersemi',
-    'hadolint',
-    'harper-ls',
-    -- 'haskell-debug-adapter',
-    -- 'haskell-language-server',
+    'neocmakelsp',
+
+    -- Python
+    'debugpy',
+    'flake8',
+    'ruff',
+    'ty',
+    'uv',
+
+    -- Haskell
+    'haskell-debug-adapter',
+    'haskell-language-server',
+
+    -- Java
     'java-debug-adapter',
     'java-test',
-    'jdtls',
-    'js-debug-adapter',
-    'json-lsp',
+
+    -- TeX/LaTeX
     'latexindent',
-    'lua-language-server',
-    'markdownlint',
-    'marksman',
-    'neocmakelsp',
-    'omnisharp',
-    'ruff',
-    'rust-analyzer',
-    'shellcheck',
-    'shfmt',
-    'stylua',
     'tectonic',
     'tex-fmt',
     'texlab',
+
+    -- Typst
     'tinymist',
+
+    -- Lua
+    'lua-language-server',
+    'stylua',
+
+    -- Markdown
+    'markdownlint',
+    'marksman',
+
+    -- C#
+    'omnisharp',
+
+    -- Rust
+    'rust-analyzer',
+
+    -- Zig
     'zls',
   }
 

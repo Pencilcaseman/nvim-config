@@ -9,11 +9,11 @@ later(function()
     vim.keymap.set(modes, keys, cmd, opts)
   end
 
-  map({ 'n', 'x', 'o' }, '<CR>', function()
+  map({ 'n', 'x', 'o' }, 'gs', function()
     require('flash').jump()
   end, { desc = 'Flash' })
 
-  map({ 'n', 'x', 'o' }, '<S-CR>', function()
+  map({ 'n', 'x', 'o' }, 'gS', function()
     require('flash').treesitter()
   end, { desc = 'Flash' })
 end)
