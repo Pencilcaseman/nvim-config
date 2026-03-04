@@ -1,5 +1,21 @@
 local add, later = PackMan.add, PackMan.later
 
+local build_nightly = function(name)
+  return function(params)
+    vim.notify('Building blink.' .. name, vim.log.levels.INFO)
+    local obj = vim
+      .system({ 'cargo', '+nightly', 'build', '--release' }, {
+        cwd = params.path,
+      })
+      :wait()
+    if obj.code == 0 then
+      vim.notify('Building blink.' .. name .. ' done', vim.log.levels.INFO)
+    else
+      vim.notify('Building blink.' .. name .. ' failed', vim.log.levels.ERROR)
+    end
+  end
+end
+
 later(function()
   add 'https://github.com/xzbdmw/colorful-menu.nvim'
 end)
@@ -13,20 +29,7 @@ later(function()
     src = 'https://github.com/saghen/blink.cmp',
     version = 'main',
     hooks = {
-      post_install = function(params)
-        vim.notify('Building blink.cmp', vim.log.levels.INFO)
-        local obj = vim.system({ 'cargo', '+nightly', 'build', '--release' }, { cwd = params.path }):wait()
-        if obj.code == 0 then
-          vim.notify('Building blink.cmp done', vim.log.levels.INFO)
-        else
-          vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
-        end
-      end,
-
-      post_checkout = function()
-        vim.notify 'Building blink.cmp from source...'
-        vim.cmd 'BlinkCmp build'
-      end,
+      post_checkout = build_nightly 'cmp',
     },
   }
 
@@ -89,5 +92,33 @@ later(function()
 
     -- Experimental
     signature = { enabled = true },
+  }
+end)
+
+later(function()
+  add {
+    src = 'saghen/blink.pairs',
+    version = 'main',
+    hooks = {
+      post_checkout = build_nightly 'pairs',
+    },
+  }
+
+  require('blink.pairs').setup {
+    mappings = {
+      enabled = true,
+      cmdline = true,
+      disabled_filetypes = {},
+    },
+    highlights = {
+      enabled = true,
+      cmdline = true,
+
+      matchparen = {
+        enabled = true,
+        cmdline = true,
+        include_surrounding = true,
+      },
+    },
   }
 end)
