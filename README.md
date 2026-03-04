@@ -110,6 +110,9 @@ which may take a few minutes depending on your machine. This only happens the
 first time you use the configuration -- `nvim` will start (almost) instantly
 from then on.
 
+***NOTE:*** Neovim may be unresponsive for a minute or two during the initial
+plugin install. It will start working again once everything has downloaded.
+
 ### FAQ
 
 - What if I already have a Neovim configuration installed?
