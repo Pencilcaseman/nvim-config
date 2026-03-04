@@ -17,6 +17,7 @@ local get_mason_packages = function()
 
     -- Bash
     'bash-debug-adapter',
+    'bash-language-server',
     'shellcheck',
     'shfmt',
 
