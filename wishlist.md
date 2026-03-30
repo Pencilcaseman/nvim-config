@@ -30,3 +30,6 @@ for different pickers.
 
 [This PR](https://github.com/dmtrKovalenko/fff.nvim/pull/139) adds integrations
 with Mini.Pick, so if/when this is merged I would like to make use of it.
+
+I could probably do this by hand as well, but I don't fancy the added
+complexity.
