@@ -60,6 +60,7 @@ local get_mason_packages = function()
 
     -- Typst
     'tinymist',
+    'typstyle',
 
     -- Lua
     'lua-language-server',
