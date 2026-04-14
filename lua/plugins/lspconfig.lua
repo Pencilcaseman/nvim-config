@@ -127,6 +127,13 @@ later(function()
   }
 
   local server_configs = {
+    harper_ls = {
+      settings = {
+        ['harper-ls'] = {
+          dialect = 'British',
+        },
+      },
+    },
     tinymist = {
       settings = {
         tinymist = { formatterMode = 'typstyle' },
@@ -176,3 +183,12 @@ later(function()
     end,
   })
 end)
+
+-- -- Make sure `gq<motion>` uses the default neovim textwidth wrapping
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function(args)
+--     vim.defer_fn(function()
+--       vim.bo[args.buf].formatexpr = ''
+--     end, 100)
+--   end,
+-- })
